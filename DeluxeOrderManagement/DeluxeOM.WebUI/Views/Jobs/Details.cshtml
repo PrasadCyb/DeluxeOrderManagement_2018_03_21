@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DeluxeOM.Models.BulkUploader.JobItem>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="order_page_wrapper">
+    <div class="users_page_wrapper">
+        <div class="row">
+            <div class="col-xs-1 padd_zero"><h6 class="filter_heading">Details</h6></div>
+            <div class="col-xs-10 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"></div>
+        </div>
+        <hr />
+        <div class="row row_bottom_padd">
+            <div class="col-xs-2 control_padd">
+                <span data-dismiss="modal" class="back_to_list"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp; @Html.ActionLink("Back to List", "Index")</span>
+            </div>
+            <div class="col-xs-10 control_padd"></div>
+        </div>
+        <div class="row right_btn_group">
+            <button type="button" class="btn btn-default btn_custom jobs_page_refresh">refresh</button>
+        </div>
+            <table class="table userList">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.JobId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TaskName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StatusDisplay)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EndDate)
+                        </th>
+                        
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusDisplay)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+
+            </table>
+            
+        </div>
+    </div>

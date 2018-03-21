@@ -1,0 +1,1958 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DeluxeOrderManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdditionalProperties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TableRefId" Type="int" Nullable="false" />
+          <Property Name="ColumnName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Announceemnt_Channel_Format">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnnouncementId" Type="int" Nullable="false" />
+          <Property Name="Channel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Format" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientAvailStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientStartDate" Type="datetime" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="JObId" Type="int" />
+          <Property Name="ChannelFormat" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientEndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AnnouncementGrid">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="VideoVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="LocalEdit" Type="nvarchar" MaxLength="100" />
+          <Property Name="TerritoryId" Type="int" />
+          <Property Name="LanguageId" Type="int" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="JObId" Type="int" />
+          <Property Name="FirstAnnouncedDate" Type="datetime" />
+          <Property Name="LastAnnouncedDate" Type="datetime" />
+          <Property Name="CancellationDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DeluxeOrderManagement.dbo.Announcements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Announcements">
+          <Key>
+            <PropertyRef Name="ChangeStatus" />
+            <PropertyRef Name="LocalTitle" />
+            <PropertyRef Name="GlobalTitle" />
+            <PropertyRef Name="TitleContentType" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Language" />
+            <PropertyRef Name="LanguageType" />
+            <PropertyRef Name="SalesChannel" />
+            <PropertyRef Name="Format" />
+            <PropertyRef Name="ClientStart" />
+            <PropertyRef Name="ClientEnd" />
+            <PropertyRef Name="ClientAvailStatus" />
+            <PropertyRef Name="TitleCategory" />
+            <PropertyRef Name="PriceType" />
+            <PropertyRef Name="StorefrontCurrency" />
+            <PropertyRef Name="LocalDataDVS" />
+            <PropertyRef Name="TitleMPM" />
+            <PropertyRef Name="TitleVideoVersion" />
+            <PropertyRef Name="ClientAvailID" />
+            <PropertyRef Name="AccountName" />
+            <PropertyRef Name="Company" />
+          </Key>
+          <Property Name="ChangeStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedFields" Type="nvarchar" MaxLength="500" />
+          <Property Name="ChangeContext" Type="nvarchar" MaxLength="256" />
+          <Property Name="LocalTitle" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="GlobalTitle" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="TitleContentType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="int" Nullable="false" />
+          <Property Name="Language" Type="int" Nullable="false" />
+          <Property Name="LanguageType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SalesChannel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Format" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HDR" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientStart" Type="datetime" Nullable="false" />
+          <Property Name="ClientEnd" Type="datetime" Nullable="false" />
+          <Property Name="ClientAvailStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ECAvailable" Type="nvarchar" MaxLength="50" />
+          <Property Name="SuppressionEndDate" Type="datetime" />
+          <Property Name="TitleCategory" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PriceType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PriceTier" Type="nvarchar" MaxLength="256" />
+          <Property Name="WSCost" Type="nvarchar" MaxLength="10" />
+          <Property Name="StorefrontCurrency" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="LocalDataTheatricalReleaseDt" Type="datetime" />
+          <Property Name="LocalDVDReleaseDate" Type="datetime" />
+          <Property Name="LocalDataRating" Type="nvarchar" MaxLength="100" />
+          <Property Name="RatingReason" Type="nvarchar" MaxLength="256" />
+          <Property Name="LocalDataDVS" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="TitleMPM" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TitleVideoVersion" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LocalEditRequired" Type="nvarchar" MaxLength="20" />
+          <Property Name="TitleAbstractEIDR" Type="nvarchar" MaxLength="256" />
+          <Property Name="LocalDataEditEIDR" Type="nvarchar" MaxLength="256" />
+          <Property Name="LocalDataUVPublishDate" Type="nvarchar" MaxLength="256" />
+          <Property Name="LocalDataALID" Type="nvarchar" MaxLength="256" />
+          <Property Name="LocalDataCID" Type="nvarchar" MaxLength="256" />
+          <Property Name="ClientAvailID" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Company" Type="int" Nullable="false" />
+          <Property Name="AvailNotes" Type="nvarchar" MaxLength="500" />
+          <Property Name="ChannelFormat" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="BulkUpdate_Validations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyId" Type="int" Nullable="false" />
+          <Property Name="BatchId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="ValidationLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ColumnName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ColumnValue" Type="nvarchar" MaxLength="255" />
+          <Property Name="ValidationMessage" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorLogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorName" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="FTPConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Host" Type="varchar" MaxLength="256" />
+          <Property Name="FtpDirectory" Type="varchar" MaxLength="256" />
+          <Property Name="FileName" Type="varchar" MaxLength="100" />
+          <Property Name="DownloadTo" Type="varchar" MaxLength="256" />
+          <Property Name="KeepOriginal" Type="bit" />
+          <Property Name="OverWriteExisting" Type="bit" />
+          <Property Name="Port" Type="int" />
+          <Property Name="EnableSSL" Type="bit" />
+          <Property Name="Environment" Type="varchar" MaxLength="50" />
+          <Property Name="FtpArchivalDirectory" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Job_Annoncement_History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="AnnouncementOrderId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JOBS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobType" Type="varchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="TriggeredBy" Type="varchar" MaxLength="50" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Jobs_Announcements_Inserted">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="AnnouncementGridId" Type="int" />
+          <Property Name="OrderGridId" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Jobs_Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="TaskName" Type="varchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Locale" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookupId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LookupType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="FromEmailAddress" Type="nvarchar" MaxLength="512" />
+          <Property Name="ToEmailAddress" Type="nvarchar" MaxLength="512" />
+          <Property Name="SuccessSubject" Type="nvarchar" MaxLength="255" />
+          <Property Name="FailureSubject" Type="nvarchar" MaxLength="255" />
+          <Property Name="SuccessBody" Type="nvarchar(max)" />
+          <Property Name="FailureBody" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OrderGrid">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnnouncementId" Type="int" Nullable="false" />
+          <Property Name="VendorId" Type="nvarchar" MaxLength="50" />
+          <Property Name="LanguageType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="100" />
+          <Property Name="ESTUPC" Type="nvarchar" MaxLength="100" />
+          <Property Name="IVODUPC" Type="nvarchar" MaxLength="100" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="MPO" Type="nvarchar" MaxLength="50" />
+          <Property Name="HALID" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderRequestDate" Type="datetime" />
+          <Property Name="DeliveryDueDate" Type="datetime" />
+          <Property Name="ActualDeliveryDate" Type="datetime" />
+          <Property Name="GreenlightDueDate" Type="datetime" />
+          <Property Name="GreenlightValidatedbyDMDM" Type="datetime" />
+          <Property Name="GreenlightSenttoPackaging" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="JObId" Type="int" />
+          <Property Name="LockedBy" Type="int" />
+          <Property Name="LockedOn" Type="datetime" />
+          <Property Name="IsLocked" Type="bit" />
+        </EntityType>
+        <EntityType Name="PasswordReset">
+          <Key>
+            <PropertyRef Name="PasswordResetId" />
+          </Key>
+          <Property Name="PasswordResetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ExpireDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PipelineOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HALOrderID" Type="nvarchar" MaxLength="50" />
+          <Property Name="TitleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContractDueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="TargetDueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="PurchaseOrder" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkOrder" Type="nvarchar" MaxLength="50" />
+          <Property Name="CableLabsAssetID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CableLabsPackageAssetID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Workflow" Type="nvarchar" MaxLength="50" />
+          <Property Name="GatorPO" Type="nvarchar" MaxLength="50" />
+          <Property Name="WBAnnouncement" Type="nvarchar" MaxLength="50" />
+          <Property Name="IngredientAssetType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IngredientLanguageId" Type="int" />
+          <Property Name="IngredientStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="PriceReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="VendorId" Type="nvarchar" MaxLength="100" />
+          <Property Name="AppleId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TerritoryId" Type="int" />
+          <Property Name="LiveVODHD" Type="nvarchar" MaxLength="50" />
+          <Property Name="LiveVODSD" Type="nvarchar" MaxLength="50" />
+          <Property Name="LiveESTHD" Type="nvarchar" MaxLength="50" />
+          <Property Name="LiveESTSD" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreOrderDate" Type="datetime" />
+          <Property Name="ClearedforSaleEST" Type="bit" />
+          <Property Name="EnableESTHD" Type="bit" />
+          <Property Name="ESTStartDate" Type="datetime" />
+          <Property Name="ESTEndDate" Type="datetime" />
+          <Property Name="ClearedforVOD" Type="bit" />
+          <Property Name="EnableVODHD" Type="bit" />
+          <Property Name="AvailForVOD" Type="datetime" />
+          <Property Name="UnAvailForVOD" Type="datetime" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="PrivId" />
+          </Key>
+          <Property Name="PrivId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrivName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QCReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="AppleId" Type="nvarchar" MaxLength="50" />
+          <Property Name="VendorId" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImportedDate" Type="datetime" />
+          <Property Name="ComponentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="LanguageId" Type="int" />
+          <Property Name="Territory" Type="nvarchar" MaxLength="512" />
+          <Property Name="ComponentQuality" Type="nvarchar" MaxLength="50" />
+          <Property Name="QAStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePriv">
+          <Key>
+            <PropertyRef Name="RolePrivId" />
+          </Key>
+          <Property Name="RolePrivId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="PrivId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesChannel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Territory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WBTerritory" Type="nvarchar" MaxLength="255" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AppleTerritory" Type="nvarchar" MaxLength="255" />
+          <Property Name="RegionId" Type="int" />
+          <Property Name="PACKAGE" Type="nvarchar" MaxLength="255" />
+          <Property Name="GROUP" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TerritoryLanguage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerritoryId" Type="int" Nullable="false" />
+          <Property Name="LanguageSeq" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPassword">
+          <Key>
+            <PropertyRef Name="UserPasswordId" />
+          </Key>
+          <Property Name="UserPasswordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="LoginAttempts" Type="int" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VID">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VIDStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bundle" Type="bit" />
+          <Property Name="Extras" Type="bit" />
+          <Property Name="TitleName" Type="nvarchar" MaxLength="255" />
+          <Property Name="MPM" Type="nvarchar" MaxLength="50" />
+          <Property Name="VideoVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="EditName" Type="nvarchar" MaxLength="255" />
+          <Property Name="VersionEIDR" Type="nvarchar" MaxLength="255" />
+          <Property Name="AppleId" Type="nvarchar" MaxLength="50" />
+          <Property Name="VendorId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TitleCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="JobId" Type="int" />
+        </EntityType>
+        <Association Name="fk_PasswordRest_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PasswordReset" Type="Self.PasswordReset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PasswordReset">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RolePrivilege_PrivId">
+          <End Role="Privilege" Type="Self.Privilege" Multiplicity="1" />
+          <End Role="RolePriv" Type="Self.RolePriv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilege">
+              <PropertyRef Name="PrivId" />
+            </Principal>
+            <Dependent Role="RolePriv">
+              <PropertyRef Name="PrivId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RolePrivilege_RoleId">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="RolePriv" Type="Self.RolePriv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RolePriv">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserPassword_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserPassword" Type="Self.UserPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserRole_RoleId">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserRole_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_BulkUpdateOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="filePath" Type="nvarchar" Mode="In" />
+          <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Export_Title" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Get_Orders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="nvarchar" Mode="In" />
+          <Parameter Name="channel" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Get_Titles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_Insert_Announcements" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JobID" Type="int" Mode="In" />
+          <Parameter Name="firstAnouncedDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_Insert_AppleGrid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_Insert_PipelineOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_Insert_PriceReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_Insert_QCReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_InsertDataToAnnouncementStaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Path" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertDataToApplePriceStaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Path" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertDataToAppleQCStaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Path" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertDataToPipeLineStaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Path" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Search_Title" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UPD_AnnouncementGrid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JobId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateOG_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderId" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="DeluxeOrderManagementModelStoreContainer">
+          <EntitySet Name="AdditionalProperties" EntityType="Self.AdditionalProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Announceemnt_Channel_Format" EntityType="Self.Announceemnt_Channel_Format" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnnouncementGrid" EntityType="Self.AnnouncementGrid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BulkUpdate_Validations" EntityType="Self.BulkUpdate_Validations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FTPConfig" EntityType="Self.FTPConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job_Annoncement_History" EntityType="Self.Job_Annoncement_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JOBS" EntityType="Self.JOBS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobs_Announcements_Inserted" EntityType="Self.Jobs_Announcements_Inserted" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobs_Items" EntityType="Self.Jobs_Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookupType" EntityType="Self.LookupType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderGrid" EntityType="Self.OrderGrid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasswordReset" EntityType="Self.PasswordReset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PipelineOrder" EntityType="Self.PipelineOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceReport" EntityType="Self.PriceReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilege" EntityType="Self.Privilege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QCReport" EntityType="Self.QCReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolePriv" EntityType="Self.RolePriv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesChannel" EntityType="Self.SalesChannel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Territory" EntityType="Self.Territory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TerritoryLanguage" EntityType="Self.TerritoryLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPassword" EntityType="Self.UserPassword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VID" EntityType="Self.VID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Announcements" EntityType="Self.Announcements" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Announcements].[ChangeStatus] AS [ChangeStatus], 
+    [Announcements].[ChangedFields] AS [ChangedFields], 
+    [Announcements].[ChangeContext] AS [ChangeContext], 
+    [Announcements].[LocalTitle] AS [LocalTitle], 
+    [Announcements].[GlobalTitle] AS [GlobalTitle], 
+    [Announcements].[TitleContentType] AS [TitleContentType], 
+    [Announcements].[Country] AS [Country], 
+    [Announcements].[Language] AS [Language], 
+    [Announcements].[LanguageType] AS [LanguageType], 
+    [Announcements].[SalesChannel] AS [SalesChannel], 
+    [Announcements].[Format] AS [Format], 
+    [Announcements].[HDR] AS [HDR], 
+    [Announcements].[ClientStart] AS [ClientStart], 
+    [Announcements].[ClientEnd] AS [ClientEnd], 
+    [Announcements].[ClientAvailStatus] AS [ClientAvailStatus], 
+    [Announcements].[ECAvailable] AS [ECAvailable], 
+    [Announcements].[SuppressionEndDate] AS [SuppressionEndDate], 
+    [Announcements].[TitleCategory] AS [TitleCategory], 
+    [Announcements].[PriceType] AS [PriceType], 
+    [Announcements].[PriceTier] AS [PriceTier], 
+    [Announcements].[WSCost] AS [WSCost], 
+    [Announcements].[StorefrontCurrency] AS [StorefrontCurrency], 
+    [Announcements].[LocalDataTheatricalReleaseDt] AS [LocalDataTheatricalReleaseDt], 
+    [Announcements].[LocalDVDReleaseDate] AS [LocalDVDReleaseDate], 
+    [Announcements].[LocalDataRating] AS [LocalDataRating], 
+    [Announcements].[RatingReason] AS [RatingReason], 
+    [Announcements].[LocalDataDVS] AS [LocalDataDVS], 
+    [Announcements].[TitleMPM] AS [TitleMPM], 
+    [Announcements].[TitleVideoVersion] AS [TitleVideoVersion], 
+    [Announcements].[LocalEditRequired] AS [LocalEditRequired], 
+    [Announcements].[TitleAbstractEIDR] AS [TitleAbstractEIDR], 
+    [Announcements].[LocalDataEditEIDR] AS [LocalDataEditEIDR], 
+    [Announcements].[LocalDataUVPublishDate] AS [LocalDataUVPublishDate], 
+    [Announcements].[LocalDataALID] AS [LocalDataALID], 
+    [Announcements].[LocalDataCID] AS [LocalDataCID], 
+    [Announcements].[ClientAvailID] AS [ClientAvailID], 
+    [Announcements].[AccountName] AS [AccountName], 
+    [Announcements].[Company] AS [Company], 
+    [Announcements].[AvailNotes] AS [AvailNotes], 
+    [Announcements].[ChannelFormat] AS [ChannelFormat]
+    FROM [dbo].[Announcements] AS [Announcements]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_PasswordRest_UserId" Association="Self.fk_PasswordRest_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PasswordReset" EntitySet="PasswordReset" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RolePrivilege_PrivId" Association="Self.fk_RolePrivilege_PrivId">
+            <End Role="Privilege" EntitySet="Privilege" />
+            <End Role="RolePriv" EntitySet="RolePriv" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RolePrivilege_RoleId" Association="Self.fk_RolePrivilege_RoleId">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RolePriv" EntitySet="RolePriv" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserPassword_UserId" Association="Self.fk_UserPassword_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPassword" EntitySet="UserPassword" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserRole_RoleId" Association="Self.fk_UserRole_RoleId">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserRole_UserId" Association="Self.fk_UserRole_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DeluxeOrderManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdditionalProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TableRefId" Type="Int32" Nullable="false" />
+          <Property Name="ColumnName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Locale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookupId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LookupType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PasswordResetModel">
+          <Key>
+            <PropertyRef Name="PasswordResetId" />
+          </Key>
+          <Property Name="PasswordResetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpireDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.fk_PasswordRest_UserId" FromRole="PasswordReset" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="PrivilegeModelModel">
+          <Key>
+            <PropertyRef Name="PrivId" />
+          </Key>
+          <Property Name="PrivId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrivName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RolePrivs" Relationship="Self.fk_RolePrivilege_PrivId" FromRole="Privilege" ToRole="RolePriv" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleModel">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RolePrivs" Relationship="Self.fk_RolePrivilege_RoleId" FromRole="Role" ToRole="RolePriv" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.fk_UserRole_RoleId" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="RolePrivModel">
+          <Key>
+            <PropertyRef Name="RolePrivId" />
+          </Key>
+          <Property Name="RolePrivId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="PrivId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Privilege" Relationship="Self.fk_RolePrivilege_PrivId" FromRole="RolePriv" ToRole="Privilege" />
+          <NavigationProperty Name="Role" Relationship="Self.fk_RolePrivilege_RoleId" FromRole="RolePriv" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Territory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WBTerritory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AppleTerritory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RegionId" Type="Int32" />
+          <Property Name="PACKAGE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GROUP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TerritoryLanguageModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerritoryId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageSeq" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPasswordModel">
+          <Key>
+            <PropertyRef Name="UserPasswordId" />
+          </Key>
+          <Property Name="UserPasswordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="Self.fk_UserPassword_UserId" FromRole="UserPassword" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserRoleModel">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.fk_UserRole_RoleId" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="Self.fk_UserRole_UserId" FromRole="UserRole" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserModel">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="LoginAttempts" Type="Int32" Nullable="false" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PasswordResets" Relationship="Self.fk_PasswordRest_UserId" FromRole="Users" ToRole="PasswordReset" />
+          <NavigationProperty Name="UserPasswords" Relationship="Self.fk_UserPassword_UserId" FromRole="Users" ToRole="UserPassword" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.fk_UserRole_UserId" FromRole="Users" ToRole="UserRole" />
+        </EntityType>
+        <Association Name="fk_PasswordRest_UserId">
+          <End Role="Users" Type="DeluxeOrderManagementModel.UserModel" Multiplicity="1" />
+          <End Role="PasswordReset" Type="DeluxeOrderManagementModel.PasswordResetModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PasswordReset">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RolePrivilege_PrivId">
+          <End Role="Privilege" Type="DeluxeOrderManagementModel.PrivilegeModelModel" Multiplicity="1" />
+          <End Role="RolePriv" Type="DeluxeOrderManagementModel.RolePrivModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilege">
+              <PropertyRef Name="PrivId" />
+            </Principal>
+            <Dependent Role="RolePriv">
+              <PropertyRef Name="PrivId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RolePrivilege_RoleId">
+          <End Role="Role" Type="DeluxeOrderManagementModel.RoleModel" Multiplicity="1" />
+          <End Role="RolePriv" Type="DeluxeOrderManagementModel.RolePrivModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RolePriv">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserRole_RoleId">
+          <End Role="Role" Type="DeluxeOrderManagementModel.RoleModel" Multiplicity="1" />
+          <End Role="UserRole" Type="DeluxeOrderManagementModel.UserRoleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserPassword_UserId">
+          <End Role="Users" Type="DeluxeOrderManagementModel.UserModel" Multiplicity="1" />
+          <End Role="UserPassword" Type="DeluxeOrderManagementModel.UserPasswordModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserRole_UserId">
+          <End Role="Users" Type="DeluxeOrderManagementModel.UserModel" Multiplicity="1" />
+          <End Role="UserRole" Type="DeluxeOrderManagementModel.UserRoleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DeluxeOrderManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdditionalProperties" EntityType="DeluxeOrderManagementModel.AdditionalProperty" />
+          <EntitySet Name="Customers" EntityType="DeluxeOrderManagementModel.Customer" />
+          <EntitySet Name="Languages" EntityType="DeluxeOrderManagementModel.Language" />
+          <EntitySet Name="Lookups" EntityType="DeluxeOrderManagementModel.Lookup" />
+          <EntitySet Name="LookupTypes" EntityType="DeluxeOrderManagementModel.LookupType" />
+          <EntitySet Name="PasswordResetModels" EntityType="DeluxeOrderManagementModel.PasswordResetModel" />
+          <EntitySet Name="PrivilegeModelModels" EntityType="DeluxeOrderManagementModel.PrivilegeModelModel" />
+          <EntitySet Name="Regions" EntityType="DeluxeOrderManagementModel.Region" />
+          <EntitySet Name="RoleModels" EntityType="DeluxeOrderManagementModel.RoleModel" />
+          <EntitySet Name="RolePrivModels" EntityType="DeluxeOrderManagementModel.RolePrivModel" />
+          <EntitySet Name="Territories" EntityType="DeluxeOrderManagementModel.Territory" />
+          <EntitySet Name="TerritoryLanguageModels" EntityType="DeluxeOrderManagementModel.TerritoryLanguageModel" />
+          <EntitySet Name="UserPasswordModels" EntityType="DeluxeOrderManagementModel.UserPasswordModel" />
+          <EntitySet Name="UserRoleModels" EntityType="DeluxeOrderManagementModel.UserRoleModel" />
+          <EntitySet Name="UserModels" EntityType="DeluxeOrderManagementModel.UserModel" />
+          <AssociationSet Name="fk_PasswordRest_UserId" Association="Self.fk_PasswordRest_UserId">
+            <End Role="Users" EntitySet="UserModels" />
+            <End Role="PasswordReset" EntitySet="PasswordResetModels" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RolePrivilege_PrivId" Association="Self.fk_RolePrivilege_PrivId">
+            <End Role="Privilege" EntitySet="PrivilegeModelModels" />
+            <End Role="RolePriv" EntitySet="RolePrivModels" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RolePrivilege_RoleId" Association="Self.fk_RolePrivilege_RoleId">
+            <End Role="Role" EntitySet="RoleModels" />
+            <End Role="RolePriv" EntitySet="RolePrivModels" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserRole_RoleId" Association="Self.fk_UserRole_RoleId">
+            <End Role="Role" EntitySet="RoleModels" />
+            <End Role="UserRole" EntitySet="UserRoleModels" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserPassword_UserId" Association="Self.fk_UserPassword_UserId">
+            <End Role="Users" EntitySet="UserModels" />
+            <End Role="UserPassword" EntitySet="UserPasswordModels" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserRole_UserId" Association="Self.fk_UserRole_UserId">
+            <End Role="Users" EntitySet="UserModels" />
+            <End Role="UserRole" EntitySet="UserRoleModels" />
+          </AssociationSet>
+          <FunctionImport Name="usp_ExportAppleGrid" />
+          <FunctionImport Name="usp_Insert_PriceReport" />
+          <FunctionImport Name="usp_Insert_QCReport" />
+          <FunctionImport Name="usp_Insert_PipelineOrder" />
+          <FunctionImport Name="usp_Insert_AppleGrid" />
+          <FunctionImport Name="usp_UPD_AnnouncementGrid" >
+          <Parameter Name="JobId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Jobs_Announcements_Inserted" EntityType="DeluxeOrderManagementModel.Jobs_Announcements_Inserted" />
+          <EntitySet Name="SalesChannels" EntityType="DeluxeOrderManagementModel.SalesChannel" />
+          <EntitySet Name="Job_Annoncement_History" EntityType="DeluxeOrderManagementModel.Job_Annoncement_History" />
+          <EntitySet Name="PipelineOrders" EntityType="DeluxeOrderManagementModel.PipelineOrder" />
+          <EntitySet Name="PriceReports" EntityType="DeluxeOrderManagementModel.PriceReport" />
+          <EntitySet Name="Announcements" EntityType="DeluxeOrderManagementModel.Announcement" />
+          <FunctionImport Name="usp_Export_Title">
+          <Parameter Name="whereClause" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Announceemnt_Channel_Format" EntityType="DeluxeOrderManagementModel.Announceemnt_Channel_Format" />
+          <EntitySet Name="AnnouncementGrids" EntityType="DeluxeOrderManagementModel.AnnouncementGrid" />
+          <FunctionImport Name="usp_Search_Title" ReturnType="Collection(DeluxeOrderManagementModel.usp_Search_Title_Result)">
+          <Parameter Name="whereClause" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ErrorLogs" EntityType="DeluxeOrderManagementModel.ErrorLog" />
+          <FunctionImport Name="usp_InsertDataToAnnouncementStaging">
+          <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertDataToApplePriceStaging">
+          <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertDataToAppleQCStaging">
+          <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertDataToPipeLineStaging">
+          <Parameter Name="Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="QCReports" EntityType="DeluxeOrderManagementModel.QCReport" />
+          <EntitySet Name="Jobs_Items" EntityType="DeluxeOrderManagementModel.Jobs_Items" />
+          <FunctionImport Name="usp_Insert_Announcements">
+            <Parameter Name="JobID" Mode="In" Type="Int32" />
+            <Parameter Name="firstAnouncedDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Get_Titles" />
+          <EntitySet Name="NotificationEntities" EntityType="DeluxeOrderManagementModel.NotificationEntity" />
+          <EntitySet Name="OrderGrids" EntityType="DeluxeOrderManagementModel.OrderGrid" />
+          <EntitySet Name="FTPConfigs" EntityType="DeluxeOrderManagementModel.FTPConfig" />
+          <EntitySet Name="VIDs" EntityType="DeluxeOrderManagementModel.VID" />
+          <EntitySet Name="JOBS" EntityType="DeluxeOrderManagementModel.JOB" />
+          <FunctionImport Name="usp_Get_Orders" ReturnType="Collection(DeluxeOrderManagementModel.usp_Get_Orders_Result)">
+            <Parameter Name="whereClause" Mode="In" Type="String" />
+            <Parameter Name="channel" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="BulkUpdate_Validations" EntityType="DeluxeOrderManagementModel.BulkUpdate_Validations" />
+          <FunctionImport Name="usp_BulkUpdateOrder">
+            <Parameter Name="filePath" Mode="In" Type="String" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateOG_Status">
+            <Parameter Name="OrderId" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Jobs_Announcements_Inserted">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="AnnouncementGridId" Type="Int32" />
+          <Property Name="OrderGridId" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SalesChannel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Job_Annoncement_History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="AnnouncementOrderId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PipelineOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HALOrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TitleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContractDueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TargetDueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorkOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CableLabsAssetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CableLabsPackageAssetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Workflow" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GatorPO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WBAnnouncement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IngredientAssetType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IngredientLanguageId" Type="Int32" />
+          <Property Name="IngredientStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PriceReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VendorId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AppleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TerritoryId" Type="Int32" />
+          <Property Name="LiveVODHD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LiveVODSD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LiveESTHD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LiveESTSD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PreOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="ClearedforSaleEST" Type="Boolean" />
+          <Property Name="EnableESTHD" Type="Boolean" />
+          <Property Name="ESTStartDate" Type="DateTime" Precision="3" />
+          <Property Name="ClearedforVOD" Type="Boolean" />
+          <Property Name="EnableVODHD" Type="Boolean" />
+          <Property Name="AvailForVOD" Type="DateTime" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="ESTEndDate" Type="DateTime" Precision="3" />
+          <Property Name="UnAvailForVOD" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="ChangeStatus" />
+            <PropertyRef Name="LocalTitle" />
+            <PropertyRef Name="GlobalTitle" />
+            <PropertyRef Name="TitleContentType" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Language" />
+            <PropertyRef Name="LanguageType" />
+            <PropertyRef Name="SalesChannel" />
+            <PropertyRef Name="Format" />
+            <PropertyRef Name="ClientStart" />
+            <PropertyRef Name="ClientEnd" />
+            <PropertyRef Name="ClientAvailStatus" />
+            <PropertyRef Name="TitleCategory" />
+            <PropertyRef Name="PriceType" />
+            <PropertyRef Name="StorefrontCurrency" />
+            <PropertyRef Name="LocalDataDVS" />
+            <PropertyRef Name="TitleMPM" />
+            <PropertyRef Name="TitleVideoVersion" />
+            <PropertyRef Name="ClientAvailID" />
+            <PropertyRef Name="AccountName" />
+            <PropertyRef Name="Company" />
+          </Key>
+          <Property Name="ChangeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedFields" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeContext" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LocalTitle" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="GlobalTitle" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TitleContentType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="Int32" Nullable="false" />
+          <Property Name="Language" Type="Int32" Nullable="false" />
+          <Property Name="LanguageType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SalesChannel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HDR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientAvailStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ECAvailable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SuppressionEndDate" Type="DateTime" Precision="3" />
+          <Property Name="TitleCategory" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PriceType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PriceTier" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="WSCost" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StorefrontCurrency" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="LocalDataTheatricalReleaseDt" Type="DateTime" Precision="3" />
+          <Property Name="LocalDVDReleaseDate" Type="DateTime" Precision="3" />
+          <Property Name="LocalDataRating" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RatingReason" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LocalDataDVS" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TitleMPM" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TitleVideoVersion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LocalEditRequired" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TitleAbstractEIDR" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LocalDataEditEIDR" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LocalDataUVPublishDate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LocalDataALID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LocalDataCID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ClientAvailID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="AccountName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="Int32" Nullable="false" />
+          <Property Name="AvailNotes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ChannelFormat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Announceemnt_Channel_Format">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnnouncementId" Type="Int32" Nullable="false" />
+          <Property Name="Channel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientAvailStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientStartDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="JObId" Type="Int32" />
+          <Property Name="ChannelFormat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientEndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AnnouncementGrid">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VideoVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LocalEdit" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TerritoryId" Type="Int32" />
+          <Property Name="LanguageId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="JObId" Type="Int32" />
+          <Property Name="FirstAnnouncedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastAnnouncedDate" Type="DateTime" Precision="3" />
+          <Property Name="CancellationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="usp_Search_Title_Result">
+          <Property Type="String" Name="TitleName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="VendorId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VIDStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AppleTerritory" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="POESTStartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ESTStartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ESTEndDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="LiveESTHD" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LiveESTSD" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="VODStartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="VODEndDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="LiveVODHD" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LiveVODSD" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="AnnPOESTStartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AnnESTStartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AnnESTEndDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AnnVODStartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AnnVODEndDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ComponentType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ComponentQuality" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LanguageName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LanguageType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LanguageStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="QCReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AppleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VendorId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImportedDate" Type="DateTime" Precision="3" />
+          <Property Name="ComponentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageId" Type="Int32" />
+          <Property Name="Territory" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ComponentQuality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QAStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jobs_Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="TaskName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="NotificationEntity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="FromEmailAddress" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ToEmailAddress" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="SuccessSubject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FailureSubject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SuccessBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FailureBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderGrid">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnnouncementId" Type="Int32" Nullable="false" />
+          <Property Name="VendorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ESTUPC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IVODUPC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MPO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HALID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderRequestDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryDueDate" Type="DateTime" Precision="3" />
+          <Property Name="ActualDeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="GreenlightDueDate" Type="DateTime" Precision="3" />
+          <Property Name="GreenlightValidatedbyDMDM" Type="DateTime" Precision="3" />
+          <Property Name="GreenlightSenttoPackaging" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="JObId" Type="Int32" />
+          <Property Name="LockedBy" Type="Int32" />
+          <Property Name="LockedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsLocked" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="FTPConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Host" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FtpDirectory" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DownloadTo" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="KeepOriginal" Type="Boolean" />
+          <Property Name="OverWriteExisting" Type="Boolean" />
+          <Property Name="Port" Type="Int32" />
+          <Property Name="EnableSSL" Type="Boolean" />
+          <Property Name="Environment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FtpArchivalDirectory" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VID">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VIDStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bundle" Type="Boolean" />
+          <Property Name="Extras" Type="Boolean" />
+          <Property Name="TitleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MPM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VideoVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EditName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VersionEIDR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AppleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VendorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TitleCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="JobId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="JOB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TriggeredBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="usp_Get_Orders_Result">
+          <Property Type="String" Name="OrderStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Region" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Territory" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Language" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="RequestNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MPO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="HALID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VendorId" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="OrderID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="AnnouncementId" Nullable="false" />
+          <Property Type="DateTime" Name="FirstStartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FirstAnnouncedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DeliveryDueDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ActualDeliveryDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="GreenlightDueDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="GreenlightSenttoPackaging" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="GreenlightValidatedbyDMDM" Nullable="true" Precision="23" />
+          <Property Type="String" Name="LanguageType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrderType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ESTUPC" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IVODUPC" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="LockedBy" Nullable="true" />
+          <Property Type="DateTime" Name="LockedOn" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsLocked" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="BulkUpdate_Validations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ValidationLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnValue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ValidationMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="KeyId" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DeluxeOrderManagementModelStoreContainer" CdmEntityContainer="DeluxeOrderManagementEntities">
+          <EntitySetMapping Name="AdditionalProperties">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.AdditionalProperty">
+              <MappingFragment StoreEntitySet="AdditionalProperties">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TableRefId" ColumnName="TableRefId" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Locale" ColumnName="Locale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lookups">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Lookup">
+              <MappingFragment StoreEntitySet="Lookup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookupTypes">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.LookupType">
+              <MappingFragment StoreEntitySet="LookupType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordResetModels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.PasswordResetModel">
+              <MappingFragment StoreEntitySet="PasswordReset">
+                <ScalarProperty Name="PasswordResetId" ColumnName="PasswordResetId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ExpireDateTime" ColumnName="ExpireDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrivilegeModelModels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.PrivilegeModelModel">
+              <MappingFragment StoreEntitySet="Privilege">
+                <ScalarProperty Name="PrivId" ColumnName="PrivId" />
+                <ScalarProperty Name="PrivName" ColumnName="PrivName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleModels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.RoleModel">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolePrivModels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.RolePrivModel">
+              <MappingFragment StoreEntitySet="RolePriv">
+                <ScalarProperty Name="RolePrivId" ColumnName="RolePrivId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="PrivId" ColumnName="PrivId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Territories">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Territory">
+              <MappingFragment StoreEntitySet="Territory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WBTerritory" ColumnName="WBTerritory" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="AppleTerritory" ColumnName="AppleTerritory" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="PACKAGE" ColumnName="PACKAGE" />
+                <ScalarProperty Name="GROUP" ColumnName="GROUP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TerritoryLanguageModels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.TerritoryLanguageModel">
+              <MappingFragment StoreEntitySet="TerritoryLanguage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="LanguageSeq" ColumnName="LanguageSeq" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPasswordModels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.UserPasswordModel">
+              <MappingFragment StoreEntitySet="UserPassword">
+                <ScalarProperty Name="UserPasswordId" ColumnName="UserPasswordId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordDate" ColumnName="PasswordDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleModels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.UserRoleModel">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserModels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.UserModel">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Insert_PriceReport" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_PriceReport" />
+          <FunctionImportMapping FunctionImportName="usp_Insert_QCReport" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_QCReport" />
+          <FunctionImportMapping FunctionImportName="usp_Insert_PipelineOrder" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_PipelineOrder" />
+          <FunctionImportMapping FunctionImportName="usp_Insert_AppleGrid" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_AppleGrid" />
+          <FunctionImportMapping FunctionImportName="usp_UPD_AnnouncementGrid" FunctionName="DeluxeOrderManagementModel.Store.usp_UPD_AnnouncementGrid" />
+          <EntitySetMapping Name="Jobs_Announcements_Inserted">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Jobs_Announcements_Inserted">
+              <MappingFragment StoreEntitySet="Jobs_Announcements_Inserted">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="OrderGridId" ColumnName="OrderGridId" />
+                <ScalarProperty Name="AnnouncementGridId" ColumnName="AnnouncementGridId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesChannels">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.SalesChannel">
+              <MappingFragment StoreEntitySet="SalesChannel">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job_Annoncement_History">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Job_Annoncement_History">
+              <MappingFragment StoreEntitySet="Job_Annoncement_History">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="AnnouncementOrderId" ColumnName="AnnouncementOrderId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PipelineOrders">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.PipelineOrder">
+              <MappingFragment StoreEntitySet="PipelineOrder">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="IngredientStatus" ColumnName="IngredientStatus" />
+                <ScalarProperty Name="IngredientLanguageId" ColumnName="IngredientLanguageId" />
+                <ScalarProperty Name="IngredientAssetType" ColumnName="IngredientAssetType" />
+                <ScalarProperty Name="WBAnnouncement" ColumnName="WBAnnouncement" />
+                <ScalarProperty Name="GatorPO" ColumnName="GatorPO" />
+                <ScalarProperty Name="Workflow" ColumnName="Workflow" />
+                <ScalarProperty Name="CableLabsPackageAssetID" ColumnName="CableLabsPackageAssetID" />
+                <ScalarProperty Name="CableLabsAssetID" ColumnName="CableLabsAssetID" />
+                <ScalarProperty Name="WorkOrder" ColumnName="WorkOrder" />
+                <ScalarProperty Name="PurchaseOrder" ColumnName="PurchaseOrder" />
+                <ScalarProperty Name="TargetDueDate" ColumnName="TargetDueDate" />
+                <ScalarProperty Name="ContractDueDate" ColumnName="ContractDueDate" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="HALOrderID" ColumnName="HALOrderID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceReports">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.PriceReport">
+              <MappingFragment StoreEntitySet="PriceReport">
+                <ScalarProperty Name="UnAvailForVOD" ColumnName="UnAvailForVOD" />
+                <ScalarProperty Name="ESTEndDate" ColumnName="ESTEndDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="AvailForVOD" ColumnName="AvailForVOD" />
+                <ScalarProperty Name="EnableVODHD" ColumnName="EnableVODHD" />
+                <ScalarProperty Name="ClearedforVOD" ColumnName="ClearedforVOD" />
+                <ScalarProperty Name="ESTStartDate" ColumnName="ESTStartDate" />
+                <ScalarProperty Name="EnableESTHD" ColumnName="EnableESTHD" />
+                <ScalarProperty Name="ClearedforSaleEST" ColumnName="ClearedforSaleEST" />
+                <ScalarProperty Name="PreOrderDate" ColumnName="PreOrderDate" />
+                <ScalarProperty Name="LiveESTSD" ColumnName="LiveESTSD" />
+                <ScalarProperty Name="LiveESTHD" ColumnName="LiveESTHD" />
+                <ScalarProperty Name="LiveVODSD" ColumnName="LiveVODSD" />
+                <ScalarProperty Name="LiveVODHD" ColumnName="LiveVODHD" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="AppleId" ColumnName="AppleId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Announcements">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Announcement">
+              <MappingFragment StoreEntitySet="Announcements">
+                <ScalarProperty Name="ChannelFormat" ColumnName="ChannelFormat" />
+                <ScalarProperty Name="AvailNotes" ColumnName="AvailNotes" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="ClientAvailID" ColumnName="ClientAvailID" />
+                <ScalarProperty Name="LocalDataCID" ColumnName="LocalDataCID" />
+                <ScalarProperty Name="LocalDataALID" ColumnName="LocalDataALID" />
+                <ScalarProperty Name="LocalDataUVPublishDate" ColumnName="LocalDataUVPublishDate" />
+                <ScalarProperty Name="LocalDataEditEIDR" ColumnName="LocalDataEditEIDR" />
+                <ScalarProperty Name="TitleAbstractEIDR" ColumnName="TitleAbstractEIDR" />
+                <ScalarProperty Name="LocalEditRequired" ColumnName="LocalEditRequired" />
+                <ScalarProperty Name="TitleVideoVersion" ColumnName="TitleVideoVersion" />
+                <ScalarProperty Name="TitleMPM" ColumnName="TitleMPM" />
+                <ScalarProperty Name="LocalDataDVS" ColumnName="LocalDataDVS" />
+                <ScalarProperty Name="RatingReason" ColumnName="RatingReason" />
+                <ScalarProperty Name="LocalDataRating" ColumnName="LocalDataRating" />
+                <ScalarProperty Name="LocalDVDReleaseDate" ColumnName="LocalDVDReleaseDate" />
+                <ScalarProperty Name="LocalDataTheatricalReleaseDt" ColumnName="LocalDataTheatricalReleaseDt" />
+                <ScalarProperty Name="StorefrontCurrency" ColumnName="StorefrontCurrency" />
+                <ScalarProperty Name="WSCost" ColumnName="WSCost" />
+                <ScalarProperty Name="PriceTier" ColumnName="PriceTier" />
+                <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+                <ScalarProperty Name="TitleCategory" ColumnName="TitleCategory" />
+                <ScalarProperty Name="SuppressionEndDate" ColumnName="SuppressionEndDate" />
+                <ScalarProperty Name="ECAvailable" ColumnName="ECAvailable" />
+                <ScalarProperty Name="ClientAvailStatus" ColumnName="ClientAvailStatus" />
+                <ScalarProperty Name="ClientEnd" ColumnName="ClientEnd" />
+                <ScalarProperty Name="ClientStart" ColumnName="ClientStart" />
+                <ScalarProperty Name="HDR" ColumnName="HDR" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="SalesChannel" ColumnName="SalesChannel" />
+                <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="TitleContentType" ColumnName="TitleContentType" />
+                <ScalarProperty Name="GlobalTitle" ColumnName="GlobalTitle" />
+                <ScalarProperty Name="LocalTitle" ColumnName="LocalTitle" />
+                <ScalarProperty Name="ChangeContext" ColumnName="ChangeContext" />
+                <ScalarProperty Name="ChangedFields" ColumnName="ChangedFields" />
+                <ScalarProperty Name="ChangeStatus" ColumnName="ChangeStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Export_Title" FunctionName="DeluxeOrderManagementModel.Store.usp_Export_Title" />
+          <EntitySetMapping Name="Announceemnt_Channel_Format">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Announceemnt_Channel_Format">
+              <MappingFragment StoreEntitySet="Announceemnt_Channel_Format">
+                <ScalarProperty Name="ClientEndDate" ColumnName="ClientEndDate" />
+                <ScalarProperty Name="ChannelFormat" ColumnName="ChannelFormat" />
+                <ScalarProperty Name="JObId" ColumnName="JObId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ClientStartDate" ColumnName="ClientStartDate" />
+                <ScalarProperty Name="ClientAvailStatus" ColumnName="ClientAvailStatus" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnnouncementGrids">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.AnnouncementGrid">
+              <MappingFragment StoreEntitySet="AnnouncementGrid">
+                <ScalarProperty Name="CancellationDate" ColumnName="CancellationDate" />
+                <ScalarProperty Name="LastAnnouncedDate" ColumnName="LastAnnouncedDate" />
+                <ScalarProperty Name="FirstAnnouncedDate" ColumnName="FirstAnnouncedDate" />
+                <ScalarProperty Name="JObId" ColumnName="JObId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+                <ScalarProperty Name="LocalEdit" ColumnName="LocalEdit" />
+                <ScalarProperty Name="VideoVersion" ColumnName="VideoVersion" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Search_Title" FunctionName="DeluxeOrderManagementModel.Store.usp_Search_Title">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeluxeOrderManagementModel.usp_Search_Title_Result">
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="VIDStatus" ColumnName="VIDStatus" />
+                <ScalarProperty Name="AppleTerritory" ColumnName="AppleTerritory" />
+                <ScalarProperty Name="POESTStartDate" ColumnName="POESTStartDate" />
+                <ScalarProperty Name="ESTStartDate" ColumnName="ESTStartDate" />
+                <ScalarProperty Name="ESTEndDate" ColumnName="ESTEndDate" />
+                <ScalarProperty Name="LiveESTHD" ColumnName="LiveESTHD" />
+                <ScalarProperty Name="LiveESTSD" ColumnName="LiveESTSD" />
+                <ScalarProperty Name="VODStartDate" ColumnName="VODStartDate" />
+                <ScalarProperty Name="VODEndDate" ColumnName="VODEndDate" />
+                <ScalarProperty Name="LiveVODHD" ColumnName="LiveVODHD" />
+                <ScalarProperty Name="LiveVODSD" ColumnName="LiveVODSD" />
+                <ScalarProperty Name="AnnPOESTStartDate" ColumnName="AnnPOESTStartDate" />
+                <ScalarProperty Name="AnnESTStartDate" ColumnName="AnnESTStartDate" />
+                <ScalarProperty Name="AnnESTEndDate" ColumnName="AnnESTEndDate" />
+                <ScalarProperty Name="AnnVODStartDate" ColumnName="AnnVODStartDate" />
+                <ScalarProperty Name="AnnVODEndDate" ColumnName="AnnVODEndDate" />
+                <ScalarProperty Name="ComponentType" ColumnName="ComponentType" />
+                <ScalarProperty Name="ComponentQuality" ColumnName="ComponentQuality" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+                <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+                <ScalarProperty Name="LanguageStatus" ColumnName="LanguageStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLogs">
+                <ScalarProperty Name="ErrorName" ColumnName="ErrorName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_InsertDataToAnnouncementStaging" FunctionName="DeluxeOrderManagementModel.Store.usp_InsertDataToAnnouncementStaging" />
+          <FunctionImportMapping FunctionImportName="usp_InsertDataToApplePriceStaging" FunctionName="DeluxeOrderManagementModel.Store.usp_InsertDataToApplePriceStaging" />
+          <FunctionImportMapping FunctionImportName="usp_InsertDataToAppleQCStaging" FunctionName="DeluxeOrderManagementModel.Store.usp_InsertDataToAppleQCStaging" />
+          <FunctionImportMapping FunctionImportName="usp_InsertDataToPipeLineStaging" FunctionName="DeluxeOrderManagementModel.Store.usp_InsertDataToPipeLineStaging" />
+          <EntitySetMapping Name="QCReports">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.QCReport">
+              <MappingFragment StoreEntitySet="QCReport">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="QAStatus" ColumnName="QAStatus" />
+                <ScalarProperty Name="ComponentQuality" ColumnName="ComponentQuality" />
+                <ScalarProperty Name="Territory" ColumnName="Territory" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="ComponentType" ColumnName="ComponentType" />
+                <ScalarProperty Name="ImportedDate" ColumnName="ImportedDate" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="AppleId" ColumnName="AppleId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs_Items">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Jobs_Items">
+              <MappingFragment StoreEntitySet="Jobs_Items">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Insert_Announcements" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_Announcements" />
+          <FunctionImportMapping FunctionImportName="usp_Get_Titles" FunctionName="DeluxeOrderManagementModel.Store.usp_Get_Titles" />
+          <EntitySetMapping Name="NotificationEntities">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.NotificationEntity">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FailureBody" ColumnName="FailureBody" />
+                <ScalarProperty Name="SuccessBody" ColumnName="SuccessBody" />
+                <ScalarProperty Name="FailureSubject" ColumnName="FailureSubject" />
+                <ScalarProperty Name="SuccessSubject" ColumnName="SuccessSubject" />
+                <ScalarProperty Name="ToEmailAddress" ColumnName="ToEmailAddress" />
+                <ScalarProperty Name="FromEmailAddress" ColumnName="FromEmailAddress" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderGrids">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.OrderGrid">
+              <MappingFragment StoreEntitySet="OrderGrid">
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="LockedOn" ColumnName="LockedOn" />
+                <ScalarProperty Name="LockedBy" ColumnName="LockedBy" />
+                <ScalarProperty Name="JObId" ColumnName="JObId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="GreenlightSenttoPackaging" ColumnName="GreenlightSenttoPackaging" />
+                <ScalarProperty Name="GreenlightValidatedbyDMDM" ColumnName="GreenlightValidatedbyDMDM" />
+                <ScalarProperty Name="GreenlightDueDate" ColumnName="GreenlightDueDate" />
+                <ScalarProperty Name="ActualDeliveryDate" ColumnName="ActualDeliveryDate" />
+                <ScalarProperty Name="DeliveryDueDate" ColumnName="DeliveryDueDate" />
+                <ScalarProperty Name="OrderRequestDate" ColumnName="OrderRequestDate" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="HALID" ColumnName="HALID" />
+                <ScalarProperty Name="MPO" ColumnName="MPO" />
+                <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="IVODUPC" ColumnName="IVODUPC" />
+                <ScalarProperty Name="ESTUPC" ColumnName="ESTUPC" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FTPConfigs">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.FTPConfig">
+              <MappingFragment StoreEntitySet="FTPConfig">
+                <ScalarProperty Name="FtpArchivalDirectory" ColumnName="FtpArchivalDirectory" />
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="EnableSSL" ColumnName="EnableSSL" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="OverWriteExisting" ColumnName="OverWriteExisting" />
+                <ScalarProperty Name="KeepOriginal" ColumnName="KeepOriginal" />
+                <ScalarProperty Name="DownloadTo" ColumnName="DownloadTo" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FtpDirectory" ColumnName="FtpDirectory" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIDs">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.VID">
+              <MappingFragment StoreEntitySet="VID">
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="TitleCategory" ColumnName="TitleCategory" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="AppleId" ColumnName="AppleId" />
+                <ScalarProperty Name="VersionEIDR" ColumnName="VersionEIDR" />
+                <ScalarProperty Name="EditName" ColumnName="EditName" />
+                <ScalarProperty Name="VideoVersion" ColumnName="VideoVersion" />
+                <ScalarProperty Name="MPM" ColumnName="MPM" />
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="Extras" ColumnName="Extras" />
+                <ScalarProperty Name="Bundle" ColumnName="Bundle" />
+                <ScalarProperty Name="VIDStatus" ColumnName="VIDStatus" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JOBS">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.JOB">
+              <MappingFragment StoreEntitySet="JOBS">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="TriggeredBy" ColumnName="TriggeredBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Get_Orders" FunctionName="DeluxeOrderManagementModel.Store.usp_Get_Orders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeluxeOrderManagementModel.usp_Get_Orders_Result">
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Territory" ColumnName="Territory" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
+                <ScalarProperty Name="MPO" ColumnName="MPO" />
+                <ScalarProperty Name="HALID" ColumnName="HALID" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+                <ScalarProperty Name="FirstStartDate" ColumnName="FirstStartDate" />
+                <ScalarProperty Name="FirstAnnouncedDate" ColumnName="FirstAnnouncedDate" />
+                <ScalarProperty Name="DeliveryDueDate" ColumnName="DeliveryDueDate" />
+                <ScalarProperty Name="ActualDeliveryDate" ColumnName="ActualDeliveryDate" />
+                <ScalarProperty Name="GreenlightDueDate" ColumnName="GreenlightDueDate" />
+                <ScalarProperty Name="GreenlightSenttoPackaging" ColumnName="GreenlightSenttoPackaging" />
+                <ScalarProperty Name="GreenlightValidatedbyDMDM" ColumnName="GreenlightValidatedbyDMDM" />
+                <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="ESTUPC" ColumnName="ESTUPC" />
+                <ScalarProperty Name="IVODUPC" ColumnName="IVODUPC" />
+                <ScalarProperty Name="LockedBy" ColumnName="LockedBy" />
+                <ScalarProperty Name="LockedOn" ColumnName="LockedOn" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="BulkUpdate_Validations">
+            <EntityTypeMapping TypeName="DeluxeOrderManagementModel.BulkUpdate_Validations">
+              <MappingFragment StoreEntitySet="BulkUpdate_Validations">
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ValidationMessage" ColumnName="ValidationMessage" />
+                <ScalarProperty Name="ColumnValue" ColumnName="ColumnValue" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ValidationLevel" ColumnName="ValidationLevel" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_BulkUpdateOrder" FunctionName="DeluxeOrderManagementModel.Store.usp_BulkUpdateOrder" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateOG_Status" FunctionName="DeluxeOrderManagementModel.Store.usp_UpdateOG_Status" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

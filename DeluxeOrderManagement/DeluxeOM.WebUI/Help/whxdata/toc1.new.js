@@ -1,0 +1,4 @@
+(function() {
+var toc =  [{"type":"book","name":"About this help","key":"toc2","url":"About_this_guide/About_this_guide.htm"},{"type":"book","name":"Introduction","key":"toc3","url":"Introduction/Introduction.htm"},{"type":"book","name":"Working with orders","key":"toc4","url":"Order/Order.htm"},{"type":"book","name":"Working with titles","key":"toc5","url":"Titles/Titles.htm"},{"type":"book","name":"Using reports","key":"toc6","url":"Reports/Reports.htm"},{"type":"book","name":"Administering the application","key":"toc7","url":"Admin/Admin.htm"},{"type":"item","name":"Frequently Asked Questions (FAQ)","url":"Frequently_Asked_Questions_(FAQ).htm"}];
+window.rh.model.publish(rh.consts('KEY_TEMP_DATA'), toc, { sync:true });
+})();

@@ -1,0 +1,6 @@
+CREATE TABLE [dbo].[AdditionalProperties](
+	Id INT PRIMARY KEY NOT NULL,
+	TableRefId INT NOT NULL,
+	ColumnName NVARCHAR(20) NOT NULL,
+	Value NVARCHAR(100) NOT NULL
+)

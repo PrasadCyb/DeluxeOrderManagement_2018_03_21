@@ -1,0 +1,164 @@
+﻿@model DeluxeOM.Models.VIDMgt
+@{
+    ViewBag.Title = "Vid";
+}
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-3 padd_zero"><h6 class="filter_heading">VID EDIT and Update</h6></div>
+                    <div class="col-xs-2 padd_zero"></div>
+                    <div class="col-xs-2 padd_zero"></div>
+                </div>
+
+                @using (Html.BeginForm(null, null, FormMethod.Get, new { enctype = "multipart/form-data", id = "search_vid" }))
+                {
+                    <div class="row" style="padding-top:10px">
+                        <div class="col-xs-2 control_padd select_search multiselect_container" id="Title_Name">
+                            <p class="dropdown_txt">Title Name</p>
+                            @Html.DropDownListFor(x => x.VIDSearch.TitleName, new SelectList(Model.VIDSearch.TitleList, "Value", "Text"), new { @class = "dropdown_control custom-select  multiselect_vid maximum_record_error", @multiple = "multiple" })
+                        </div>
+                        <div class="col-xs-2 control_padd select_search multiselect_container" id="Video_Version">
+                            <p class="dropdown_txt">Video Version</p>
+                            @Html.DropDownListFor(x => x.VIDSearch.VideoVersion, new SelectList(Model.VIDSearch.VideoVersionList, "Value", "Text"), new { @class = "dropdown_control custom-select  multiselect_vid maximum_record_error", @multiple = "multiple"})
+                        </div>
+                        @*<div class="col-xs-2 control_padd select_search" id="Title_Name">
+                            <p class="dropdown_txt">Title Name</p>
+                            @Html.DropDownListFor(x => x.VIDSearch.TitleName, new SelectList(Model.VIDSearch.TitleList, "Value", "Text"), "", new { @class = "dropdown_control custom-select maximum_record_error" })
+                        </div>
+                        <div class="col-xs-2 control_padd select_search" id="Video_Version">
+                            <p class="dropdown_txt">Video Version</p>
+                            @Html.DropDownListFor(x => x.VIDSearch.VideoVersion, new SelectList(Model.VIDSearch.VideoVersionList, "Value", "Text"), "", new { @class = "dropdown_control custom-select maximum_record_error" })
+                        </div>*@
+                        <div class="col-xs-2 control_padd select_search multiselect_container" id="Vendor_Id">
+                            <p class="dropdown_txt">Vendor Id</p>
+                            @Html.DropDownListFor(x => x.VIDSearch.VendorId, new SelectList(Model.VIDSearch.VendorIdList, "Value", "Text"), new { @class = "dropdown_control custom-select  multiselect_vid maximum_record_error", @multiple = "multiple" })
+                        </div>
+                    </div>
+                        <div class="row" style="padding-top:5px">
+                            <div class="col-xs-2 control_padd select_search">
+                                <p class="dropdown_txt">VID Status</p>
+                                @Html.DropDownListFor(x => x.VIDSearch.VidStatus, new SelectList(Model.VIDSearch.ListVidStatus, "Value", "Text"), "", new { @class = "dropdown_control custom-select maximum_record_error" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 control_padd control_padd_bottom">
+                                <input type="button" class="btn btn-default left_btn btn_custom" value="clear all" id="reset_vid_form"> <br>
+                                @*<label>Export VID to view and update the VID Data &nbsp &nbsp &nbsp &nbsp </label>@Html.ActionLink("Export VID List", "Export", "Vid", new { @class = "btn btn-default btn_custom" })*@
+                                <label>Export VID to view and update the VID Data &nbsp &nbsp &nbsp &nbsp </label><input type="submit" name="Export" value="Export VID List" formaction="Export" formmethod="get" class="btn btn-default export_order btn_custom" />
+                            </div>
+                        </div>
+                }
+
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-xs-4 control_padd" style="padding-top:9px">
+                            <label>Import update VID to merge data into system</label>
+                        </div>
+                        <div class="col-xs-3 control_padd">
+                            <input class="browse_file vid_browse" type="file" name="file" />
+                        </div>
+                        <div class="col-xs-1 control_padd" style="padding-bottom:12px">
+                            <input type="submit" name="Import" value="Import" formaction="Import" formmethod="post" class="btn btn-default btn_custom" />
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-xs-5 padd_zero">
+                        <div class="text-danger hide_error">@TempData["ImportResult"]</div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 padd_zero"><h6 class="filter_heading_VID">VID - ADD VID</h6></div>
+                    <div class="col-xs-2 padd_zero"></div>
+                    <div class="col-xs-2 padd_zero"></div>
+                </div>
+                <hr />
+                <div id="toggle_wrapper">
+                    @using (Html.BeginForm("Add", "Vid", FormMethod.Post))
+            {
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="text-danger">@TempData["VidAddSuccess"]</div>
+                        <div class="row">
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt"><span class="text-danger">*</span>Title Name</p>
+                                @Html.TextBoxFor(x => x.VID.TitleName, new { @class = "input_box" })
+                                @Html.ValidationMessageFor(x => x.VID.TitleName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt"><span class="text-danger">*</span>Video Version</p>
+                                @Html.TextBoxFor(x => x.VID.VideoVersion, new { @class = "input_box" })
+                                @Html.ValidationMessageFor(x => x.VID.VideoVersion, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Local Edit</p>
+                                @Html.TextBoxFor(x => x.VID.EditName, new { @class = "input_box" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">MPM</p>
+                                @Html.TextBoxFor(x => x.VID.MPM, new { @class = "input_box" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Vendor ID</p>
+                                @Html.TextBoxFor(x => x.VID.VendorId, new { @class = "input_box" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Apple Id</p>
+                                @Html.TextBoxFor(x => x.VID.AppleId, new { @class = "input_box" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Version EIDR</p>
+                                @Html.TextBoxFor(x => x.VID.VersionEIDR, new { @class = "input_box" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Title Category</p>
+                                @Html.TextBoxFor(x => x.VID.TitleCategory, new { @class = "input_box" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">VID Status</p>
+                                @Html.DropDownListFor(x => x.VID.VIDStatus, new SelectList(Model.VID.VidStatusList, "Value", "Text"), new { @class = "dropdown_control" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Bundle</p>
+                                @Html.CheckBoxFor(x => x.VID.Bundle)
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Extras</p>
+                                @Html.CheckBoxFor(x => x.VID.Extras)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 control_padd control_padd_bottom">
+                                <input type="submit" value="ADD" class="btn btn-default btn_custom" />
+                            </div>
+                        </div>
+
+
+                    }
+                </div>
+
+            </div>
+            <div class="col-xs-4" style="border:1px solid #cccccc">
+                <b>Notes</b><br><br>
+                <b>Updated Excel Import</b><br>
+                1- Make sure the latest VID is exported before uploading the updated VID<br>
+                2- Greyed columns in excel are system generated values and should not be updated<br>
+                3- User cannot add different title name for an existing video version<br>
+                4- Video Version must be entered in number format only<br>
+                5- Local Edit would be considered as ‘No’ in case the field is not updated<br>
+                6- You can specify proper local edit  for example: ‘UK Edit/International Edit’<br>
+                7- User cannot create duplicate combination of Video Version/Edit/Vendor ID<br>
+                8- User can add any Title Category in form of free text.<br>
+            </div>
+
+        </div>
+    </div>
+</div>

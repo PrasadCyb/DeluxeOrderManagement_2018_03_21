@@ -1,0 +1,356 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using DeluxeOM.Models;
+@model OrderMgt
+@{
+    ViewBag.Title = "Orders";
+}
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-1 padd_zero"><h6 class="filter_heading">filters</h6></div>
+            <div class="col-xs-10 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"><span class="toggle_arrow f_right"><i class="fa fa-chevron-up" aria-hidden="true"></i></span></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            @using (Html.BeginForm(null, null, FormMethod.Get, new { id = "order_form" }))
+            {
+                <div class="row row_one">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Content Provider</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.ContentProvider, new SelectList(Model.OrderSearch.ContentProviders), new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Content Distributor</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.ContentDistributor, new SelectList(Model.OrderSearch.ContentDistributors), new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd select_search">
+                        <p class="dropdown_txt">Selected Title</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.SelectedTitle, new SelectList(Model.OrderSearch.SelectedTitleList, "Value", "Text"), "", new { @class = "dropdown_control custom-select" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Category</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.EditType, new SelectList(Model.OrderSearch.EditTypes), "", new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Local Edit</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.LocalEdit, new SelectList(Model.OrderSearch.LocalEdits), "", new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_two">
+
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Status</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.OrderStatus, new SelectList(Model.OrderSearch.OrderStatuses), "", new { @class = "dropdown_control" })
+                    </div>
+
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Greenlight Sent</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.GreenLightSent, new SelectList(Model.OrderSearch.GreenLights), "", new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Greenlight Received</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.GreenLightReceived, new SelectList(Model.OrderSearch.GreenLights), "", new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd multiselect_container" id="territory">
+                        <p class="dropdown_txt">Territory</p>
+                        @Html.ListBoxFor(m => m.OrderSearch.Territory, new SelectList(Model.OrderSearch.TerritoryList, "Value", "Text"), new { @class = "dropdown_control multiselect_territory", multiple = "multiple" })
+
+                        @*@Html.ListBoxFor(m => m.OrderSearch.Territory, new MultiSelectList(Model.OrderSearch.Territories), new { @class = "dropdown_control" })*@
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Media Type</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.MediaType, new SelectList(Model.OrderSearch.MediaTypes), "", new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+
+
+
+                @*<tr>
+                       <td>
+                           <table>
+                               <tr><th>Local Edit</th><tr>
+                               <tr>
+                               @for (int i = 0; i < Model.OrderSearch.LocalEdit.Count; i++)
+                               {
+                                   <td>
+                                   @Html.CheckBoxFor(x => Model.OrderSearch.LocalEdit[i].IsSelected)
+                                   @Html.DisplayFor(x => Model.OrderSearch.LocalEdit[i].Name)
+                                   @Html.HiddenFor(x => Model.OrderSearch.LocalEdit[i].Name)
+                                   </td>
+                               }
+                               </tr>
+                           </table>
+                       </td>
+                       <td>
+                           <table>
+                               <tr><th>Order Status</th>
+                               <tr>
+                               <tr>
+                               @for (int i = 0; i < Model.OrderSearch.OrderStatus.Count; i++)
+                               {
+                                   <td>
+                                   @Html.CheckBoxFor(x => Model.OrderSearch.OrderStatus[i].IsSelected)
+                                   @Html.DisplayFor(x => Model.OrderSearch.OrderStatus[i].Name)
+                                   @Html.HiddenFor(x => Model.OrderSearch.OrderStatus[i].Name)
+                                   </td>
+                                }
+                               </tr>
+                           </table>
+                       </td>
+                       <td>
+                           <table>
+                               <tr><th>Media Type</th>
+                               <tr>
+                               <tr>
+                                   @for (int i = 0; i < Model.OrderSearch.MediaType.Count; i++)
+                                   {
+                                       <td>
+                                           @Html.CheckBoxFor(x => Model.OrderSearch.MediaType[i].IsSelected)
+                                           @Html.DisplayFor(x => Model.OrderSearch.MediaType[i].Name)
+                                           @Html.HiddenFor(x => Model.OrderSearch.MediaType[i].Name)
+                                       </td>
+                                   }
+                               </tr>
+                           </table>
+                       </td>
+                       <td>
+                           <table>
+                               <tr><th>Greenlight Sent</th>
+                               <tr>
+                               <tr>
+                                   @for (int i = 0; i < Model.OrderSearch.GreenLightSent.Count; i++)
+                                   {
+                                       <td>
+                                           @Html.CheckBoxFor(x => Model.OrderSearch.GreenLightSent[i].IsSelected)
+                                           @Html.DisplayFor(x => Model.OrderSearch.GreenLightSent[i].Name)
+                                           @Html.HiddenFor(x => Model.OrderSearch.GreenLightSent[i].Name)
+                                       </td>
+                                   }
+                               </tr>
+                           </table>
+                       </td>
+                       <td>
+                           <table>
+                               <tr><th>Greenlight Received</th>
+                               <tr>
+                               <tr>
+                                   @for (int i = 0; i < Model.OrderSearch.GreenLightReceived.Count; i++)
+                                   {
+                                       <td>
+                                           @Html.CheckBoxFor(x => Model.OrderSearch.GreenLightReceived[i].IsSelected)
+                                           @Html.DisplayFor(x => Model.OrderSearch.GreenLightReceived[i].Name)
+                                           @Html.HiddenFor(x => Model.OrderSearch.GreenLightReceived[i].Name)
+                                       </td>
+                                   }
+                               </tr>
+                           </table>
+                       </td>
+
+                    </tr>*@
+                <div class="row row_three">
+                    @*<div class="col-xs-2 control_padd">
+                            <p class="dropdown_txt">Region</p>
+                            @Html.TextBoxFor(m => m.OrderSearch.Region, new { @class = "form-input input_box" })
+                        </div>*@
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Type</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.OrderType, new SelectList(Model.OrderSearch.OrderTypes), "", new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Start Date</p>
+                        @Html.TextBoxFor(m => m.OrderSearch.StartDate, new { @class = "form-input datepicker" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">End Date</p>
+                        @Html.TextBoxFor(m => m.OrderSearch.EndDate, new { @class = "form-input datepicker" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Sort By</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.SortBy, new SelectList(Model.OrderSearch.SortByList, "Value", "Text"), "", new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Sort Order</p>
+                        @Html.DropDownListFor(m => m.OrderSearch.SortOrder, new SelectList(Model.OrderSearch.SortOrderList, "Value", "Text"), new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3 padd_zero">
+                        <input type="button" class="btn btn-default left_btn btn_custom" value="clear all" id="reset_order_form">
+                        <input type="submit" name="Search" value="apply" formaction="SearchOrder" formmethod="get" class="btn btn-default btn_custom left_btn" />
+                        <input type="submit" name="Export" value="export excel" formaction="ExportOrder" formmethod="get" class="btn btn-default export_order btn_custom" />
+                        <button type="button" class="btn btn-default btn_custom" id="btnShowImportOrderPopup">Import</button>
+                    </div>
+                    <div class="col-xs-9 padd_zero"></div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="order_grid_wrapper">
+        <div class="order_save_pop_up"><p>Order details saved successfully.</p></div>
+        <div class="row right_btn_group">
+            @*<input type="submit" name="Export" value="export excel" formaction="ExportOrder" formmethod="get" class="btn btn-default export_order btn_custom"/>*@
+            @*<button type="button" class="btn btn-default export_order btn_custom"><i class="fa fa-file-excel-o" aria-hidden="true"></i>export excel</button>*@
+            @if (HttpContext.Current.User.IsInRole("ManagerAdmin"))
+            {
+                <span class="btn_anchor">@Html.ActionLink("create order", "CreateOrder", "Order", null, null)</span>
+            }
+
+
+        </div>
+        @*<input type="hidden" id="order_save_status" value="@Model.SavedStatus" />*@
+        @if (Model.SavedStatus)
+        {
+            <input type="hidden" id="order_save_status" value="1" />
+        }
+        else
+        {
+            <input type="hidden" id="order_save_status" value="0" />
+        }
+        @if (Model.orders.Count == 0)
+        {
+            <h4 class="text-center">Records doesn’t  exists for selected filter criteria.</h4>
+        }
+        else
+        {
+            
+            <div class="order_grid">
+                <table class="table" id="OrderList">
+                    <thead>
+                        <tr>
+                            <th class="left_col">Order Status</th>
+                            <th>Order Category</th>
+                            <th>Region</th>
+                            <th>Territory</th>
+                            <th>Language</th>
+                            <th>Order Type</th>
+                            <th>Request No</th>
+                            <th>PO No</th>
+                            <th>HAL ID</th>
+                            <th>Vendor ID</th>
+                            <th>First Start Date</th>
+                            <th>First Announced Date</th>
+                            <th>Due Date</th>
+                            <th>Delivery Date</th>
+                            <th>Greenlight Sent</th>
+                            <th>Greenlight Received</th>
+                            <th>Asset Required</th>
+                            <th>EST UPC</th>
+                            <th>VOD UPC</th>
+                            <th class="right_col">Action</th>
+                        </tr>
+                    </thead>
+                    @for (int i = 0; i < Model.orders.Count; i++)
+                {
+                        <tr>
+                            <td class="left_col">@Html.DisplayFor(o => o.orders[@i].OrderStatus)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].OrderCategory)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].Region)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].Territory)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].Language)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].OrderType)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].RequestNumber)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].MPO)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].HALID)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].VendorId)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].FirstStartDate)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].FirstAnnouncementDate)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].DueDate)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].DeliveryDate)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].GreenlightSent)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].GreenlightReceived)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].AssetRequired)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].ESTUPC)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.orders[@i].VODUPC)</td>
+                            @if (HttpContext.Current.User.IsInRole("ManagerAdmin"))
+                            {
+                                if ((Model.orders[@i].IsLocked == true && Model.UserId != Model.orders[@i].LockedBy && (Model.orders[@i].LockedBy != null)))
+                                {
+                                    if (((Model.orders[@i].LockedOn != null) && (Model.orders[@i].LockedOn.Value.AddMinutes(Model.OrderUnlockPeriod) < DateTime.UtcNow)))
+                                    {
+                                        <td class="right_col"><a href="@Url.Action("EditOrder", "Order", new { id = Model.orders[@i].OrderId, annId = Model.orders[@i].AnnouncemntId })"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="right_col"><i title="Unable to edit order" class="fa fa-lock" aria-hidden="true"></i></td>
+                                    }
+                                }
+                                else
+                                {
+                                    <td class="right_col"><a href="@Url.Action("EditOrder", "Order", new { id = Model.orders[@i].OrderId, annId = Model.orders[@i].AnnouncemntId })"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                }
+
+                            }
+                            else
+                            {
+                                <td class="right_col" style="cursor:not-allowed;"><a style="pointer-events:none;cursor:default;opacity:0.5;" href="@Url.Action("EditOrder", "Order", new { id = Model.orders[@i].OrderId, annId = Model.orders[@i].AnnouncemntId })"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                            }
+                        @*<td class="right_col"><a><i class="fa fa-address-book" aria-hidden="true">@Html.Action("Edit", "EditOrder", new { id = Model.orders[@i].OrderId, annId = Model.orders[@i].AnnouncemntId, vidid = Model.orders[@i].VId })</i></a></td>*@
+                        </tr>
+                    }
+                </table>
+            </div>
+            <p class="display_txt">Records found: @Model.orders.TotalItemCount</p>
+            @*Page @(Model.orders.PageCount < Model.orders.PageNumber ? 0 : Model.orders.PageNumber) of @Model.orders.PageCount*@
+            @Html.PagedListPager(Model.orders, pageNumber => Url.Action("SearchOrder", new
+       {
+           ContentProvider = Model.OrderSearch.ContentProvider,
+           ContentDistributor = Model.OrderSearch.ContentDistributor,
+           SelectedTitle = Model.OrderSearch.SelectedTitle,
+           EditType = Model.OrderSearch.EditType,
+           Region = Model.OrderSearch.Region,
+           TerritoryConcat = string.Join("|", Model.OrderSearch == null ? new string[] { } : (Model.OrderSearch.Territory == null ? new string[] { } : Model.OrderSearch.Territory)),
+           //Territory =  Model.OrderSearch.TerritoryConcat,
+           StartDate = Model.OrderSearch.StartDate,
+           EndDate = Model.OrderSearch.EndDate,
+           LocalEdit = Model.OrderSearch.LocalEdit,
+           OrderStatus = Model.OrderSearch.OrderStatus,
+           MediaType = Model.OrderSearch.MediaType,
+           GreenLightSent = Model.OrderSearch.GreenLightSent,
+           GreenLightReceived = Model.OrderSearch.GreenLightReceived,
+           SortBy = Model.OrderSearch.SortBy,
+           SortOrder = Model.OrderSearch.SortOrder,
+           OrderType = Model.OrderSearch.OrderType,
+           pageNumber = pageNumber,
+
+       }))
+            @*@using (Html.BeginForm("SearchOrder", "Order", FormMethod.Get))
+                {
+                    <input type="search" name="pageNumber" />
+                    <input type="submit" name="submit" value="Search" />
+                }*@
+            <div id='uploadOrderPopup' class='modal'>
+
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            Bulk Edit Order
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="dropdown_txt">Select File</p>
+                            <input class="browse_file" type="file" id="fileUploadOrder" />
+                            <textarea id="validationResultTxt" readonly accept=".xls,.xlsx" style="font-size: 10px; color:#ff0000; width:400px" cols="40" rows="10"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            @*<button type="submit" class="btn btn-default" id="">Export</button>*@
+                            @*to be done in next release*@
+                            <button type="submit" class="btn btn-default" id="btnPopupOrderUpload">Upload</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+        
+        

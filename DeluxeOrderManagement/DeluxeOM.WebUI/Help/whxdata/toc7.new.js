@@ -1,0 +1,4 @@
+(function() {
+var toc =  [{"type":"item","name":"Configuring FTP","url":"Admin/Configuring_FTP.htm"},{"type":"item","name":"Setting up alerts","url":"Admin/Setting_up_alerts.htm"},{"type":"item","name":"Managing jobs","url":"Admin/Managing_jobs.htm"},{"type":"item","name":"Managing customers","url":"Admin/Managing_customers.htm"},{"type":"item","name":"Creating users","url":"Admin/Creating_users.htm"},{"type":"item","name":"Assigning roles to users","url":"Admin/Assigning_roles_to_users.htm"},{"type":"item","name":"Deactivating a user","url":"Admin/Deactivating_a_user.htm"},{"type":"item","name":"Modifying user's profiles","url":"Admin/Modifying_users_profiles.htm"}];
+window.rh.model.publish(rh.consts('KEY_TEMP_DATA'), toc, { sync:true });
+})();

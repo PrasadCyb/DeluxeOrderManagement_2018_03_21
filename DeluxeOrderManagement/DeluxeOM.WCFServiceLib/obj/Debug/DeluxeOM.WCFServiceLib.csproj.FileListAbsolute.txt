@@ -1,0 +1,6 @@
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement-0305\DeluxeOM.WCFServiceLib\bin\Debug\DeluxeOM.WCFServiceLib.dll.config
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement-0305\DeluxeOM.WCFServiceLib\bin\Debug\DeluxeOM.WCFServiceLib.dll
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement-0305\DeluxeOM.WCFServiceLib\bin\Debug\DeluxeOM.WCFServiceLib.pdb
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement-0305\DeluxeOM.WCFServiceLib\obj\Debug\DeluxeOM.WCFServiceLib.csprojResolveAssemblyReference.cache
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement-0305\DeluxeOM.WCFServiceLib\obj\Debug\DeluxeOM.WCFServiceLib.dll
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement-0305\DeluxeOM.WCFServiceLib\obj\Debug\DeluxeOM.WCFServiceLib.pdb

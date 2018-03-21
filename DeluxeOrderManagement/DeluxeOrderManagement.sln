@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.Repository", "DeluxeOM.Repository\DeluxeOM.Repository.csproj", "{B6C77E6A-527B-4A52-951F-9D02620CE7B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.WebUI", "DeluxeOM.WebUI\DeluxeOM.WebUI.csproj", "{83331501-CD37-4D0E-9F94-AF7AA32FF603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.Tests", "DeluxeOM.Tests\DeluxeOM.Tests.csproj", "{2DA0E357-E82F-4D9F-BF4D-7DA3C5E6AF07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.Models", "DeluxeOM.Models\DeluxeOM.Models.csproj", "{678A0FD0-9217-4F62-AD23-51A7BD4DB7CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.Services", "DeluxeOM.Services\DeluxeOM.Services.csproj", "{8FA9E083-974B-4839-AAD9-2711098F0FC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.Utils", "DeluxeOM.Utils\DeluxeOM.Utils.csproj", "{D1436F5D-A102-4788-B517-287873212AD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.WindowsScheduler.BulkUpload", "DeluxeOM.WindowsScheduler.BulkUpload\DeluxeOM.WindowsScheduler.BulkUpload.csproj", "{259EE064-B2F2-473E-9454-0BB41CE6BC4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.BulkUploader", "DeluxeOM.BulkUploader\DeluxeOM.BulkUploader.csproj", "{1F738F99-8FEC-49AE-8E18-427B2816B4D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.WCFServiceLib", "DeluxeOM.WCFServiceLib\DeluxeOM.WCFServiceLib.csproj", "{CF9A4271-ABED-4FD2-A616-7D3E95AC8E4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeOM.WcfService", "DeluxeOM.WcfService\DeluxeOM.WcfService.csproj", "{FD13C1BA-6BFA-4A64-A92D-5F314931DC3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6C77E6A-527B-4A52-951F-9D02620CE7B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C77E6A-527B-4A52-951F-9D02620CE7B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C77E6A-527B-4A52-951F-9D02620CE7B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C77E6A-527B-4A52-951F-9D02620CE7B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83331501-CD37-4D0E-9F94-AF7AA32FF603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83331501-CD37-4D0E-9F94-AF7AA32FF603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83331501-CD37-4D0E-9F94-AF7AA32FF603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83331501-CD37-4D0E-9F94-AF7AA32FF603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA0E357-E82F-4D9F-BF4D-7DA3C5E6AF07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA0E357-E82F-4D9F-BF4D-7DA3C5E6AF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA0E357-E82F-4D9F-BF4D-7DA3C5E6AF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA0E357-E82F-4D9F-BF4D-7DA3C5E6AF07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678A0FD0-9217-4F62-AD23-51A7BD4DB7CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678A0FD0-9217-4F62-AD23-51A7BD4DB7CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678A0FD0-9217-4F62-AD23-51A7BD4DB7CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678A0FD0-9217-4F62-AD23-51A7BD4DB7CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA9E083-974B-4839-AAD9-2711098F0FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA9E083-974B-4839-AAD9-2711098F0FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA9E083-974B-4839-AAD9-2711098F0FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA9E083-974B-4839-AAD9-2711098F0FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1436F5D-A102-4788-B517-287873212AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1436F5D-A102-4788-B517-287873212AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1436F5D-A102-4788-B517-287873212AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1436F5D-A102-4788-B517-287873212AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{259EE064-B2F2-473E-9454-0BB41CE6BC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{259EE064-B2F2-473E-9454-0BB41CE6BC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{259EE064-B2F2-473E-9454-0BB41CE6BC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{259EE064-B2F2-473E-9454-0BB41CE6BC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F738F99-8FEC-49AE-8E18-427B2816B4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F738F99-8FEC-49AE-8E18-427B2816B4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F738F99-8FEC-49AE-8E18-427B2816B4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F738F99-8FEC-49AE-8E18-427B2816B4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9A4271-ABED-4FD2-A616-7D3E95AC8E4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9A4271-ABED-4FD2-A616-7D3E95AC8E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9A4271-ABED-4FD2-A616-7D3E95AC8E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9A4271-ABED-4FD2-A616-7D3E95AC8E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD13C1BA-6BFA-4A64-A92D-5F314931DC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD13C1BA-6BFA-4A64-A92D-5F314931DC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD13C1BA-6BFA-4A64-A92D-5F314931DC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD13C1BA-6BFA-4A64-A92D-5F314931DC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs:8080/tfs/deluxemedia
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DeluxeOM.Repository\\DeluxeOM.Repository.csproj
+		SccProjectName1 = DeluxeOM.Repository
+		SccLocalPath1 = DeluxeOM.Repository
+		SccProjectUniqueName2 = DeluxeOM.WebUI\\DeluxeOM.WebUI.csproj
+		SccProjectName2 = DeluxeOM.WebUI
+		SccLocalPath2 = DeluxeOM.WebUI
+		SccProjectUniqueName3 = DeluxeOM.Tests\\DeluxeOM.Tests.csproj
+		SccProjectName3 = DeluxeOM.Tests
+		SccLocalPath3 = DeluxeOM.Tests
+		SccProjectUniqueName4 = DeluxeOM.Models\\DeluxeOM.Models.csproj
+		SccProjectName4 = DeluxeOM.Models
+		SccLocalPath4 = DeluxeOM.Models
+		SccProjectUniqueName5 = DeluxeOM.Services\\DeluxeOM.Services.csproj
+		SccProjectName5 = DeluxeOM.Services
+		SccLocalPath5 = DeluxeOM.Services
+		SccProjectUniqueName6 = DeluxeOM.Utils\\DeluxeOM.Utils.csproj
+		SccProjectName6 = DeluxeOM.Utils
+		SccLocalPath6 = DeluxeOM.Utils
+		SccProjectUniqueName7 = DeluxeOM.WindowsScheduler.BulkUpload\\DeluxeOM.WindowsScheduler.BulkUpload.csproj
+		SccProjectName7 = DeluxeOM.WindowsScheduler.BulkUpload
+		SccLocalPath7 = DeluxeOM.WindowsScheduler.BulkUpload
+		SccProjectUniqueName8 = DeluxeOM.BulkUploader\\DeluxeOM.BulkUploader.csproj
+		SccProjectName8 = DeluxeOM.BulkUploader
+		SccLocalPath8 = DeluxeOM.BulkUploader
+		SccProjectUniqueName9 = DeluxeOM.WCFServiceLib\\DeluxeOM.WCFServiceLib.csproj
+		SccProjectName9 = DeluxeOM.WCFServiceLib
+		SccLocalPath9 = DeluxeOM.WCFServiceLib
+		SccProjectUniqueName10 = DeluxeOM.WcfService\\DeluxeOM.WcfService.csproj
+		SccProjectName10 = DeluxeOM.WcfService
+		SccLocalPath10 = DeluxeOM.WcfService
+	EndGlobalSection
+EndGlobal

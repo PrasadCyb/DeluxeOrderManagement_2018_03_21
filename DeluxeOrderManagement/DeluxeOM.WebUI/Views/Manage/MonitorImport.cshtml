@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "MonitorImport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-2 padd_zero"><h6 class="filter_heading">job status and execution</h6></div>
+            <div class="col-xs-9 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            <div class="row row_bottom_padd">
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Job List</p>
+                    <select class="dropdown_control">
+                        <option value="Apple Price Report">Apple Price Report</option>
+                        <option value="Apple QC Report">Apple QC Report</option>
+                        <option value="Pipeline Orders">Pipeline Orders</option>
+                        <option value="Announcement">Announcement</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt v_hdn">Job List</p>
+                    <button type="button" class="btn btn-default btn_custom" data-toggle="modal" data-target="#myModal">run</button>
+                </div>
+                <div class="col-xs-8 control_padd"></div>
+            </div>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirmation Message</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Make sure we are running the announcment against latest apple reports, make sure to run the jobs in Order Price, AppleQC, Pipeline and Announcement.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default">Yes</button>
+                            <button type="button" class="btn btn-default">No</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row row_bottom_padd">
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Start Date</p>
+                    <input type="text" class="datepicker input_box" />
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">End Date</p>
+                    <input type="text" class="datepicker input_box" />
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt v_hdn">Job List</p>
+                    <button type="button" class="btn btn-default btn_custom">Search</button>
+                </div>
+                <div class="col-xs-6 control_padd"></div>
+            </div>
+        </div>
+
+        <div class="row row_bottom_padd">
+            <div class="col-xs-12 padd_zero">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Job Type</th>
+                            <th>Job Id</th>
+                            <th>Status</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>@Html.ActionLink("View", "ViewJobStatus", "Manage", null, null)</td>
+                        </tr>
+                        <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>@Html.ActionLink("View", "ViewJobStatus", "Manage", null, null)</td>
+                        </tr>
+                        <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>@Html.ActionLink("View", "ViewJobStatus", "Manage", null, null)</td>
+                        </tr>
+                        <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>@Html.ActionLink("View", "ViewJobStatus", "Manage", null, null)</td>
+                        </tr>
+                        <tr>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>@Html.ActionLink("View", "ViewJobStatus", "Manage", null, null)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 padd_zero">
+                <p>*Please press F5 to refresh</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

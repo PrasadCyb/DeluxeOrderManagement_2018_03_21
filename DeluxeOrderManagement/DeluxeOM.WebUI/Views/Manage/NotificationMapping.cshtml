@@ -1,0 +1,55 @@
+﻿@model DeluxeOM.Models.NotificationMgt
+@{
+    ViewBag.Title = "NotificationMapping";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-2 padd_zero"><h6 class="filter_heading">Notification Mapping</h6></div>
+            <div class="col-xs-9 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            @using (Html.BeginForm("UpdateNotification", "Manage", FormMethod.Post))
+            {
+            <div class="row">
+                <div class="col-xs-8 padd_zero">
+                    <table class="table table-bordered notification_mapping_grid">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Event Name</th>
+                                <th class="text-center">Notification Enable / Disable</th>
+                                <th class="text-center">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @for(int i=0;i<Model.Notifications.Count;i++)
+                                {
+                            <tr>
+                                        <td class="text-center">@Html.DisplayFor(m => m.Notifications[@i].Name)</td>
+                                        @Html.HiddenFor(m => m.Notifications[@i].Name)
+                                        <td class="text-center">@Html.EditorFor(m => m.Notifications[@i].Enabled)</td>
+                                        <td class="text-center">@Html.TextAreaFor(m => m.Notifications[@i].ToEmailAddress, new { @rows = "3", @cols = "70" })</td>
+                                        @Html.HiddenFor(m=>m.Notifications[@i].ID)
+                            </tr>
+                                }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-4 control_padd"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 padd_zero">
+                    <input type="button" class="btn btn-default left_btn btn_custom" value="cancel">
+                    <input type="submit" name="save" value="save" class="btn btn-default btn_custom" />
+                </div>
+                <div class="col-xs-9 padd_zero"></div>
+            </div>
+            }
+            
+        </div>
+    </div>
+</div>

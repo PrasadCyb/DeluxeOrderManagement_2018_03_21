@@ -1,0 +1,204 @@
+﻿@model DeluxeOM.Models.Order
+@{
+    ViewBag.Title = "EditOrder";
+}
+
+@{bool IsEditable = true;
+    if (Model.OrderStatus == "Complete" || Model.OrderStatus == "Cancelled")
+    {
+        IsEditable = false;
+    }
+}
+
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-2 padd_zero"><h6 class="filter_heading">order - edit order</h6></div>
+            <div class="col-xs-9 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            @using (Html.BeginForm(null, null, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Selected Title</p>
+                        @Html.DisplayFor(m => m.Title)
+                        @Html.HiddenFor(m => m.Title)
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Status</p>
+                        @if (!string.IsNullOrEmpty(Model.OrderStatus) && (Model.OrderStatus.Equals("New") || Model.OrderStatus.Equals("Other Vendor")) && Model.IsAllowedToDelete)
+                        {
+                            @Html.DropDownListFor(m => m.OrderStatus, new SelectList(Model.OrderStatuses), new { @class= "dropdown_control" });
+                        }
+                        else
+                        {
+                        @Html.DisplayFor(m => m.OrderStatus)
+                        @Html.HiddenFor(m => m.OrderStatus)
+                        }
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Category</p>
+                        @Html.DisplayFor(m => m.OrderCategory)
+                        @Html.HiddenFor(m => m.OrderCategory, new { htmlAttributes = new { @class = "input_box" } })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Region</p>
+                        @Html.DisplayFor(m => m.Region)
+                        @Html.HiddenFor(m => m.Region)
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Territory</p>
+                        @Html.DisplayFor(m => m.Territory)
+                        @Html.HiddenFor(m => m.Territory)
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Language</p>
+                        @Html.DisplayFor(m => m.Language)
+                        @Html.HiddenFor(m => m.Language)
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Assets Required</p>
+                        @Html.DisplayFor(m => m.AssetRequired)
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">PO Number</p>
+                        @Html.DisplayFor(m => m.MPO)
+                        @Html.HiddenFor(m => m.MPO)
+                    </div>
+
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">HAL ID</p>
+                        @Html.DisplayFor(m => m.HALID)
+                        @Html.HiddenFor(m => m.HALID)
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"> </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Request Number</p>
+                        @Html.EditorFor(m => m.RequestNumber, new { htmlAttributes = new { @class = "input_box" } })
+                        @Html.ValidationMessageFor(m => m.RequestNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Delivery Date</p>
+                        @Html.EditorFor(m => m.DeliveryDate, new { htmlAttributes = new { @class = "datepicker" } })
+                    </div>
+                  
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">First Start Date(Announcement)</p>
+                        @Html.DisplayFor(m => m.FirstStartDate)
+                        @Html.HiddenFor(m => m.FirstStartDate)
+                    </div>
+
+                  
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Greenlight Sent Date</p>
+                        @Html.EditorFor(m => m.GreenlightSent, new { htmlAttributes = new { @class = "datepicker" } })
+                    </div>
+                    
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Greenlight Received</p>
+                        @Html.EditorFor(m => m.GreenlightReceived, new { htmlAttributes = new { @class = "datepicker" } })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Due Date</p>
+                        @Html.EditorFor(m => m.DueDate, new { htmlAttributes = new { @class = "datepicker" } })
+                    </div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">First Announced Date</p>
+                        @Html.EditorFor(m => m.FirstAnnouncementDate, new { htmlAttributes = new { @class = "input_box", @readonly = "readonly" } })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Vendor ID</p>
+                        @Html.EditorFor(m => m.VendorId, new { htmlAttributes = new { @class = "input_box" } })
+                        @Html.ValidationMessageFor(m => m.VendorId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Type</p>
+                        @Html.DropDownListFor(m => m.OrderType, new SelectList(Model.OrderTypes), "", new { @class = "dropdown_control" })
+                    </div>
+                    
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">EST UPC</p>
+                        @Html.EditorFor(m => m.ESTUPC, new { htmlAttributes = new { @class = "input_box" } })
+                        @Html.ValidationMessageFor(m => m.ESTUPC, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">VOD UPC</p>
+                        @Html.EditorFor(m => m.VODUPC, new { htmlAttributes = new { @class = "input_box" } })
+                        @Html.ValidationMessageFor(m => m.VODUPC, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                @Html.HiddenFor(m => m.OrderId)
+                @Html.HiddenFor(m => m.AnnouncemntId)
+                @Html.HiddenFor(m => m.VId)
+                <div class="row">
+                    <div class="col-xs-3 padd_zero">
+
+                        @*<span class="btn_anchor left_btn">@Html.ActionLink("Cancel", "Orders")</span>*@
+                        @*<input type="submit" name="Cancel" value="Cancel" formaction="CancelEdit" formmethod="get" class="btn btn-default btn_custom" />*@
+                        @Html.ActionLink("Cancel", "CancelEdit", "Order", new { id = Model.OrderId }, new {@class= "btn btn-default btn_custom" })
+                        @if (HttpContext.Current.User.IsInRole("ManagerAdmin"))
+                        {
+                            if (!Model.IsAlloweToEdit)
+                            {
+                                <button type="submit" class="btn btn-default btn_custom" disabled>Save</button>
+                            }
+                            else
+                            {
+                                @*<button type="submit" class="btn btn-default btn_custom">Save</button>*@
+                                <input type="submit" name="Save" value="Save" formaction="CancelEdit" formmethod="post" class="btn btn-default btn_custom" />
+                            }
+                        }
+                    </div>
+                    <div class="col-xs-9 padd_zero"></div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>

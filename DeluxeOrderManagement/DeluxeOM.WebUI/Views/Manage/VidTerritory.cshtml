@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "VidTerritory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div id="toggle_wrapper">
+            <div class="row">
+                <div class="col-xs-2 padd_zero"><h6 class="filter_heading">vid / territory export / import</h6></div>
+                <div class="col-xs-9 padd_zero"></div>
+                <div class="col-xs-1 padd_zero"></div>
+            </div>
+            <hr />
+            <div class="row row_bottom_padd">
+                <div class="col-xs-1">VID</div>
+                <div class="col-xs-2"><input type="button" class="btn btn-default left_btn btn_custom" value="Export"></div>
+                <div class="col-xs-5">
+                <label for="vid_file_upload" class="btn btn-default btn_custom">Import</label>
+                <span class="vid_file_selected"></span>
+                <input id="vid_file_upload" type="file" /></div>
+                <div class="col-xs-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1">Territory</div>
+                <div class="col-xs-2"><input type="button" class="btn btn-default left_btn btn_custom" value="Export"></div>
+                <div class="col-xs-5">
+                    <label for="territory_file_upload" class="btn btn-default btn_custom">Import</label>
+                    <span class="territory_file_selected"></span>
+                    <input id="territory_file_upload" type="file" />
+                </div></div>
+                <div class="col-xs-4"></div>
+            </div>
+            </div>
+        </div>
+    </div>
+

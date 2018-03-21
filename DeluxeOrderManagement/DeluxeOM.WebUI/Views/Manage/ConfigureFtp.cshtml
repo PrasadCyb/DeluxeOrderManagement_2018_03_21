@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "ConfigureFtp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-2 padd_zero"><h6 class="filter_heading">Configure FTP</h6></div>
+            <div class="col-xs-9 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            <div class="row row_bottom_padd">
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">FTP Server Name*</p>
+                    <input type="text" class="input_box" />
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Username*</p>
+                    <input type="text" class="input_email_password" />
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Password*</p>
+                    <input type="password" class="input_email_password" />
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Port*</p>
+                    <input type="text" class="input_box" />
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+
+                <div class="row">
+                    <div class="col-xs-6 padd_zero">
+                        <table class="table table-bordered configure_ftp_grid">
+                            <thead>
+                                <tr>
+                                    <th>File Type</th>
+                                    <th>Source</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Avail Announcement</td>
+                                    <td><input type="text" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Apple Price Report</td>
+                                    <td><input type="text" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Apple QC Report</td>
+                                    <td><input type="text" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Pipeline Orders</td>
+                                    <td><input type="text" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-6 control_padd"></div>
+                </div>
+            
+            <div class="row">
+                <div class="col-xs-3 padd_zero">
+                    <input type="button" class="btn btn-default left_btn btn_custom" value="cancel">
+                    <input type="submit" name="save" value="save" class="btn btn-default btn_custom" />
+                </div>
+                <div class="col-xs-9 padd_zero"></div>
+            </div>
+        </div>
+    </div>
+</div>

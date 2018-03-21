@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86451cc0b87d44fd84497340d7367b4e" Name="Diagram1" ZoomLevel="61">
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.AdditionalProperty" Width="1.5" PointX="5.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Customer" Width="1.5" PointX="8.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Language" Width="1.5" PointX="8.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Lookup" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.LookupType" Width="1.5" PointX="9.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.PasswordResetModel" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.PrivilegeModelModel" Width="1.5" PointX="3.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Region" Width="1.5" PointX="11.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.RoleModel" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.RolePrivModel" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Territory" Width="1.5" PointX="12.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.TerritoryLanguageModel" Width="1.5" PointX="13.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.UserPasswordModel" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.UserRoleModel" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.UserModel" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="DeluxeOrderManagementModel.fk_PasswordRest_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DeluxeOrderManagementModel.fk_RolePrivilege_PrivId" ManuallyRouted="false" />
+        <AssociationConnector Association="DeluxeOrderManagementModel.fk_RolePrivilege_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="DeluxeOrderManagementModel.fk_UserRole_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="DeluxeOrderManagementModel.fk_UserPassword_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DeluxeOrderManagementModel.fk_UserRole_UserId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Jobs_Announcements_Inserted" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.SalesChannel" Width="1.5" PointX="16.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Job_Annoncement_History" Width="1.5" PointX="12.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.PipelineOrder" Width="1.5" PointX="8.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.PriceReport" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Announcement" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Announceemnt_Channel_Format" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.AnnouncementGrid" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.ErrorLog" Width="1.5" PointX="17.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.QCReport" Width="1.5" PointX="17.375" PointY="14.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.Jobs_Items" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.NotificationEntity" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.OrderGrid" Width="1.5" PointX="11.375" PointY="14.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.FTPConfig" Width="1.5" PointX="3.375" PointY="17.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.VID" Width="1.5" PointX="5.375" PointY="17.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.JOB" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DeluxeOrderManagementModel.BulkUpdate_Validations" Width="1.5" PointX="17.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

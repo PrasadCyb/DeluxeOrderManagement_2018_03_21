@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DeluxeOrderManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdditionalProperties">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TableRefId" Type="int" Nullable="false" />
+    <Property Name="ColumnName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Announceemnt_Channel_Format">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnnouncementId" Type="int" Nullable="false" />
+    <Property Name="Channel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Format" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientAvailStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientStartDate" Type="datetime" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="JObId" Type="int" />
+    <Property Name="ChannelFormat" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientEndDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AnnouncementGrid">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="VideoVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocalEdit" Type="nvarchar" MaxLength="100" />
+    <Property Name="TerritoryId" Type="int" />
+    <Property Name="LanguageId" Type="int" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="JObId" Type="int" />
+    <Property Name="FirstAnnouncedDate" Type="datetime" />
+    <Property Name="LastAnnouncedDate" Type="datetime" />
+    <Property Name="CancellationDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DeluxeOrderManagement.dbo.Announcements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Announcements">
+    <Key>
+      <PropertyRef Name="ChangeStatus" />
+      <PropertyRef Name="LocalTitle" />
+      <PropertyRef Name="GlobalTitle" />
+      <PropertyRef Name="TitleContentType" />
+      <PropertyRef Name="Country" />
+      <PropertyRef Name="Language" />
+      <PropertyRef Name="LanguageType" />
+      <PropertyRef Name="SalesChannel" />
+      <PropertyRef Name="Format" />
+      <PropertyRef Name="ClientStart" />
+      <PropertyRef Name="ClientEnd" />
+      <PropertyRef Name="ClientAvailStatus" />
+      <PropertyRef Name="TitleCategory" />
+      <PropertyRef Name="PriceType" />
+      <PropertyRef Name="StorefrontCurrency" />
+      <PropertyRef Name="LocalDataDVS" />
+      <PropertyRef Name="TitleMPM" />
+      <PropertyRef Name="TitleVideoVersion" />
+      <PropertyRef Name="ClientAvailID" />
+      <PropertyRef Name="AccountName" />
+      <PropertyRef Name="Company" />
+    </Key>
+    <Property Name="ChangeStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChangedFields" Type="nvarchar" MaxLength="500" />
+    <Property Name="ChangeContext" Type="nvarchar" MaxLength="256" />
+    <Property Name="LocalTitle" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="GlobalTitle" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="TitleContentType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="int" Nullable="false" />
+    <Property Name="Language" Type="int" Nullable="false" />
+    <Property Name="LanguageType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SalesChannel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Format" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HDR" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientStart" Type="datetime" Nullable="false" />
+    <Property Name="ClientEnd" Type="datetime" Nullable="false" />
+    <Property Name="ClientAvailStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ECAvailable" Type="nvarchar" MaxLength="50" />
+    <Property Name="SuppressionEndDate" Type="datetime" />
+    <Property Name="TitleCategory" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PriceType" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PriceTier" Type="nvarchar" MaxLength="256" />
+    <Property Name="WSCost" Type="nvarchar" MaxLength="10" />
+    <Property Name="StorefrontCurrency" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="LocalDataTheatricalReleaseDt" Type="datetime" />
+    <Property Name="LocalDVDReleaseDate" Type="datetime" />
+    <Property Name="LocalDataRating" Type="nvarchar" MaxLength="100" />
+    <Property Name="RatingReason" Type="nvarchar" MaxLength="256" />
+    <Property Name="LocalDataDVS" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="TitleMPM" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TitleVideoVersion" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LocalEditRequired" Type="nvarchar" MaxLength="20" />
+    <Property Name="TitleAbstractEIDR" Type="nvarchar" MaxLength="256" />
+    <Property Name="LocalDataEditEIDR" Type="nvarchar" MaxLength="256" />
+    <Property Name="LocalDataUVPublishDate" Type="nvarchar" MaxLength="256" />
+    <Property Name="LocalDataALID" Type="nvarchar" MaxLength="256" />
+    <Property Name="LocalDataCID" Type="nvarchar" MaxLength="256" />
+    <Property Name="ClientAvailID" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Company" Type="int" Nullable="false" />
+    <Property Name="AvailNotes" Type="nvarchar" MaxLength="500" />
+    <Property Name="ChannelFormat" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="BulkUpdate_Validations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KeyId" Type="int" Nullable="false" />
+    <Property Name="BatchId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="ValidationLevel" Type="nvarchar" MaxLength="50" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+    <Property Name="ColumnName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ColumnValue" Type="nvarchar" MaxLength="255" />
+    <Property Name="ValidationMessage" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ErrorLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ErrorName" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="FTPConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="Host" Type="varchar" MaxLength="256" />
+    <Property Name="FtpDirectory" Type="varchar" MaxLength="256" />
+    <Property Name="FileName" Type="varchar" MaxLength="100" />
+    <Property Name="DownloadTo" Type="varchar" MaxLength="256" />
+    <Property Name="KeepOriginal" Type="bit" />
+    <Property Name="OverWriteExisting" Type="bit" />
+    <Property Name="Port" Type="int" />
+    <Property Name="EnableSSL" Type="bit" />
+    <Property Name="Environment" Type="varchar" MaxLength="50" />
+    <Property Name="FtpArchivalDirectory" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Job_Annoncement_History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="AnnouncementOrderId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JOBS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobType" Type="varchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="TriggeredBy" Type="varchar" MaxLength="50" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Jobs_Announcements_Inserted">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="AnnouncementGridId" Type="int" />
+    <Property Name="OrderGridId" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Jobs_Items">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="TaskName" Type="varchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Locale" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookupId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LookupType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+    <Property Name="FromEmailAddress" Type="nvarchar" MaxLength="512" />
+    <Property Name="ToEmailAddress" Type="nvarchar" MaxLength="512" />
+    <Property Name="SuccessSubject" Type="nvarchar" MaxLength="255" />
+    <Property Name="FailureSubject" Type="nvarchar" MaxLength="255" />
+    <Property Name="SuccessBody" Type="nvarchar(max)" />
+    <Property Name="FailureBody" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="OrderGrid">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnnouncementId" Type="int" Nullable="false" />
+    <Property Name="VendorId" Type="nvarchar" MaxLength="50" />
+    <Property Name="LanguageType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" />
+    <Property Name="ESTUPC" Type="nvarchar" MaxLength="100" />
+    <Property Name="IVODUPC" Type="nvarchar" MaxLength="100" />
+    <Property Name="FileType" Type="nvarchar" MaxLength="50" />
+    <Property Name="RequestNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="MPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="HALID" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrderRequestDate" Type="datetime" />
+    <Property Name="DeliveryDueDate" Type="datetime" />
+    <Property Name="ActualDeliveryDate" Type="datetime" />
+    <Property Name="GreenlightDueDate" Type="datetime" />
+    <Property Name="GreenlightValidatedbyDMDM" Type="datetime" />
+    <Property Name="GreenlightSenttoPackaging" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="JObId" Type="int" />
+    <Property Name="LockedBy" Type="int" />
+    <Property Name="LockedOn" Type="datetime" />
+    <Property Name="IsLocked" Type="bit" />
+  </EntityType>
+  <EntityType Name="PasswordReset">
+    <Key>
+      <PropertyRef Name="PasswordResetId" />
+    </Key>
+    <Property Name="PasswordResetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="ExpireDateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PipelineOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HALOrderID" Type="nvarchar" MaxLength="50" />
+    <Property Name="TitleName" Type="nvarchar" MaxLength="100" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContractDueDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="TargetDueDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="PurchaseOrder" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkOrder" Type="nvarchar" MaxLength="50" />
+    <Property Name="CableLabsAssetID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CableLabsPackageAssetID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Workflow" Type="nvarchar" MaxLength="50" />
+    <Property Name="GatorPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="WBAnnouncement" Type="nvarchar" MaxLength="50" />
+    <Property Name="IngredientAssetType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IngredientLanguageId" Type="int" />
+    <Property Name="IngredientStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerId" Type="int" />
+  </EntityType>
+  <EntityType Name="PriceReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="VendorId" Type="nvarchar" MaxLength="100" />
+    <Property Name="AppleId" Type="nvarchar" MaxLength="50" />
+    <Property Name="TerritoryId" Type="int" />
+    <Property Name="LiveVODHD" Type="nvarchar" MaxLength="50" />
+    <Property Name="LiveVODSD" Type="nvarchar" MaxLength="50" />
+    <Property Name="LiveESTHD" Type="nvarchar" MaxLength="50" />
+    <Property Name="LiveESTSD" Type="nvarchar" MaxLength="50" />
+    <Property Name="PreOrderDate" Type="datetime" />
+    <Property Name="ClearedforSaleEST" Type="bit" />
+    <Property Name="EnableESTHD" Type="bit" />
+    <Property Name="ESTStartDate" Type="datetime" />
+    <Property Name="ESTEndDate" Type="datetime" />
+    <Property Name="ClearedforVOD" Type="bit" />
+    <Property Name="EnableVODHD" Type="bit" />
+    <Property Name="AvailForVOD" Type="datetime" />
+    <Property Name="UnAvailForVOD" Type="datetime" />
+    <Property Name="CustomerId" Type="int" />
+  </EntityType>
+  <EntityType Name="Privilege">
+    <Key>
+      <PropertyRef Name="PrivId" />
+    </Key>
+    <Property Name="PrivId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrivName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QCReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="AppleId" Type="nvarchar" MaxLength="50" />
+    <Property Name="VendorId" Type="nvarchar" MaxLength="100" />
+    <Property Name="ImportedDate" Type="datetime" />
+    <Property Name="ComponentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="LanguageId" Type="int" />
+    <Property Name="Territory" Type="nvarchar" MaxLength="512" />
+    <Property Name="ComponentQuality" Type="nvarchar" MaxLength="50" />
+    <Property Name="QAStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolePriv">
+    <Key>
+      <PropertyRef Name="RolePrivId" />
+    </Key>
+    <Property Name="RolePrivId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="PrivId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesChannel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Territory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WBTerritory" Type="nvarchar" MaxLength="255" />
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AppleTerritory" Type="nvarchar" MaxLength="255" />
+    <Property Name="RegionId" Type="int" />
+    <Property Name="PACKAGE" Type="nvarchar" MaxLength="255" />
+    <Property Name="GROUP" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TerritoryLanguage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TerritoryId" Type="int" Nullable="false" />
+    <Property Name="LanguageSeq" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPassword">
+    <Key>
+      <PropertyRef Name="UserPasswordId" />
+    </Key>
+    <Property Name="UserPasswordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleId" />
+    </Key>
+    <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="LoginAttempts" Type="int" Nullable="false" />
+    <Property Name="LastLogin" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VID">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VIDStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="Bundle" Type="bit" />
+    <Property Name="Extras" Type="bit" />
+    <Property Name="TitleName" Type="nvarchar" MaxLength="255" />
+    <Property Name="MPM" Type="nvarchar" MaxLength="50" />
+    <Property Name="VideoVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="EditName" Type="nvarchar" MaxLength="255" />
+    <Property Name="VersionEIDR" Type="nvarchar" MaxLength="255" />
+    <Property Name="AppleId" Type="nvarchar" MaxLength="50" />
+    <Property Name="VendorId" Type="nvarchar" MaxLength="50" />
+    <Property Name="TitleCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="JobId" Type="int" />
+  </EntityType>
+  <Association Name="fk_PasswordRest_UserId">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PasswordReset" Type="Self.PasswordReset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="PasswordReset">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RolePrivilege_PrivId">
+    <End Role="Privilege" Type="Self.Privilege" Multiplicity="1" />
+    <End Role="RolePriv" Type="Self.RolePriv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilege">
+        <PropertyRef Name="PrivId" />
+      </Principal>
+      <Dependent Role="RolePriv">
+        <PropertyRef Name="PrivId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RolePrivilege_RoleId">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RolePriv" Type="Self.RolePriv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RolePriv">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserPassword_UserId">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserPassword" Type="Self.UserPassword" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserPassword">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserRole_RoleId">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserRole_UserId">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="usp_BulkUpdateOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="filePath" Type="nvarchar" Mode="In" />
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_Export_Title" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="whereClause" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_Get_Orders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="whereClause" Type="nvarchar" Mode="In" />
+    <Parameter Name="channel" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_Get_Titles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_Insert_Announcements" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="firstAnouncedDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="usp_Insert_AppleGrid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_Insert_PipelineOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_Insert_PriceReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_Insert_QCReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_InsertDataToAnnouncementStaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertDataToApplePriceStaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertDataToAppleQCStaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertDataToPipeLineStaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_Search_Title" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="whereClause" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_UPD_AnnouncementGrid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_UpdateOG_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderId" Type="varchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="DeluxeOrderManagementModelStoreContainer">
+    <EntitySet Name="AdditionalProperties" EntityType="Self.AdditionalProperties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Announceemnt_Channel_Format" EntityType="Self.Announceemnt_Channel_Format" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnnouncementGrid" EntityType="Self.AnnouncementGrid" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BulkUpdate_Validations" EntityType="Self.BulkUpdate_Validations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FTPConfig" EntityType="Self.FTPConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job_Annoncement_History" EntityType="Self.Job_Annoncement_History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOBS" EntityType="Self.JOBS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jobs_Announcements_Inserted" EntityType="Self.Jobs_Announcements_Inserted" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jobs_Items" EntityType="Self.Jobs_Items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupType" EntityType="Self.LookupType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderGrid" EntityType="Self.OrderGrid" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PasswordReset" EntityType="Self.PasswordReset" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PipelineOrder" EntityType="Self.PipelineOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PriceReport" EntityType="Self.PriceReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Privilege" EntityType="Self.Privilege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QCReport" EntityType="Self.QCReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolePriv" EntityType="Self.RolePriv" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesChannel" EntityType="Self.SalesChannel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Territory" EntityType="Self.Territory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TerritoryLanguage" EntityType="Self.TerritoryLanguage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserPassword" EntityType="Self.UserPassword" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VID" EntityType="Self.VID" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Announcements" EntityType="Self.Announcements" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Announcements].[ChangeStatus] AS [ChangeStatus], 
+    [Announcements].[ChangedFields] AS [ChangedFields], 
+    [Announcements].[ChangeContext] AS [ChangeContext], 
+    [Announcements].[LocalTitle] AS [LocalTitle], 
+    [Announcements].[GlobalTitle] AS [GlobalTitle], 
+    [Announcements].[TitleContentType] AS [TitleContentType], 
+    [Announcements].[Country] AS [Country], 
+    [Announcements].[Language] AS [Language], 
+    [Announcements].[LanguageType] AS [LanguageType], 
+    [Announcements].[SalesChannel] AS [SalesChannel], 
+    [Announcements].[Format] AS [Format], 
+    [Announcements].[HDR] AS [HDR], 
+    [Announcements].[ClientStart] AS [ClientStart], 
+    [Announcements].[ClientEnd] AS [ClientEnd], 
+    [Announcements].[ClientAvailStatus] AS [ClientAvailStatus], 
+    [Announcements].[ECAvailable] AS [ECAvailable], 
+    [Announcements].[SuppressionEndDate] AS [SuppressionEndDate], 
+    [Announcements].[TitleCategory] AS [TitleCategory], 
+    [Announcements].[PriceType] AS [PriceType], 
+    [Announcements].[PriceTier] AS [PriceTier], 
+    [Announcements].[WSCost] AS [WSCost], 
+    [Announcements].[StorefrontCurrency] AS [StorefrontCurrency], 
+    [Announcements].[LocalDataTheatricalReleaseDt] AS [LocalDataTheatricalReleaseDt], 
+    [Announcements].[LocalDVDReleaseDate] AS [LocalDVDReleaseDate], 
+    [Announcements].[LocalDataRating] AS [LocalDataRating], 
+    [Announcements].[RatingReason] AS [RatingReason], 
+    [Announcements].[LocalDataDVS] AS [LocalDataDVS], 
+    [Announcements].[TitleMPM] AS [TitleMPM], 
+    [Announcements].[TitleVideoVersion] AS [TitleVideoVersion], 
+    [Announcements].[LocalEditRequired] AS [LocalEditRequired], 
+    [Announcements].[TitleAbstractEIDR] AS [TitleAbstractEIDR], 
+    [Announcements].[LocalDataEditEIDR] AS [LocalDataEditEIDR], 
+    [Announcements].[LocalDataUVPublishDate] AS [LocalDataUVPublishDate], 
+    [Announcements].[LocalDataALID] AS [LocalDataALID], 
+    [Announcements].[LocalDataCID] AS [LocalDataCID], 
+    [Announcements].[ClientAvailID] AS [ClientAvailID], 
+    [Announcements].[AccountName] AS [AccountName], 
+    [Announcements].[Company] AS [Company], 
+    [Announcements].[AvailNotes] AS [AvailNotes], 
+    [Announcements].[ChannelFormat] AS [ChannelFormat]
+    FROM [dbo].[Announcements] AS [Announcements]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_PasswordRest_UserId" Association="Self.fk_PasswordRest_UserId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PasswordReset" EntitySet="PasswordReset" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RolePrivilege_PrivId" Association="Self.fk_RolePrivilege_PrivId">
+      <End Role="Privilege" EntitySet="Privilege" />
+      <End Role="RolePriv" EntitySet="RolePriv" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RolePrivilege_RoleId" Association="Self.fk_RolePrivilege_RoleId">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RolePriv" EntitySet="RolePriv" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserPassword_UserId" Association="Self.fk_UserPassword_UserId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserPassword" EntitySet="UserPassword" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserRole_RoleId" Association="Self.fk_UserRole_RoleId">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserRole_UserId" Association="Self.fk_UserRole_UserId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

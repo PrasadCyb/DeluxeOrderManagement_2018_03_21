@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE polprojfile>
+<ppfml version="2.00" project="Deluxe Media" type="4">
+ <windowlist defaultwindow="NewWindow">
+  <window name="NewWindow" x="5%" y="5%" width="90%" height="90%" viewtype="doublepane" workspacestyle="DEFAULT" toolbar="off" locationbar="off" menu="off" resizable="yes" statusbar="off" usecurrentwindowsettings="yes" caption="NewWindow">
+   <elements><element name="BrowseSequence" Present="yes" /><element name="SearchInput" Present="no" />
+   </elements>
+   <agents defaultagent="toc">
+    <agent>toc
+    </agent>
+    <agent>ndx
+    </agent>
+    <agent>nls
+    </agent>
+    <agent>gls
+    </agent>
+   </agents>
+  </window>
+ </windowlist>
+ <contextmap>
+ </contextmap>
+ <topiclist defaulttopic="Introduction\Introduction.htm">
+  <topic>Reports\Announcement_analysis_report.htm
+  </topic>
+  <topic>Titles\Titles.htm
+  </topic>
+  <topic>Order\Modifying_order_data.htm
+  </topic>
+  <topic>Introduction\Changing_your_password.htm
+  </topic>
+  <topic>Admin\Deactivating_a_user.htm
+  </topic>
+  <topic>About_this_guide\Guide_conventions.htm
+  </topic>
+  <topic>Admin\Configuring_FTP.htm
+  </topic>
+  <topic>About_this_guide\About_this_guide.htm
+  </topic>
+  <topic>Order\Creating_an_order.htm
+  </topic>
+  <topic>Introduction\Retrieving_your_password.htm
+  </topic>
+  <topic>Admin\Assigning_roles_to_users.htm
+  </topic>
+  <topic>About_this_guide\Using_this_guide.htm
+  </topic>
+  <topic>Frequently_Asked_Questions_(FAQ).htm
+  </topic>
+  <topic>Titles\Title_report.htm
+  </topic>
+  <topic>Introduction\Introduction.htm
+  </topic>
+  <topic>Order\Searching_for_orders.htm
+  </topic>
+  <topic>Introduction\Logging_on_to_Deluxe.htm
+  </topic>
+  <topic>Admin\Creating_users.htm
+  </topic>
+  <topic>About_this_guide\Target_audience.htm
+  </topic>
+  <topic>Reports\Cancellation_report.htm
+  </topic>
+  <topic>Admin\Admin.htm
+  </topic>
+  <topic>Order\Order.htm
+  </topic>
+  <topic>Admin\Managing_customers.htm
+  </topic>
+  <topic>Introduction\Getting_started.htm
+  </topic>
+  <topic>Admin\Managing_jobs.htm
+  </topic>
+  <topic>Reports\Finance_report.htm
+  </topic>
+  <topic>Reports\Reports.htm
+  </topic>
+  <topic>Order\Exporting_order_data.htm
+  </topic>
+  <topic>Introduction\Logging_off_from_Deluxe.htm
+  </topic>
+  <topic>Admin\Modifying_users_profiles.htm
+  </topic>
+  <topic>Admin\Setting_up_alerts.htm
+  </topic>
+ </topiclist>
+ <projectincludes>
+ </projectincludes>
+ <filenamemap>
+  <filenameentry moniker="wh_languagetype">
+   <filename>en_US
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="startpage">
+   <filename>index.htm
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="keywordinfo">
+   <filename>SearchOptions.xml
+   </filename>
+  </filenameentry>
+ </filenamemap>
+</ppfml>

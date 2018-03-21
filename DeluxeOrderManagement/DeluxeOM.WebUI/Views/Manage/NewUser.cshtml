@@ -1,0 +1,116 @@
+﻿@model DeluxeOM.Models.Account.User
+
+@{
+    ViewBag.Title = "NewUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    
+    <div class="order_page_wrapper" id="create_user">
+        <div class="control_wrapper">
+            <div class="row">
+                <div class="col-xs-1 padd_zero"><h6 class="filter_heading">user-create new</h6></div>
+                <div class="col-xs-10 padd_zero"></div>
+                <div class="col-xs-1 padd_zero"></div>
+            </div>
+            <hr />
+            @*<h4 class="create_order_modal_title">user-create new</h4>*@
+
+            <div id="toggle_wrapper">
+                @using (Html.BeginForm())
+            {
+                    @Html.AntiForgeryToken()
+
+                    
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row row_bottom_padd">
+                            @*<div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">User Name*</p>
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "user_details"} })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            </div>*@
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">First Name*</p>
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "user_details"} })
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Last Name*</p>
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "user_details"} })
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Email*</p>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "user_details" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Phone No*</p>
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "user_details" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-2 control_padd"></div>
+                            <div class="col-xs-2 control_padd"></div>
+                        </div>
+                        <div class="row row_bottom_padd">
+                            <div class="col-xs-12 control_padd">
+                                @Html.EditorFor(model => model.Active)<label for="checkbox" class="checkbox_label">Active</label>
+                                @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row row_bottom_padd">
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Password*</p>
+                                @Html.PasswordFor(model => model.Password, new { @class = "user_details"})
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Confirm Password*</p>
+                                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "user_details"})
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-2 control_padd">
+                                <p class="dropdown_txt">Role</p>
+                                @*@Html.ListBoxFor(model => model.SelectedRoles,new MultiSelectList(Model.Roles, "RoleId", "RoleName"), new { @class = "chosen", data_placeholder = "Select Roles.." })*@
+                                @Html.DropDownListFor(model => model.SelectedRoleId, new SelectList(Model.Roles, "RoleId", "RoleName"), new { @class = "dropdown_control"})
+                            </div>
+                            <div class="col-xs-2 control_padd"></div>
+                            <div class="col-xs-2 control_padd"></div>
+                            <div class="col-xs-2 control_padd"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 control_padd">
+                                <span data-dismiss="modal" class="back_to_list"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp; @Html.ActionLink("Back to List", "Users")</span>
+                            </div>
+                            <div class="col-xs-2 control_padd"></div>
+                            <div class="col-xs-2 control_padd">
+                                <button type="submit" class="btn btn-default btn_custom">create</button>
+                            </div>
+                            <div class="col-xs-2 control_padd"></div>
+                            <div class="col-xs-2 control_padd"></div>
+                            <div class="col-xs-2 control_padd"></div>
+                        </div>
+
+                }
+              
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+   
+
+@section Styles
+{
+    @Styles.Render("~/Content/chosen.css")
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/chosen.jquery.js")"></script>    
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewScripts/AllViews.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ViewScripts/users.js")"></script>
+    
+}

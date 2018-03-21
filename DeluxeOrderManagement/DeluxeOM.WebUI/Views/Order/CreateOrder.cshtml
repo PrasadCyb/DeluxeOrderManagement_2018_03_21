@@ -1,0 +1,170 @@
+﻿@model DeluxeOM.Models.Order
+@{
+    ViewBag.Title = "CreateOrder";
+}
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-2 padd_zero"><h6 class="filter_heading" >order - create order</h6></div>
+            <div class="col-xs-9 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            @using (Html.BeginForm("CreateOrder", "Order", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd select_search">
+                        <p class="dropdown_txt">Selected Title</p>
+                        @Html.DropDownListFor(m => m.Title, new SelectList(Model.Titles, "Value", "Text"), "Select Title", new { @class = "dropdown_control custom-select" })
+                    </div>
+                    @*<div class="col-xs-2 control_padd">
+                            <p class="dropdown_txt">Order Status</p>
+                            @Html.TextBoxFor(m => m.OrderStatus, new { @class = "input_box"})
+                        </div>*@
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Category</p>
+                        @Html.DropDownListFor(m => m.OrderCategory, new SelectList(Model.OrderCategories), new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd select_search">
+                        <p class="dropdown_txt">Territory</p>
+                        @Html.DropDownListFor(m => m.Territory, new SelectList(Model.Territories, "Value", "Text"), "Select Territory", new { @class = "dropdown_control custom-select" })
+                    </div>
+                    <div class="col-xs-2 control_padd select_search">
+                        <p class="dropdown_txt">Language</p>
+                        @Html.DropDownListFor(m => m.Language, new SelectList(Model.Languages, "Value", "Text"), "Select Language", new { @class = "dropdown_control custom-select" })
+                    </div>
+                    @if (!Model.IsAnnouncementExist)
+                    {
+                        <div class="col-xs-2 control_padd select_search">
+                            <p class="dropdown_txt">Local Edit</p>
+                            @Html.DropDownListFor(m => m.LocalEdit, new SelectList(Model.LocalEdits), "Select LocalEdit", new { @class = "dropdown_control" })
+                        </div>
+                        <p class="col-xs-8 text-danger">Selected combination(Country/Language) is not yet announced for the selected title hence please select the local edit manually</p>
+
+                    }
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-12 control_padd">
+                        <p class="checkbox_txt">Assets Required</p>
+                        @for (int i = 0; i < Model.Assets.Count; i++)
+                        {
+
+                            @Html.CheckBoxFor(x => Model.Assets[i].IsSelected)
+                            <span class="checkbox_label"> @Html.DisplayFor(x => Model.Assets[i].Name)</span>
+                            @Html.HiddenFor(x => Model.Assets[i].Name)
+
+                        }
+                    </div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">PO Number</p>
+                        @Html.TextBoxFor(m => m.MPO, new { @class = "input_box" })
+                        @Html.ValidationMessageFor(m => m.MPO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">HAL ID</p>
+                        @Html.TextBoxFor(m => m.HALID, new { @class = "input_box" })
+                        @Html.ValidationMessageFor(m => m.HALID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Request Number</p>
+                        @Html.TextBoxFor(m => m.RequestNumber, new { @class = "input_box" })
+                        @Html.ValidationMessageFor(m => m.RequestNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Vendor ID</p>
+                        @Html.TextBoxFor(m => m.VendorId, new { @class = "input_box" })
+                        @Html.ValidationMessageFor(m => m.VendorId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Due Date</p>
+                        @Html.TextBoxFor(m => m.DueDate, new { placeholder = "Due Date", @class = "datepicker", Value = "" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Delivery Date</p>
+                        @Html.TextBoxFor(m => m.DeliveryDate, new { placeholder = "Delivery Date", @class = "datepicker", Value = "" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Greenlight Sent Date</p>
+                        @Html.TextBoxFor(m => m.GreenlightSent, new { placeholder = "Sent Date", @class = "datepicker", Value = "" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Greenlight Received</p>
+                        @Html.TextBoxFor(m => m.GreenlightReceived, new { placeholder = "Received Date", @class = "datepicker", Value = "" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Type</p>
+                        @Html.DropDownListFor(m => m.OrderType, new SelectList(Model.OrderTypes), "", new { @class = "dropdown_control" })
+                    </div>
+                        <div class="col-xs-2 control_padd"></div>
+                        <div class="col-xs-2 control_padd"></div>
+                        <div class="col-xs-2 control_padd"></div>
+                        <div class="col-xs-2 control_padd"></div>
+                    </div>
+                <div class="row row_bottom_padd">
+                    @*<div class="col-xs-2 control_padd">
+                            <p class="dropdown_txt">Order Type</p>
+                           @Html.TextBoxFor(m => m.OrderType, new { @class = "input_box" })
+                        </div>*@
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">EST UPC</p>
+                        @Html.TextBoxFor(m => m.ESTUPC, new { @class = "input_box" })
+                        @Html.ValidationMessageFor(m => m.ESTUPC, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">VOD UPC</p>
+                        @Html.TextBoxFor(m => m.VODUPC, new { @class = "input_box" })
+                        @Html.ValidationMessageFor(m => m.VODUPC, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 padd_zero">
+                        @*<input type="button" class="btn btn-default left_btn btn_custom" value="cancel">*@
+                        <span class="btn_anchor left_btn">@Html.ActionLink("Cancel", "Orders")</span>
+                        @if (HttpContext.Current.User.IsInRole("ManagerAdmin"))
+                        {
+                            <input type="submit" name="save" value="save" class="btn btn-default btn_custom" />
+                        }
+
+                    </div>
+                    <div class="col-xs-9 padd_zero"></div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
