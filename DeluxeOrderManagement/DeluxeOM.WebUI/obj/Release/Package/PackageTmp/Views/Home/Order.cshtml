@@ -1,0 +1,328 @@
+﻿
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-1 padd_zero"><h6 class="filter_heading">filters</h6></div>
+            <div class="col-xs-10 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"><span class="toggle_arrow f_right"><i class="fa fa-chevron-up" aria-hidden="true"></i></span></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            <div class="row row_one">
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Content Provider</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Content Distributor</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Apple i-Tune</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Selected Title</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Ocean's Eleven (2001)</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Edit Type</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Director's Cut</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+            <div class="row row_two">
+                <div class="col-xs-2 control_padd">
+                    <p class="checkbox_txt">Local Edit</p>
+                    <input type="checkbox" name="local_edit" value="Yes"><label for="checkbox" class="checkbox_label">Yes</label>
+                    <input type="checkbox" name="local_edit" value="No"><label for="checkbox" class="checkbox_label">No</label>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="checkbox_txt">Order Status</p>
+                    <input type="checkbox" name="order_status" value="In-Progress"><label for="checkbox" class="checkbox_label">In-Progress</label>
+                    <input type="checkbox" name="order_status" value="Complete"><label for="checkbox" class="checkbox_label">Complete</label>
+                    <input type="checkbox" name="order_status" value="Cancelled"><label for="checkbox" class="checkbox_label">Cancelled</label>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="checkbox_txt">Media Type</p>
+                    <input type="checkbox" name="media_type" value="EST"><label for="checkbox" class="checkbox_label">EST</label>
+                    <input type="checkbox" name="media_type" value="VOD"><label for="checkbox" class="checkbox_label">VOD</label>
+                    <input type="checkbox" name="media_type" value="POEST"><label for="checkbox" class="checkbox_label">POEST</label>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="checkbox_txt">Greenlight Sent</p>
+                    <input type="checkbox" name="greenlight_sent" value="Yes"><label for="checkbox" class="checkbox_label">Yes</label>
+                    <input type="checkbox" name="greenlight_sent" value="No"><label for="checkbox" class="checkbox_label">No</label>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="checkbox_txt">Greenlight Received</p>
+                    <input type="checkbox" name="greenlight_received" value="Yes"><label for="checkbox" class="checkbox_label">Yes</label>
+                    <input type="checkbox" name="greenlight_received" value="No"><label for="checkbox" class="checkbox_label">No</label>
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+            <div class="row row_three">
+                <div class="col-xs-2 control_padd multiselect_container">
+                    <select class="dropdown_control multiselect_region" multiple="multiple">
+                        <option value="Warner Brother">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                        <option value="google">google</option>
+                        <option value="apple">apple</option>
+                        <option value="gmail">gmail</option>
+                        <option value="hotmail">hotmail</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd multiselect_container">
+                    <select class="dropdown_control multiselect_territory" multiple="multiple">
+                        <option value="Warner Brother">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                        <option value="google">google</option>
+                        <option value="apple">apple</option>
+                        <option value="gmail">gmail</option>
+                        <option value="hotmail">hotmail</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <input type="text" class="datepicker" placeholder="Est Start Date">
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <input type="text" class="datepicker" placeholder="Est End Date">
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+            <div class="row row_four">
+                <div class="col-xs-3 padd_zero">
+                    <button type="button" class="btn btn-default left_btn btn_custom">clear all</button>
+                    <button type="button" class="btn btn-default btn_custom">apply</button>
+                </div>
+                <div class="col-xs-9 padd_zero"></div>
+            </div>
+        </div>
+        </div>
+    <div class="order_grid_wrapper">
+        <div class="row right_btn_group">      
+                <button type="button" class="btn btn-default export_order btn_custom"><i class="fa fa-file-excel-o" aria-hidden="true"></i>export excel</button>
+                <button type="button" class="btn btn-default btn_custom" data-toggle="modal" data-target="#create_order">create order</button>
+        </div>
+        <!--Create order pop up start-->
+        <div class="modal fade" id="create_order" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+                        <h4 class="create_order_modal_title">order-create order</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row select_title_wrapper">
+                            <p>Selected Title</p>
+                            <p>Ocean's Eleven(2001)</p>
+                        </div>
+                        <div class="form_wrapper">
+                            <div class="row row_bottom_padd">
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                </div>
+                            </div>
+                            <div class="row row_bottom_padd">
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                </div>
+                            <div class="row row_bottom_padd">
+                                <div class="col-xs-12 control_padd">
+                                    <p class="checkbox_txt">Media Type</p>
+                                    <input type="checkbox" name="media_type" value="EST"><label for="checkbox" class="checkbox_label">Audio</label>
+                                    <input type="checkbox" name="media_type" value="VOD" class="check_margin"><label for="checkbox" class="checkbox_label">Audio Description</label>
+                                    <input type="checkbox" name="media_type" value="POEST" class="check_margin"><label for="checkbox" class="checkbox_label">Captions</label>
+                                    <input type="checkbox" name="media_type" value="EST" class="check_margin"><label for="checkbox" class="checkbox_label">Videos</label>
+                                    <input type="checkbox" name="media_type" value="VOD" class="check_margin"><label for="checkbox" class="checkbox_label">Forced Subtitles</label>
+                                    <input type="checkbox" name="media_type" value="POEST" class="check_margin"><label for="checkbox" class="checkbox_label">Preview Films</label>
+                                    <input type="checkbox" name="media_type" value="EST" class="check_margin"><label for="checkbox" class="checkbox_label">Subtitles</label>
+                                </div>
+                            </div>
+                            <div class="row row_bottom_padd">
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row row_bottom_padd">
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row row_bottom_padd">
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                </div>
+                            </div>
+                            <div class="row row_bottom_padd">
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd"></div>
+                                <div class="col-xs-4 control_padd"></div>
+                            </div>
+                            <div class="row row_bottom_padd">
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                    <p class="dropdown_txt">Content Provider</p>
+                                    <select class="dropdown_control">
+                                        <option value="volvo">Warner Brother</option>
+                                        <option value="saab">Saab</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-4 control_padd">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn_custom" data-dismiss="modal">cancel</button>
+                        <button type="button" class="btn btn-default btn_custom">save</button>
+                    </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+       
+        <!--Create order pop up end-->
+        <div class="row">
+            <div class="col-xs-12 padd_zero">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john@example.com</td>
+                        </tr>
+                        <tr>
+                            <td>Mary</td>
+                            <td>Moe</td>
+                            <td>mary@example.com</td>
+                        </tr>
+                        <tr>
+                            <td>July</td>
+                            <td>Dooley</td>
+                            <td>july@example.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@using DeluxeOM.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+@*<div id="errorDiv">@ViewBag.Message</div>*@
+
+<div class="row login_wrapper">
+    <div class="row logo text-center"><img src="~/Content/Images/logo.png" /></div>
+    <div class="row"><p class="logo_txt text-center">Deluxe Avails</p></div>
+    <div class="login_form_wrapper">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="email_wrapper">
+                @*@Html.LabelFor(m => m.Email)*@
+                @Html.TextBoxFor(m => m.Email, new { @class = "email", placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="password_wrapper">
+                @*@Html.LabelFor(m => m.Password)*@
+                @Html.PasswordFor(m => m.Password, new { @class = "password", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox_label" })
+
+                <input type="submit" value="Login" class="btn btn-default btn_custom" />
+
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+
+                }
+            </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

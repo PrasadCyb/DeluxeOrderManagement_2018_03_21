@@ -376,8 +376,8 @@ namespace DeluxeOM.Repository
                             select v
                           ).FirstOrDefault();
                 VID vid = null;
-                if (orders.Count == 0 || orders == null)
-                {
+                //if (orders.Count == 0 || orders == null)
+                //{
                     if (vids == null)
                     {
                         vid = new VID();
@@ -427,13 +427,13 @@ namespace DeluxeOM.Repository
                     orderStatus.ErrorMessage = Constant.orderSaved;
                     orderStatus.IsSaved = true;
                     orderStatus.IsAnnouncementExist = true;
-                }
-                else
-                {
-                    orderStatus.ErrorMessage = Constant.orderExist;
-                    orderStatus.IsSaved = false;
-                    orderStatus.IsAnnouncementExist = true;
-                }
+                //}
+                //else
+                //{
+                //    orderStatus.ErrorMessage = Constant.orderExist;
+                //    orderStatus.IsSaved = false;
+                //    orderStatus.IsAnnouncementExist = true;
+                //}
             }
             else if (announcement == null && !string.IsNullOrEmpty(order.LocalEdit))
             {
@@ -459,8 +459,8 @@ namespace DeluxeOM.Repository
                             select v
                           ).FirstOrDefault();
                 VID vid = null;
-                if (orders.Count == 0 || orders == null)
-                {
+                //if (orders.Count == 0 || orders == null)
+                //{
                     if (vids == null)
                     {
                         vid = new VID();
@@ -509,13 +509,13 @@ namespace DeluxeOM.Repository
                     orderStatus.ErrorMessage = Constant.announcementNotExist;
                     orderStatus.IsSaved = true;
                     orderStatus.IsAnnouncementExist = false;
-                }
-                else
-                {
-                    orderStatus.ErrorMessage = Constant.orderExist;
-                    orderStatus.IsSaved = false;
-                    orderStatus.IsAnnouncementExist = false;
-                }
+                //}
+                //else
+                //{
+                //    orderStatus.ErrorMessage = Constant.orderExist;
+                //    orderStatus.IsSaved = false;
+                //    orderStatus.IsAnnouncementExist = false;
+                //}
             }
             else
             {

@@ -11,7 +11,7 @@ using DeluxeOM.Repository;
 namespace DeluxeOM.Repository
 {
     /// <summary>
-    /// Methods for password management.
+    /// Methods for password management
     /// </summary>
     public class AccountRepository : IAccountRepository
     {

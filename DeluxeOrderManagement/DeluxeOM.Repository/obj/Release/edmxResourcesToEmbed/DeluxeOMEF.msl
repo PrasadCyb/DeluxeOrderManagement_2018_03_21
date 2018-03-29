@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DeluxeOrderManagementModelStoreContainer" CdmEntityContainer="DeluxeOrderManagementEntities">
+    <EntitySetMapping Name="AdditionalProperties">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.AdditionalProperty">
+        <MappingFragment StoreEntitySet="AdditionalProperties">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TableRefId" ColumnName="TableRefId" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Locale" ColumnName="Locale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lookups">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Lookup">
+        <MappingFragment StoreEntitySet="Lookup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupTypes">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.LookupType">
+        <MappingFragment StoreEntitySet="LookupType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PasswordResetModels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.PasswordResetModel">
+        <MappingFragment StoreEntitySet="PasswordReset">
+          <ScalarProperty Name="PasswordResetId" ColumnName="PasswordResetId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="ExpireDateTime" ColumnName="ExpireDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrivilegeModelModels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.PrivilegeModelModel">
+        <MappingFragment StoreEntitySet="Privilege">
+          <ScalarProperty Name="PrivId" ColumnName="PrivId" />
+          <ScalarProperty Name="PrivName" ColumnName="PrivName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleModels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.RoleModel">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolePrivModels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.RolePrivModel">
+        <MappingFragment StoreEntitySet="RolePriv">
+          <ScalarProperty Name="RolePrivId" ColumnName="RolePrivId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="PrivId" ColumnName="PrivId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Territories">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Territory">
+        <MappingFragment StoreEntitySet="Territory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="WBTerritory" ColumnName="WBTerritory" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="AppleTerritory" ColumnName="AppleTerritory" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+          <ScalarProperty Name="PACKAGE" ColumnName="PACKAGE" />
+          <ScalarProperty Name="GROUP" ColumnName="GROUP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TerritoryLanguageModels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.TerritoryLanguageModel">
+        <MappingFragment StoreEntitySet="TerritoryLanguage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+          <ScalarProperty Name="LanguageSeq" ColumnName="LanguageSeq" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPasswordModels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.UserPasswordModel">
+        <MappingFragment StoreEntitySet="UserPassword">
+          <ScalarProperty Name="UserPasswordId" ColumnName="UserPasswordId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordDate" ColumnName="PasswordDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoleModels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.UserRoleModel">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserModels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.UserModel">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Insert_PriceReport" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_PriceReport" />
+    <FunctionImportMapping FunctionImportName="usp_Insert_QCReport" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_QCReport" />
+    <FunctionImportMapping FunctionImportName="usp_Insert_PipelineOrder" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_PipelineOrder" />
+    <FunctionImportMapping FunctionImportName="usp_Insert_AppleGrid" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_AppleGrid" />
+    <FunctionImportMapping FunctionImportName="usp_UPD_AnnouncementGrid" FunctionName="DeluxeOrderManagementModel.Store.usp_UPD_AnnouncementGrid" />
+    <EntitySetMapping Name="Jobs_Announcements_Inserted">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Jobs_Announcements_Inserted">
+        <MappingFragment StoreEntitySet="Jobs_Announcements_Inserted">
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="OrderGridId" ColumnName="OrderGridId" />
+          <ScalarProperty Name="AnnouncementGridId" ColumnName="AnnouncementGridId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesChannels">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.SalesChannel">
+        <MappingFragment StoreEntitySet="SalesChannel">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Job_Annoncement_History">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Job_Annoncement_History">
+        <MappingFragment StoreEntitySet="Job_Annoncement_History">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="AnnouncementOrderId" ColumnName="AnnouncementOrderId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PipelineOrders">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.PipelineOrder">
+        <MappingFragment StoreEntitySet="PipelineOrder">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="IngredientStatus" ColumnName="IngredientStatus" />
+          <ScalarProperty Name="IngredientLanguageId" ColumnName="IngredientLanguageId" />
+          <ScalarProperty Name="IngredientAssetType" ColumnName="IngredientAssetType" />
+          <ScalarProperty Name="WBAnnouncement" ColumnName="WBAnnouncement" />
+          <ScalarProperty Name="GatorPO" ColumnName="GatorPO" />
+          <ScalarProperty Name="Workflow" ColumnName="Workflow" />
+          <ScalarProperty Name="CableLabsPackageAssetID" ColumnName="CableLabsPackageAssetID" />
+          <ScalarProperty Name="CableLabsAssetID" ColumnName="CableLabsAssetID" />
+          <ScalarProperty Name="WorkOrder" ColumnName="WorkOrder" />
+          <ScalarProperty Name="PurchaseOrder" ColumnName="PurchaseOrder" />
+          <ScalarProperty Name="TargetDueDate" ColumnName="TargetDueDate" />
+          <ScalarProperty Name="ContractDueDate" ColumnName="ContractDueDate" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="HALOrderID" ColumnName="HALOrderID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PriceReports">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.PriceReport">
+        <MappingFragment StoreEntitySet="PriceReport">
+          <ScalarProperty Name="UnAvailForVOD" ColumnName="UnAvailForVOD" />
+          <ScalarProperty Name="ESTEndDate" ColumnName="ESTEndDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="AvailForVOD" ColumnName="AvailForVOD" />
+          <ScalarProperty Name="EnableVODHD" ColumnName="EnableVODHD" />
+          <ScalarProperty Name="ClearedforVOD" ColumnName="ClearedforVOD" />
+          <ScalarProperty Name="ESTStartDate" ColumnName="ESTStartDate" />
+          <ScalarProperty Name="EnableESTHD" ColumnName="EnableESTHD" />
+          <ScalarProperty Name="ClearedforSaleEST" ColumnName="ClearedforSaleEST" />
+          <ScalarProperty Name="PreOrderDate" ColumnName="PreOrderDate" />
+          <ScalarProperty Name="LiveESTSD" ColumnName="LiveESTSD" />
+          <ScalarProperty Name="LiveESTHD" ColumnName="LiveESTHD" />
+          <ScalarProperty Name="LiveVODSD" ColumnName="LiveVODSD" />
+          <ScalarProperty Name="LiveVODHD" ColumnName="LiveVODHD" />
+          <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+          <ScalarProperty Name="AppleId" ColumnName="AppleId" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Announcements">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Announcement">
+        <MappingFragment StoreEntitySet="Announcements">
+          <ScalarProperty Name="ChannelFormat" ColumnName="ChannelFormat" />
+          <ScalarProperty Name="AvailNotes" ColumnName="AvailNotes" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="ClientAvailID" ColumnName="ClientAvailID" />
+          <ScalarProperty Name="LocalDataCID" ColumnName="LocalDataCID" />
+          <ScalarProperty Name="LocalDataALID" ColumnName="LocalDataALID" />
+          <ScalarProperty Name="LocalDataUVPublishDate" ColumnName="LocalDataUVPublishDate" />
+          <ScalarProperty Name="LocalDataEditEIDR" ColumnName="LocalDataEditEIDR" />
+          <ScalarProperty Name="TitleAbstractEIDR" ColumnName="TitleAbstractEIDR" />
+          <ScalarProperty Name="LocalEditRequired" ColumnName="LocalEditRequired" />
+          <ScalarProperty Name="TitleVideoVersion" ColumnName="TitleVideoVersion" />
+          <ScalarProperty Name="TitleMPM" ColumnName="TitleMPM" />
+          <ScalarProperty Name="LocalDataDVS" ColumnName="LocalDataDVS" />
+          <ScalarProperty Name="RatingReason" ColumnName="RatingReason" />
+          <ScalarProperty Name="LocalDataRating" ColumnName="LocalDataRating" />
+          <ScalarProperty Name="LocalDVDReleaseDate" ColumnName="LocalDVDReleaseDate" />
+          <ScalarProperty Name="LocalDataTheatricalReleaseDt" ColumnName="LocalDataTheatricalReleaseDt" />
+          <ScalarProperty Name="StorefrontCurrency" ColumnName="StorefrontCurrency" />
+          <ScalarProperty Name="WSCost" ColumnName="WSCost" />
+          <ScalarProperty Name="PriceTier" ColumnName="PriceTier" />
+          <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+          <ScalarProperty Name="TitleCategory" ColumnName="TitleCategory" />
+          <ScalarProperty Name="SuppressionEndDate" ColumnName="SuppressionEndDate" />
+          <ScalarProperty Name="ECAvailable" ColumnName="ECAvailable" />
+          <ScalarProperty Name="ClientAvailStatus" ColumnName="ClientAvailStatus" />
+          <ScalarProperty Name="ClientEnd" ColumnName="ClientEnd" />
+          <ScalarProperty Name="ClientStart" ColumnName="ClientStart" />
+          <ScalarProperty Name="HDR" ColumnName="HDR" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="SalesChannel" ColumnName="SalesChannel" />
+          <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="TitleContentType" ColumnName="TitleContentType" />
+          <ScalarProperty Name="GlobalTitle" ColumnName="GlobalTitle" />
+          <ScalarProperty Name="LocalTitle" ColumnName="LocalTitle" />
+          <ScalarProperty Name="ChangeContext" ColumnName="ChangeContext" />
+          <ScalarProperty Name="ChangedFields" ColumnName="ChangedFields" />
+          <ScalarProperty Name="ChangeStatus" ColumnName="ChangeStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Export_Title" FunctionName="DeluxeOrderManagementModel.Store.usp_Export_Title" />
+    <EntitySetMapping Name="Announceemnt_Channel_Format">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Announceemnt_Channel_Format">
+        <MappingFragment StoreEntitySet="Announceemnt_Channel_Format">
+          <ScalarProperty Name="ClientEndDate" ColumnName="ClientEndDate" />
+          <ScalarProperty Name="ChannelFormat" ColumnName="ChannelFormat" />
+          <ScalarProperty Name="JObId" ColumnName="JObId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ClientStartDate" ColumnName="ClientStartDate" />
+          <ScalarProperty Name="ClientAvailStatus" ColumnName="ClientAvailStatus" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnnouncementGrids">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.AnnouncementGrid">
+        <MappingFragment StoreEntitySet="AnnouncementGrid">
+          <ScalarProperty Name="CancellationDate" ColumnName="CancellationDate" />
+          <ScalarProperty Name="LastAnnouncedDate" ColumnName="LastAnnouncedDate" />
+          <ScalarProperty Name="FirstAnnouncedDate" ColumnName="FirstAnnouncedDate" />
+          <ScalarProperty Name="JObId" ColumnName="JObId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="TerritoryId" ColumnName="TerritoryId" />
+          <ScalarProperty Name="LocalEdit" ColumnName="LocalEdit" />
+          <ScalarProperty Name="VideoVersion" ColumnName="VideoVersion" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Search_Title" FunctionName="DeluxeOrderManagementModel.Store.usp_Search_Title">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DeluxeOrderManagementModel.usp_Search_Title_Result">
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="VIDStatus" ColumnName="VIDStatus" />
+          <ScalarProperty Name="AppleTerritory" ColumnName="AppleTerritory" />
+          <ScalarProperty Name="POESTStartDate" ColumnName="POESTStartDate" />
+          <ScalarProperty Name="ESTStartDate" ColumnName="ESTStartDate" />
+          <ScalarProperty Name="ESTEndDate" ColumnName="ESTEndDate" />
+          <ScalarProperty Name="LiveESTHD" ColumnName="LiveESTHD" />
+          <ScalarProperty Name="LiveESTSD" ColumnName="LiveESTSD" />
+          <ScalarProperty Name="VODStartDate" ColumnName="VODStartDate" />
+          <ScalarProperty Name="VODEndDate" ColumnName="VODEndDate" />
+          <ScalarProperty Name="LiveVODHD" ColumnName="LiveVODHD" />
+          <ScalarProperty Name="LiveVODSD" ColumnName="LiveVODSD" />
+          <ScalarProperty Name="AnnPOESTStartDate" ColumnName="AnnPOESTStartDate" />
+          <ScalarProperty Name="AnnESTStartDate" ColumnName="AnnESTStartDate" />
+          <ScalarProperty Name="AnnESTEndDate" ColumnName="AnnESTEndDate" />
+          <ScalarProperty Name="AnnVODStartDate" ColumnName="AnnVODStartDate" />
+          <ScalarProperty Name="AnnVODEndDate" ColumnName="AnnVODEndDate" />
+          <ScalarProperty Name="ComponentType" ColumnName="ComponentType" />
+          <ScalarProperty Name="ComponentQuality" ColumnName="ComponentQuality" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+          <ScalarProperty Name="LanguageStatus" ColumnName="LanguageStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLogs">
+          <ScalarProperty Name="ErrorName" ColumnName="ErrorName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_InsertDataToAnnouncementStaging" FunctionName="DeluxeOrderManagementModel.Store.usp_InsertDataToAnnouncementStaging" />
+    <FunctionImportMapping FunctionImportName="usp_InsertDataToApplePriceStaging" FunctionName="DeluxeOrderManagementModel.Store.usp_InsertDataToApplePriceStaging" />
+    <FunctionImportMapping FunctionImportName="usp_InsertDataToAppleQCStaging" FunctionName="DeluxeOrderManagementModel.Store.usp_InsertDataToAppleQCStaging" />
+    <FunctionImportMapping FunctionImportName="usp_InsertDataToPipeLineStaging" FunctionName="DeluxeOrderManagementModel.Store.usp_InsertDataToPipeLineStaging" />
+    <EntitySetMapping Name="QCReports">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.QCReport">
+        <MappingFragment StoreEntitySet="QCReport">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="QAStatus" ColumnName="QAStatus" />
+          <ScalarProperty Name="ComponentQuality" ColumnName="ComponentQuality" />
+          <ScalarProperty Name="Territory" ColumnName="Territory" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="ComponentType" ColumnName="ComponentType" />
+          <ScalarProperty Name="ImportedDate" ColumnName="ImportedDate" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="AppleId" ColumnName="AppleId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs_Items">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.Jobs_Items">
+        <MappingFragment StoreEntitySet="Jobs_Items">
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Insert_Announcements" FunctionName="DeluxeOrderManagementModel.Store.usp_Insert_Announcements" />
+    <FunctionImportMapping FunctionImportName="usp_Get_Titles" FunctionName="DeluxeOrderManagementModel.Store.usp_Get_Titles" />
+    <EntitySetMapping Name="NotificationEntities">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.NotificationEntity">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FailureBody" ColumnName="FailureBody" />
+          <ScalarProperty Name="SuccessBody" ColumnName="SuccessBody" />
+          <ScalarProperty Name="FailureSubject" ColumnName="FailureSubject" />
+          <ScalarProperty Name="SuccessSubject" ColumnName="SuccessSubject" />
+          <ScalarProperty Name="ToEmailAddress" ColumnName="ToEmailAddress" />
+          <ScalarProperty Name="FromEmailAddress" ColumnName="FromEmailAddress" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderGrids">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.OrderGrid">
+        <MappingFragment StoreEntitySet="OrderGrid">
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="LockedOn" ColumnName="LockedOn" />
+          <ScalarProperty Name="LockedBy" ColumnName="LockedBy" />
+          <ScalarProperty Name="JObId" ColumnName="JObId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="GreenlightSenttoPackaging" ColumnName="GreenlightSenttoPackaging" />
+          <ScalarProperty Name="GreenlightValidatedbyDMDM" ColumnName="GreenlightValidatedbyDMDM" />
+          <ScalarProperty Name="GreenlightDueDate" ColumnName="GreenlightDueDate" />
+          <ScalarProperty Name="ActualDeliveryDate" ColumnName="ActualDeliveryDate" />
+          <ScalarProperty Name="DeliveryDueDate" ColumnName="DeliveryDueDate" />
+          <ScalarProperty Name="OrderRequestDate" ColumnName="OrderRequestDate" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="HALID" ColumnName="HALID" />
+          <ScalarProperty Name="MPO" ColumnName="MPO" />
+          <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="IVODUPC" ColumnName="IVODUPC" />
+          <ScalarProperty Name="ESTUPC" ColumnName="ESTUPC" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FTPConfigs">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.FTPConfig">
+        <MappingFragment StoreEntitySet="FTPConfig">
+          <ScalarProperty Name="FtpArchivalDirectory" ColumnName="FtpArchivalDirectory" />
+          <ScalarProperty Name="Environment" ColumnName="Environment" />
+          <ScalarProperty Name="EnableSSL" ColumnName="EnableSSL" />
+          <ScalarProperty Name="Port" ColumnName="Port" />
+          <ScalarProperty Name="OverWriteExisting" ColumnName="OverWriteExisting" />
+          <ScalarProperty Name="KeepOriginal" ColumnName="KeepOriginal" />
+          <ScalarProperty Name="DownloadTo" ColumnName="DownloadTo" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FtpDirectory" ColumnName="FtpDirectory" />
+          <ScalarProperty Name="Host" ColumnName="Host" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIDs">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.VID">
+        <MappingFragment StoreEntitySet="VID">
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="TitleCategory" ColumnName="TitleCategory" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="AppleId" ColumnName="AppleId" />
+          <ScalarProperty Name="VersionEIDR" ColumnName="VersionEIDR" />
+          <ScalarProperty Name="EditName" ColumnName="EditName" />
+          <ScalarProperty Name="VideoVersion" ColumnName="VideoVersion" />
+          <ScalarProperty Name="MPM" ColumnName="MPM" />
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="Extras" ColumnName="Extras" />
+          <ScalarProperty Name="Bundle" ColumnName="Bundle" />
+          <ScalarProperty Name="VIDStatus" ColumnName="VIDStatus" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JOBS">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.JOB">
+        <MappingFragment StoreEntitySet="JOBS">
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="TriggeredBy" ColumnName="TriggeredBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="JobType" ColumnName="JobType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Get_Orders" FunctionName="DeluxeOrderManagementModel.Store.usp_Get_Orders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DeluxeOrderManagementModel.usp_Get_Orders_Result">
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Territory" ColumnName="Territory" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
+          <ScalarProperty Name="MPO" ColumnName="MPO" />
+          <ScalarProperty Name="HALID" ColumnName="HALID" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+          <ScalarProperty Name="FirstStartDate" ColumnName="FirstStartDate" />
+          <ScalarProperty Name="FirstAnnouncedDate" ColumnName="FirstAnnouncedDate" />
+          <ScalarProperty Name="DeliveryDueDate" ColumnName="DeliveryDueDate" />
+          <ScalarProperty Name="ActualDeliveryDate" ColumnName="ActualDeliveryDate" />
+          <ScalarProperty Name="GreenlightDueDate" ColumnName="GreenlightDueDate" />
+          <ScalarProperty Name="GreenlightSenttoPackaging" ColumnName="GreenlightSenttoPackaging" />
+          <ScalarProperty Name="GreenlightValidatedbyDMDM" ColumnName="GreenlightValidatedbyDMDM" />
+          <ScalarProperty Name="LanguageType" ColumnName="LanguageType" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="ESTUPC" ColumnName="ESTUPC" />
+          <ScalarProperty Name="IVODUPC" ColumnName="IVODUPC" />
+          <ScalarProperty Name="LockedBy" ColumnName="LockedBy" />
+          <ScalarProperty Name="LockedOn" ColumnName="LockedOn" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="BulkUpdate_Validations">
+      <EntityTypeMapping TypeName="DeluxeOrderManagementModel.BulkUpdate_Validations">
+        <MappingFragment StoreEntitySet="BulkUpdate_Validations">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ValidationMessage" ColumnName="ValidationMessage" />
+          <ScalarProperty Name="ColumnValue" ColumnName="ColumnValue" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ValidationLevel" ColumnName="ValidationLevel" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_BulkUpdateOrder" FunctionName="DeluxeOrderManagementModel.Store.usp_BulkUpdateOrder" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateOG_Status" FunctionName="DeluxeOrderManagementModel.Store.usp_UpdateOG_Status" />
+  </EntityContainerMapping>
+</Mapping>

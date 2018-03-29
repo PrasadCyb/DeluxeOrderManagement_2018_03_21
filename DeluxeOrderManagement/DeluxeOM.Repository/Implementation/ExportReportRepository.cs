@@ -113,7 +113,7 @@ namespace DeluxeOM.Repository
             if (((reportSearch.ImportStartDate != null && !(reportSearch.ImportStartDate.Equals(DateTime.MinValue))) && ((reportSearch.ImportEndDate) != null) || !(reportSearch.ImportEndDate.Equals(DateTime.MinValue))))
             {
                 string endDate = reportSearch.ImportEndDate.AddDays(1).Date.ToString("MM-dd-yyyy");
-                whereClause = " and VQ.ImportedDate >= '" + reportSearch.ImportStartDate.ToString("MM-dd-yyyy") + "' and VQ.ImportedDate <= '" + endDate + "' ";
+                whereClause = " and O.ActualDeliveryDate >= '" + reportSearch.ImportStartDate.ToString("MM-dd-yyyy") + "' and O.ActualDeliveryDate < '" + endDate + "' ";
             }
 
             cmd.Parameters.Add("@whereClause", SqlDbType.VarChar).Value = whereClause;

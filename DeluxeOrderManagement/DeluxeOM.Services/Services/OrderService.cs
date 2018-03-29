@@ -35,7 +35,7 @@ namespace DeluxeOM.Services
         }
 
         /// <summary>
-        /// Populates filter Order values
+        /// Populates all orders based on filter criteria
         /// </summary>
         /// <param name="orderSearch">orderSearch contains filter values to search orders from a database</param>
         /// <returns>List of Orders</returns>
@@ -134,11 +134,11 @@ namespace DeluxeOM.Services
             {
                 channel = string.IsNullOrEmpty(channel) ? " C.Channel ='" + orderSearch.MediaType + "'  " : whrSQLquery + " AND C.Channel = '" + orderSearch.MediaType + "' ";
             }
-            else
-            {
-                string alllChannel = "'EST'" + "," + "'POEST'" + "," + "'VOD'";
-                channel = string.IsNullOrEmpty(channel) ? " C.Channel IN(" + alllChannel + ")  " : whrSQLquery + " AND C.Channel IN(" + alllChannel + ") ";
-            }
+            //else
+            //{
+            //    string alllChannel = "'EST'" + "," + "'POEST'" + "," + "'VOD'";
+            //    channel = string.IsNullOrEmpty(channel) ? " C.Channel IN(" + alllChannel + ")  " : whrSQLquery + " AND C.Channel IN(" + alllChannel + ") ";
+            //}
             if (!string.IsNullOrEmpty(whrSQLquery))
             {
                 whrSQLquery = "where" + whrSQLquery;

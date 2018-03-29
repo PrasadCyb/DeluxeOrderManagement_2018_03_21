@@ -1,0 +1,635 @@
+﻿@*@using DeluxeOM.Models
+    @model ViewModelBase*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deluxe Avails - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("Styles", required: false)
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="loading">
+        <img id="loading-image" src="~/Content/Images/Loading_icon.gif" alt="Loading..." />
+    </div>
+    <div class="container-fluid">
+        <div class="row header">
+            <div class="col-lg-4 col-md-4 col-sm-4 padd_zero">
+                <img src="~/Content/Images/logo.png" />
+                <span class="title_txt">Deluxe Avails</span>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 padd_zero"></div>
+            <div class="col-lg-7 col-md-7 col-sm-7 padd_zero menu_wrapper">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <ul class="nav navbar-nav menu_bar">
+                           
+                             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Order" ? "selected" : "")">@Html.ActionLink("order management", "Orders", "Order")</li>
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Title" ? "selected" : "")">@Html.ActionLink("title", "Titles", "Title")</li>
+                            @*<li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "AssetTracker" ? "selected" : "")">@Html.ActionLink("Asset Tracker", "AssetTracker", "AssetTracker")</li>*@
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Report" ? "selected" : "")">@Html.ActionLink("reports", "Reports", "Report")</li>
+                            @*<li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Job" ? "selected" : "")">@Html.ActionLink("jobs", "Jobs", "Job")</li>*@
+                            @if (HttpContext.Current.User.IsInRole("SystemAdmin"))
+                            {
+                                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Manage" ? "selected" : "")">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">admin<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Notification Mapping", "NotificationMapping", "Manage")</li>
+                                    <li>@Html.ActionLink("Configure FTP", "ConfigureFtp", "Manage")</li>
+                                    @*<li>@Html.ActionLink("VID", "Vid", "Manage", null, null)</li>
+                                    <li>@Html.ActionLink("Territory", "Territory", "Manage", null, null)</li>*@
+                                    @*<li>@Html.ActionLink("vid / territory", "VidTerritory", "Manage")</li>*@
+                                    <li>@Html.ActionLink("jobs", "Index", "Jobs")</li>
+                                    @*<li>@Html.ActionLink("jobs", "MonitorImport", "Manage")</li>*@
+                                    <li>@Html.ActionLink("Customers", "Customers", "Manage")</li>
+                                    <li>@Html.ActionLink("user management", "Users", "Manage")</li>
+                                    <li>@Html.ActionLink("VID", "Vid", "Vid")</li>
+                                </ul>
+                            </li>
+                            }
+                            <li><a href="../../Help/index.htm" onclick="window.open('../../Help/index.htm','newwindow','width=1200,height=600');return false;">help</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            @*@Model.Name*@
+                        <li><a href="#">Hi&nbsp<span>@HttpContext.Current.User.Identity.Name</span><span class="caret"></span><img style="background:white;" src="~/Content/Images/user_icon.png" width="48" height="48" class="img-circle" alt=""> </a></li>
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+        <div class="log_off_pop_up">
+            <ul>
+                @*<li><a href="#">Change Password</a></li>*@
+                <li>@Html.ActionLink("Change Password", "ChangePassword", "Manage")</li>
+                <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
+            </ul>
+        </div>
+    </div>
+    @RenderBody()
+    <div class="row footer">
+        <div class="col-xs-12 padd_zero footer_text">Copyright @DateTime.Now.Year - Deluxe. All Rights Reserved. v @ViewContext.Controller.GetType().Assembly.GetName().Version</div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+<script type="text/javascript">  
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+        //$('ul.menu_bar li.dropdown ul li a').click(function () {
+        //    debugger
+        //    $('ul.menu_bar li').removeClass("selected");
+        //    $('ul.menu_bar li.dropdown').addClass("selected");
+        //});
+        $(".toggle_arrow").click(function () {
+            $("#toggle_wrapper").slideToggle("slow");
+            if ($(".toggle_arrow > i").hasClass("fa-chevron-up")) {
+                $(".toggle_arrow > i").removeClass("fa-chevron-up");
+                $(".toggle_arrow > i").addClass("fa-chevron-down");
+            }
+            else {
+                $(".toggle_arrow > i").addClass("fa-chevron-up");
+                $(".toggle_arrow > i").removeClass("fa-chevron-down");
+            }
+        });
+        $(function () {
+            $(".datepicker").datepicker({ changeYear: true });
+        });
+        $(function () {
+            SetStartDate();
+        });
+        function SetStartDate() {
+            $(".report_start_date").datepicker({
+                changeYear: true
+            }).datepicker("setDate", -7);
+        }
+        $(function () {
+            SetEndDate();
+        });
+        function SetEndDate() {
+            $(".report_end_date").datepicker({
+                changeYear: true
+            }).datepicker("setDate", new Date());
+        }
+        $('.multiselect_vid').multiselect({
+            includeSelectAllOption: false,
+            enableFiltering: true,
+            nonSelectedText: '',
+            enableCaseInsensitiveFiltering: true
+        });
+        $('.multiselect_territory').multiselect({
+            includeSelectAllOption: false,
+            enableFiltering: true,
+            nonSelectedText: '',
+            enableCaseInsensitiveFiltering: true
+        });
+        /*start: To limit maximum select count for teritory and laguage*/
+        $("#territory .multiselect_territory").change(function () {
+            if ($("#territory .multiselect_territory option:selected").length > 14) {
+                //$(".multiselect_territory option:selected").removeAttr("disabled")
+                $('#territory .multiselect-container li a input:unchecked').prop("disabled", true);
+                alert('Max 15 territory can be selected');
+            }
+            else {
+                $('#territory .multiselect-container li a input:unchecked').prop("disabled", false);
+            }
+        });
+      
+        $("#language .multiselect_territory").change(function () {
+            if ($("#language .multiselect_territory option:selected").length > 14) {
+                //$(".multiselect_territory option:selected").removeAttr("disabled")
+                $('#language .multiselect-container li a input:unchecked').prop("disabled", true);
+                alert('Max 15 languages will be selected');
+            }
+            else {
+                $('#language .multiselect-container li a input:unchecked').prop("disabled", false);
+            }
+        });
+        
+        $("#region .multiselect_territory").change(function () {
+            if ($("#region .multiselect_territory option:selected").length > 14) {
+                //$(".multiselect_territory option:selected").removeAttr("disabled")
+                $('#region .multiselect-container li a input:unchecked').prop("disabled", true);
+                alert('Max 15 regions can be selected');
+            }
+            else {
+                $('#region .multiselect-container li a input:unchecked').prop("disabled", false);
+            }
+        });
+
+        $("#Title_Name .multiselect_vid").change(function () {
+            if ($("#Title_Name .multiselect_vid option:selected").length > 0) {
+                $("#Video_Version").addClass("disable_dropdown");
+                $("#Vendor_Id").addClass("disable_dropdown");
+            } else {
+                $("#Video_Version").removeClass("disable_dropdown");
+                $("#Vendor_Id").removeClass("disable_dropdown");
+            }
+            if ($("#Title_Name .multiselect_vid option:selected").length > 14) {
+
+                //$(".multiselect_territory option:selected").removeAttr("disabled")
+                $('#Title_Name .multiselect-container li a input:unchecked').prop("disabled", true);
+                alert('Max 15 Title can be selected');
+            }
+            else {
+                $('#Title_Name .multiselect-container li a input:unchecked').prop("disabled", false);
+            }
+            //if ($("#Title_Name .multiselect_vid option:selected").length > 1) {
+            //    alert('hi')
+            //    $('#VIDSearch_VideoVersion').prop("disabled", true)
+            //}
+        });
+
+        $("#Video_Version .multiselect_vid").change(function () {
+            if ($("#Video_Version .multiselect_vid option:selected").length > 0) {
+                $("#Title_Name").addClass("disable_dropdown");
+                $("#Vendor_Id").addClass("disable_dropdown");
+            } else {
+                $("#Title_Name").removeClass("disable_dropdown");
+                $("#Vendor_Id").removeClass("disable_dropdown");
+            }
+            if ($("#Video_Version .multiselect_vid option:selected").length > 14) {
+                //$(".multiselect_territory option:selected").removeAttr("disabled")
+                $('#Video_Version .multiselect-container li a input:unchecked').prop("disabled", true);
+                alert('Max 15 Title can be selected');
+            }
+            else {
+                $('#Video_Version .multiselect-container li a input:unchecked').prop("disabled", false);
+            }
+        });
+
+        $("#Vendor_Id .multiselect_vid").change(function () {
+            if ($("#Vendor_Id .multiselect_vid option:selected").length > 0) {
+                $("#Title_Name").addClass("disable_dropdown");
+                $("#Video_Version").addClass("disable_dropdown");
+            } else {
+                $("#Title_Name").removeClass("disable_dropdown");
+                $("#Video_Version").removeClass("disable_dropdown");
+            }
+            if ($("#Vendor_Id .multiselect_vid option:selected").length > 14) {
+                //$(".multiselect_territory option:selected").removeAttr("disabled")
+                $('#Vendor_Id .multiselect-container li a input:unchecked').prop("disabled", true);
+                alert('Max 15 Title can be selected');
+            }
+            else {
+                $('#Vendor_Id .multiselect-container li a input:unchecked').prop("disabled", false);
+            }
+        });
+        if ($("#territory .multiselect_territory option:selected").length > 14)
+        {
+            $('#territory .multiselect-container li a input:unchecked').prop("disabled", true);
+        }
+        if ($("#language .multiselect_territory option:selected").length > 14)
+        {
+            $('#language .multiselect-container li a input:unchecked').prop("disabled", true);
+        }
+        if ($("#region .multiselect_territory option:selected").length > 14) {
+            $('#region .multiselect-container li a input:unchecked').prop("disabled", true);
+        }
+        /*End: To limit maximum select count for teritory and laguage*/
+        $('ul.multiselect-container').addClass('terrioryScroll');
+
+        $('#title_form .maximum_record_error').change(function () { 
+            $('#title_form .hide_error').hide();
+        });
+        $('.vid_browse').click(function () {
+            $('.hide_error').hide();
+        })
+        $('.navbar-inverse .navbar-right > li > a').mouseover(function () {
+            $('.log_off_pop_up').css("display", "block");
+        });
+        $('.navbar-inverse .navbar-right > li > a').mouseout(function () {
+            $('.log_off_pop_up').css("display", "none");
+        });
+        $('.log_off_pop_up').mouseover(function () {
+            $(this).css("display", "block");
+        });
+        $('.log_off_pop_up').mouseout(function () {
+            $(this).css("display", "none");
+        });
+        $(".reports_wrapper #ReportSearch_ReportTitleID").on('change', function () {
+            if ($(".reports_wrapper #ReportSearch_ReportTitleID option:selected").index() == 0) {
+                ClearAll();
+                SetStartDate();
+                SetEndDate();
+                $(".reports_wrapper .row_two").show();
+                $(".reports_wrapper .row_three").show();
+                $(".reports_wrapper .row_four").hide();
+                $(".reports_wrapper .row_five").hide();
+            }
+            else if ($(".reports_wrapper #ReportSearch_ReportTitleID option:selected").index() == 1) {
+                ClearAll();
+                $(".reports_wrapper .row_two").hide();
+                $(".reports_wrapper .row_three").show();
+                $(".reports_wrapper .row_four").hide();
+                $(".reports_wrapper .row_five").hide();
+            }
+            else if ($(".reports_wrapper #ReportSearch_ReportTitleID option:selected").index() == 2) {
+                ClearAll();
+                $(".reports_wrapper .row_two").hide();
+                $(".reports_wrapper .row_three").hide();
+                $(".reports_wrapper .row_four").show();
+                $(".reports_wrapper .row_five").hide();
+            }
+            else if ($(".reports_wrapper #ReportSearch_ReportTitleID option:selected").index() == 3) {
+                ClearAll();
+                $(".reports_wrapper .row_five").show();
+                $(".reports_wrapper .row_two").hide();
+                $(".reports_wrapper .row_three").hide();
+                $(".reports_wrapper .row_four").hide();
+            }
+        })
+
+        $(".reports_wrapper #ClearAll").on('click', function () {
+            ClearAll();
+        })
+        function ClearAll() {
+            $(".reports_wrapper #ReportSearch_CreatedStartDate").val('');
+            $(".reports_wrapper #ReportSearch_CreatedEndDate").val('');
+            $(".reports_wrapper #ReportSearch_ImportStartDate").val('');
+            $(".reports_wrapper #ReportSearch_ImportEndDate").val('');
+            $('.reports_wrapper #ReportSearch_LocalEdit').val('');
+            $(".reports_wrapper #ReportSearch_VideoVersion").val('');
+        }
+        $("#export_exl_btn").click(function () {
+            if (($(".reports_wrapper #ReportSearch_ReportTitleID option:selected").index() == 0) || $(".reports_wrapper #ReportSearch_ReportTitleID option:selected").index() == 1) {
+                $("#report_start_date_err").hide();
+                $("#report_end_date_err").hide();
+                $("#report_compare_date_err").hide();
+                if ($(".report_start_date").val() == "") {
+                    $("#report_start_date_err").show();
+                    return false;
+                }
+                else if ($(".report_end_date").val() == "") {
+                    $("#report_end_date_err").show();
+                    return false;
+                }
+                else if (Date.parse($(".report_start_date").val()) >= Date.parse($(".report_end_date").val())) {
+                    $("#report_compare_date_err").show();
+                    return false;
+                }
+                else {
+                    $(function () {
+
+                        $.ajax({
+                            url: '/Report/Reports1',
+                            type: 'GET',
+                            data: $("#toggle_wrapper :input").serialize(),
+                            success: function () {
+                                window.location = '/Report/Download';
+                            }
+
+                        });
+
+                    });
+                }
+            }
+            else if ($(".reports_wrapper #ReportSearch_ReportTitleID option:selected").index() == 2) {
+                $("#import_start_date_err").hide();
+                $("#import_end_date_err").hide();
+                $("#import_compare_date_err").hide();
+                if ($(".import_start_date").val() == "") {
+                    $("#import_start_date_err").show();
+                    return false;
+                }
+                else if ($(".import_end_date").val() == "") {
+                    $("#import_end_date_err").show();
+                    return false;
+                }
+                else if (Date.parse($(".import_start_date").val()) >= Date.parse($(".import_end_date").val())) {
+                    $("#import_compare_date_err").show();
+                    return false;
+                }
+                else {
+                    $(function () {
+                        $.ajax({
+                            url: '/Report/Reports1',
+                            type: 'GET',
+                            data: $("#toggle_wrapper :input").serialize(),
+                            success: function () {
+                                window.location = '/Report/Download';
+                            }
+                        });
+
+                    });
+                }
+            }
+
+
+        });
+        $("#Run_btn").click(function () {
+            $.ajax({
+                url: "/Job/CallWebService",
+                type: "GET",
+                data: $("#toggle_wrapper :input").serialize(),
+                success: function () {
+                   
+                }
+            });
+        });
+        console.log("page--", $('.multiselect-container li a input'));
+
+        $('#vid_file_upload').on('change', function () {
+            var fileName = '';
+            fileName = $(this).val();
+            $('.vid_file_selected').html(fileName);
+        })
+        $('#territory_file_upload').on('change', function () {
+            var fileName = '';
+            fileName = $(this).val();
+            $('.territory_file_selected').html(fileName);
+        })
+        $("#reset_order_form").click(function () {
+            $("#order_form .dropdown_control").prop('selectedIndex', -1);
+            $("#order_form .select_search div.custom-select a span").text("");
+            $("#order_form .datepicker").val("");
+            $('#order_form .multiselect-container li a input:checkbox').attr('checked', false);
+            $('#order_form .multiselect-selected-text').text("");
+        })
+        $("#reset_title_form").click(function () {
+            $("#title_form .dropdown_control").prop('selectedIndex', -1);
+            $("#title_form .select_search div.custom-select a span").text("");
+            $("#title_form .datepicker").val("");
+            $('#title_form .multiselect-container li a input:checkbox').attr('checked', false);
+            $('#title_form .multiselect-selected-text').text("");
+        })
+
+        $("#reset_vid_form").click(function () {
+            $("#search_vid .dropdown_control").prop('selectedIndex', -1);
+            $("#search_vid .select_search div.custom-select a span").text("");
+            $('#search_vid .multiselect-container li a input:checkbox').attr('checked', false);
+            $('#search_vid .multiselect-selected-text').text("");
+            $("#Video_Version").removeClass("disable_dropdown");
+            $("#Vendor_Id").removeClass("disable_dropdown");
+            $("#Title_Name").removeClass("disable_dropdown");
+        })
+        //$("#order_save_status").val() ? $(".order_save_pop_up").show().delay(10000).fadeOut() : $(".order_save_pop_up").hide();
+        if ($("#order_save_status").val() == 1) {
+            $(".order_save_pop_up").show().delay(8000).fadeOut();
+        }
+        else {
+            $(".order_save_pop_up").hide();
+        }
+        $(".job_type_dropdown").on('change', function () {
+          
+            if ($(".job_type_dropdown option:selected").index() == 4) {
+                $(".upload_file").hide();
+                $(".announce_date").hide();
+            }
+            else if ($(".job_type_dropdown option:selected").index() == 3) {
+                $(".announce_date").show();
+                $(".upload_file").show();
+            }
+            else {
+                $(".announce_date").hide();
+                $(".upload_file").show();
+            }
+        })
+        $('.jobs_page_refresh').click(function () {
+            location.reload();
+        });
+        $(function () {
+            $("#Title").customselect();
+            $("#TitleSearch_SelectedTitle").customselect();
+            $("#TitleSearch_Territory").customselect();
+            $("#TitleSearch_Language").customselect();
+            $("#TitleSearch_VideoVersion").customselect();
+            $("#TitleSearch_MPM").customselect();
+            $("#TitleSearch_VendorId").customselect();
+            $("#OrderSearch_SelectedTitle").customselect();
+            $("#OrderSearch_Territory").customselect();
+            $("#Territory").customselect();
+            $("#Language").customselect();
+            $("#SearchVID_TitleName").customselect();
+            $("#SearchVID_VideoVersion").customselect();
+            $("#SearchVID_VendorId").customselect();
+            $("#VIDSearch_TitleName").customselect();
+            $("#VIDSearch_VideoVersion").customselect();
+        });
+        $(".asset_details").click(function() {
+            var id = $(this).attr('id')
+            console.log(id);
+            $.ajax({
+                url: "/AssetTracker/GetAssetDetails?iid="+id+"",
+                type: "GET",
+                data: "",
+                success: function (data) {
+                    loadData(data);
+                },
+                error: function () {
+                    alert("Failed! Please try again.");
+                }
+            });
+        });
+        function loadData(data) {
+           // console.log('data---',data);
+            // Here we will format & load/show data 
+            var tab1 = $('<table class="table userList"></table>');
+            var TrTopHead1 = $('<thead></thead>');
+            TrTopHead1.append('<th class="text-center" colspan="2">Language</th>');
+            TrTopHead1.append('<th class="text-center" colspan="3">Audio</th>');
+            TrTopHead1.append('<th class="text-center" colspan="2">Subtiles</th>');
+            TrTopHead1.append('<th class="text-center" colspan="1">Dubcard</th>');
+            TrTopHead1.append('<th class="text-center" colspan="3">Audio Des</th>');
+            var thead1 = $('<thead></thead>');
+            thead1.append('<th cellpadding="10">Language</th>');
+            thead1.append('<th>Language Code</th>');
+            thead1.append('<th>Quality</th>');
+            thead1.append('<th>Status</th>');
+            thead1.append('<th>Import Date</th>');
+            thead1.append('<th>Status</th>');
+            thead1.append('<th>Import Date</th>');
+            thead1.append('<th>Y/N</th>');
+            thead1.append('<th>Quality</th>');
+            thead1.append('<th>Status</th>');
+            thead1.append('<th>Import Date</th>');
+
+            var tab2 = $('<table class="table userList"></table>');
+            var TrTopHead2 = $('<thead></thead>');
+            TrTopHead2.append('<th class="text-center" colspan="4">Territory on VID</th>');
+            var thead2 = $('<thead></thead>');
+            thead2.append('<th>Territory</th>');
+            thead2.append('<th>POEST Live</th>');
+            thead2.append('<th>EST Live</th>');
+            thead2.append('<th>VOD Live</th>');
+
+            var tab3 = $('<table class="table userList"></table>');
+            var TrTopHead3 = $('<thead></thead>');
+            TrTopHead3.append('<th class="text-center" colspan="4">Trailor on VID</th>');
+            var thead3 = $('<thead></thead>');
+            thead3.append('<th>Trailer Territory</th>');
+            thead3.append('<th>Quality</th>');
+            thead3.append('<th>Status</th>');
+            thead3.append('<th>Import Date</th>');
+
+            tab1.append(TrTopHead1);
+            tab2.append(TrTopHead2);
+            tab3.append(TrTopHead3);
+            tab1.append(thead1);
+            tab2.append(thead2);
+            tab3.append(thead3);
+            $.each(data, function (i, val) {
+                if (i === 'AssetDetails') {
+                   // var tbody = $('<tbody class="Verical_Scroll"></tbody>')
+                    $.each(val, function (j, value) {
+                        // Append database data here
+                        var trow = $('<tr></tr>');
+                        //tbody.append(trow);
+                        trow.append('<td>' + value.LanguageName + '</td>');
+                        trow.append('<td>' + value.LanguageCode + '</td>');
+                        trow.append('<td>' + value.Quality + '</td>');
+                        trow.append('<td>' + value.AudStatus + '</td>');
+                        trow.append('<td>' + value.AudImportDate + '</td>');
+                        trow.append('<td>' + value.SubStatus + '</td>');
+                        trow.append('<td>' + value.SubImportDate + '</td>');
+                        trow.append('<td>' + value.YesNo + '</td>');
+                        trow.append('<td>' + value.AudDesQuality + '</td>');
+                        trow.append('<td>' + value.AudDesStatus + '</td>');
+                        trow.append('<td>' + value.AudDesImportDate + '</td>');
+                        tab1.append(trow);
+                    });
+                }
+                if (i === 'TerritoryVID') {
+                    $.each(val, function (j, value) {
+                        // Append database data here
+                        var trow = $('<tr></tr>');
+                        trow.append('<td>' + value.TerritoryName + '</td>');
+                        trow.append('<td>' + value.POESTLive + '</td>');
+                        trow.append('<td>' + value.ESTLive + '</td>');
+                        trow.append('<td>' + value.VODLive + '</td>');
+                        tab2.append(trow);
+                    });
+                }
+
+                if (i === 'TrailerVID') {
+                    $.each(val, function (j, value) {
+                        // Append database data here
+                        var trow = $('<tr></tr>');
+                        trow.append('<td>' + value.TrailerTerritory + '</td>');
+                        trow.append('<td>' + value.Quality + '</td>');
+                        trow.append('<td>' + value.Status + '</td>');
+                        trow.append('<td>' + value.ImportDate + '</td>');
+                        tab3.append(trow);
+                    });
+                }
+            });
+           // $("tr:odd", tab).css('background-color', '#C4C4C4');
+            $("#asset_details_table").html(tab1);
+            $("#vid_territory").html(tab2);
+            $("#vid_trailer").html(tab3);
+        };
+    });
+    $(window).load(function () {
+        $('#loading').hide();        
+    });
+    //$('.multiselect_container').click(function () {
+    //    setTimeout(function () {
+    //        $('#loading').hide();
+    //    }, 3000);
+    //    $('#loading').show();
+    //});
+
+    $('#btnShowImportOrderPopup').click(function () {
+        $('#fileUploadOrder').val('');
+        $('#validationResultTxt').val('');
+        $('#uploadOrderPopup').modal();
+    });
+    $('#btnPopupOrderUpload').click(function () {  
+        //// Checking whether FormData is available in browser  
+        //var form = $('form')[1]; // You need to use standard javascript object here
+        
+        if (window.FormData !== undefined)
+        {
+            var fileUpload = $("#fileUploadOrder").get(0);
+            if (fileUpload.size > 2097152) // 2 mb for bytes.
+            {
+                alert("File size must under 2mb!");
+                return;
+            }
+            var files = fileUpload.files;
+            
+            // Create FormData object  
+            var fileData = new FormData();
+            
+            // Looping over all files and add it to FormData object  
+            for (var i = 0; i < files.length; i++) {
+                //fileData.append(files[i].name, files[i]);
+                fileData.append('file', files[i]);
+            }
+            
+            // Adding one more key to FormData object  
+            //fileData.append('username', ‘Manas’);  
+            
+            var url = '/Order/Import';
+            if(window.location.href.indexOf('/WBAG/') > -1)
+            {
+                url = '/WBAG/Order/Import';
+            }
+            $.ajax({  
+                url: url,
+                type: "POST",  
+                contentType: false, // Not to set any content header  
+                processData: false, // Not to process data  
+                data: fileData,  
+                success: function (result) {  
+                    $("textarea#validationResultTxt").val(result);
+                },  
+                error: function (err) {  
+                    alert(err.statusText);  
+                }  
+            });  
+        } else {  
+            alert("FormData is not supported.");  
+        }  
+    });  
+  
+    
+</script>
+</body>
+</html>

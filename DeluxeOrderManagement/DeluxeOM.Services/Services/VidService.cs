@@ -13,6 +13,9 @@ namespace DeluxeOM.Services
     {
         IVIDRepository _repository = null;
 
+        /// <summary>
+        /// Create instance of VIDRepository
+        /// </summary>
         public VidService()
         {
             _repository = new VIDRepository();

@@ -1,0 +1,201 @@
+﻿
+@{
+    ViewBag.Title = "AssetTracker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-1 padd_zero"><h6 class="filter_heading">Asset Tracker</h6></div>
+            <div class="col-xs-10 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"><span class="toggle_arrow f_right"><i class="fa fa-chevron-up" aria-hidden="true"></i></span></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            <div class="row row_one">
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Title</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Apple Id</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd select_search">
+                    <p class="dropdown_txt">Region</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">MPM</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+            <div class="row row_two">
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Edit</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Local Edit</p>
+                    <select class="dropdown_control">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd select_search">
+                    <p class="dropdown_txt">Video Version</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">VID</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+            <div class="row row_three">
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Live Status</p>
+                    <select class="dropdown_control">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Territory</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd select_search">
+                    <p class="dropdown_txt">Language</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 padd_zero">
+                    <input type="button" class="btn btn-default left_btn btn_custom" value="clear all">
+                    <input type="submit" name="Search" value="apply" class="btn btn-default btn_custom left_btn" />
+                    <input type="submit" name="Export" value="export excel" class="btn btn-default export_order btn_custom" />
+                </div>
+                <div class="col-xs-9 padd_zero"></div>
+            </div>
+            </div>
+        </div>
+    <div class="order_grid_wrapper">
+        <div class="row row_bottom_padd">
+            <div class="col-xs-12 padd_zero">
+                <table class="table userList">
+                    <thead>
+                        <tr>
+                            <th>VID</th>
+                            <th>Apple ID</th>
+                            <th>Title</th>
+                            <th>Edit Name</th>
+                            <th>Video Quality</th>
+                            <th>Video Status</th>
+                            <th>Video Import Date</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0123</td>
+                            <td>121</td>
+                            <td>Lorem</td>
+                            <td>abc</td>
+                            <td>HD</td>
+                            <td>Approved</td>
+                            <td>25-Dec-2017</td>
+                            <td><input type="button" class="btn btn-default btn_custom asset_details" value="Details" data-toggle="modal" id="42" data-target="#AssetTrackerModal"></td>
+                        </tr>
+                        <tr>
+                            <td>0145</td>
+                            <td>141</td>
+                            <td>Lorem</td>
+                            <td>xyz</td>
+                            <td>4K</td>
+                            <td>In-Review</td>
+                            <td>21-Jan-2018</td>
+                            <td><input type="button" class="btn btn-default btn_custom asset_details" value="Details" data-toggle="modal" id="42" data-target="#AssetTrackerModal"></td>
+                        </tr>
+                        <tr>
+                            <td>0156</td>
+                            <td>191</td>
+                            <td>Lorem</td>
+                            <td>jkl</td>
+                            <td>5D</td>
+                            <td>Rejected</td>
+                            <td>23-Nov-2017</td>
+                            <td><input type="button" class="btn btn-default btn_custom asset_details" value="Details" data-toggle="modal" id="42" data-target="#AssetTrackerModal"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    </div>
+<div class="modal fade" id="AssetTrackerModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div id="asset_details_table">
+
+                </div>
+                <div class="lower_table">
+                    <div id="vid_territory">
+
+                    </div>
+                    <div id="vid_trailer">
+
+                    </div>
+                    <div style="clear:both;">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

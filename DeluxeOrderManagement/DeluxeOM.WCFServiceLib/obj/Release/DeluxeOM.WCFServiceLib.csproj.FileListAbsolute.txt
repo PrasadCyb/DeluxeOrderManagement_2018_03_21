@@ -1,0 +1,5 @@
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement\DeluxeOM.WCFServiceLib\bin\Release\DeluxeOM.WCFServiceLib.dll.config
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement\DeluxeOM.WCFServiceLib\bin\Release\DeluxeOM.WCFServiceLib.dll
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement\DeluxeOM.WCFServiceLib\bin\Release\DeluxeOM.WCFServiceLib.pdb
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement\DeluxeOM.WCFServiceLib\obj\Release\DeluxeOM.WCFServiceLib.dll
+D:\Prasad\My Projects\DeluxeOrderManagement\DeluxeOrderManagement\DeluxeOM.WCFServiceLib\obj\Release\DeluxeOM.WCFServiceLib.pdb

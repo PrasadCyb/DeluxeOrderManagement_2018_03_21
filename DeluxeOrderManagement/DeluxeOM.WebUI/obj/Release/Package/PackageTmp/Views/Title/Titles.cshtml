@@ -1,0 +1,224 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using DeluxeOM.Models;
+@model Titles
+@{
+    ViewBag.Title = "Titles";
+}
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-1 padd_zero"><h6 class="filter_heading">filters</h6></div>
+            <div class="col-xs-10 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"><span class="toggle_arrow f_right"><i class="fa fa-chevron-up" aria-hidden="true"></i></span></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            @using (Html.BeginForm(null, null, FormMethod.Get, new { id = "title_form" }))
+            {
+                <div class="row row_one">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Content Provider</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.ContentProvider, new SelectList(Model.TitleSearch.ContentProviders), new { @class = "dropdown_control maximum_record_error" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Content Distributor</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.ContentDistributor, new SelectList(Model.TitleSearch.ContentDistributors), new { @class = "dropdown_control maximum_record_error" })
+                    </div>
+                    <div class="col-xs-2 control_padd select_search">
+                        <p class="dropdown_txt">Selected Title</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.SelectedTitle, new SelectList(Model.TitleSearch.SelectedTitleList,"Value","Text"), "", new { @class = "dropdown_control custom-select maximum_record_error" })
+                        @Html.ValidationMessageFor(m => m.TitleSearch.SelectedTitle,"", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Order Type</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.EditType, new SelectList(Model.TitleSearch.EditTypes), "", new { @class = "dropdown_control maximum_record_error" })
+                    </div>
+                    <div class="col-xs-2 control_padd select_search">
+                        <p class="dropdown_txt">MPM</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.MPM, new SelectList(Model.TitleSearch.MPMList, "Value", "Text"), "", new { @class = "dropdown_control custom-select maximum_record_error" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_two">
+
+                    <div class="col-xs-2 control_padd select_search multiselect_container" id="region">
+                        <p class="dropdown_txt">Region</p>
+                        @Html.ListBoxFor(m => m.TitleSearch.Region, new SelectList(Model.TitleSearch.RegionList, "Value", "Text"), new { @class = "dropdown_control custom-select multiselect_territory maximum_record_error", @multiple = "multiple" })
+                        @Html.ValidationMessageFor(m => m.TitleSearch.Region, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd select_search multiselect_container" id="territory">
+                        <p class="dropdown_txt">Territory</p>
+                        @Html.ListBoxFor(m => m.TitleSearch.Territory, new SelectList(Model.TitleSearch.TerritoryList, "Value", "Text"), new { @class = "dropdown_control custom-select multiselect_territory maximum_record_error", @multiple = "multiple" })
+                        @Html.ValidationMessageFor(m => m.TitleSearch.Territory, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd select_search multiselect_container" id="language">
+                        <p class="dropdown_txt">Language</p>
+                        @Html.ListBoxFor(m => m.TitleSearch.Language, new SelectList(Model.TitleSearch.LanguageList, "Value", "Text"), new { @class = "dropdown_control custom-select multiselect_territory maximum_record_error", @multiple = "multiple" })
+                        @Html.ValidationMessageFor(m => m.TitleSearch.Language, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd select_search">
+                        <p class="dropdown_txt">Video Version</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.VideoVersion, new SelectList(Model.TitleSearch.VideoVersionList, "Value", "Text"), "", new { @class = "dropdown_control custom-select maximum_record_error" })
+                    </div>
+                   
+                    <div class="col-xs-2 control_padd select_search">
+                        <p class="dropdown_txt">Vendor Id</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.VendorId, new SelectList(Model.TitleSearch.VendorIdList, "Value", "Text"), "", new { @class = "dropdown_control custom-select maximum_record_error" })
+                    </div>
+                    @*<div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Component Type</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.ComponentType, new SelectList(Model.TitleSearch.ComponentTypes), "", new { @class = "dropdown_control" })
+                    </div>*@
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row row_three">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Channel Date Range</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.ChannelDateRange, new SelectList(Model.TitleSearch.ChannelDateRangeList, "Value", "Text"), new { @class = "dropdown_control maximum_record_error" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt v_hdn">Start Date</p>
+                        @Html.TextBoxFor(m => m.TitleSearch.StartDate, new { placeholder = "From Date", @class = "form-input datepicker maximum_record_error" })
+                        @Html.ValidationMessageFor(m => m.TitleSearch.StartDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt v_hdn">End Date</p>
+                        @Html.TextBoxFor(m => m.TitleSearch.EndDate, new { placeholder = "To Date", @class = "form-input datepicker maximum_record_error" })
+                        @Html.ValidationMessageFor(m => m.TitleSearch.EndDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Sort By</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.SortBy, new SelectList(Model.TitleSearch.SortByList,"Value","Text"), "", new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Sort Order</p>
+                        @Html.DropDownListFor(m => m.TitleSearch.SortOrder, new SelectList(Model.TitleSearch.SortOrderList,"Value","Text"), new { @class = "dropdown_control" })
+                    </div>
+                    <div class="col-xs-2 control_padd"></div>
+                    <div class="col-xs-2 control_padd"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 padd_zero">
+                        <input type="button" class="btn btn-default left_btn btn_custom" value="clear all" id="reset_title_form">
+                        <input type="submit" name="Search" value="apply" formaction="SearchTitle" formmethod="get" class="btn btn-default btn_custom left_btn" />
+                        <input type="submit" name="Export" value="export excel" formaction="ExportTitle" formmethod="get" class="btn btn-default export_order btn_custom" />
+                    </div>
+                    <div class="col-xs-9 padd_zero"></div>
+                </div>
+                <span class="text-danger hide_error" >@ViewBag.ErrorMsg</span>
+            }
+        </div>
+    </div>
+    
+    <div class="order_grid_wrapper">
+        @if (Model.TitleList.Count == 0)
+        {
+            <h4 class="text-center">Records doesn’t  exists for selected filter criteria.</h4>
+        }
+        else
+        {
+            <div class="order_grid">
+                <table class="table" id="OrderList">
+                    <thead>
+                        <tr>
+                            <th class="left_col"></th>
+                            <th colspan="4"></th>
+                            <th colspan="9" class="text-center apple_report_back">APPLE REPORT</th>
+                            <th colspan="5" class="text-center announcement_back">ANNOUNCEMENT</th>
+                            <th colspan="3"></th>
+                            <th class="right_col"></th>
+                            </tr>
+                        <tr>
+                            <th class="left_col">Title Name</th>
+                            <th>Vendor ID</th>
+                            <th>VID Status</th>
+                            <th>Territory</th>
+                            <th>Language</th>
+                            <th class="apple_report_back">Pre Order Start Date</th>
+                            <th class="apple_report_back">EST Start Date</th>
+                            <th class="apple_report_back">EST End Date</th>
+                            <th class="apple_report_back">ESTHD Live Status</th>
+                            <th class="apple_report_back">ESTSD Live Status</th>
+                            <th class="apple_report_back">VOD Start Date</th>
+                            <th class="apple_report_back">VOD End Date</th>
+                            <th class="apple_report_back">VODHD Live Status</th>
+                            <th class="apple_report_back">VODSD Live Status</th>
+                            <th class="announcement_back">Pre Order Start Date</th>
+                            <th class="announcement_back">EST Start Date</th>
+                            <th class="announcement_back">EST End Date</th>
+                            <th class="announcement_back">VOD Start Date</th>
+                            <th class="announcement_back">VOD End Date</th>
+                            @*<th>Component Type</th>
+                            <th>Component Quality</th>*@
+                            <th>Language Type</th>
+                            <th class="right_col">Language Status</th>
+                        </tr>
+                    </thead>
+                    @for (int i = 0; i < Model.TitleList.Count; i++)
+                {
+                        <tr>
+                            <td class="left_col long_title">@Html.DisplayFor(o => o.TitleList[@i].TitleName)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.TitleList[@i].vendorID)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.TitleList[@i].VIDType)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.TitleList[@i].Territory)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.TitleList[@i].Language)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].ApplePOESTStartDate)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].AppleESTStartDate)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].AppleESTEndDate)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].ESTHDLiveStatus)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].ESTSDLiveStatus)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].AppleVODStartDate)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].AppleVODEndDate)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].VODHDLiveStatus)</td>
+                            <td class="center_col apple_report_back">@Html.DisplayFor(o => o.TitleList[@i].VODSDLiveStatus)</td>
+                            <td class="center_col announcement_back">@Html.DisplayFor(o => o.TitleList[@i].AnnouncementPOESTStartDate)</td>
+                            <td class="center_col announcement_back">@Html.DisplayFor(o => o.TitleList[@i].AnnouncementESTStartDate)</td>
+                            <td class="center_col announcement_back">@Html.DisplayFor(o => o.TitleList[@i].AnnouncementESTEndDate)</td>
+                            <td class="center_col announcement_back">@Html.DisplayFor(o => o.TitleList[@i].AnnouncementVODStartDate)</td>
+                            <td class="center_col announcement_back">@Html.DisplayFor(o => o.TitleList[@i].AnnouncementVODEndDate)</td>
+                            @*<td class="center_col">@Html.DisplayFor(o => o.TitleList[@i].ComponentType)</td>
+                            <td class="center_col">@Html.DisplayFor(o => o.TitleList[@i].ComponentQuality)</td>*@
+                            <td class="center_col">@Html.DisplayFor(o => o.TitleList[@i].LanguageType)</td>
+                            <td class="right_col">@Html.DisplayFor(o => o.TitleList[@i].LanguageStatus)</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <p class="display_txt">Records found: @Model.TitleList.TotalItemCount</p>
+            @*Page @(Model.TitleList.PageCount < Model.TitleList.PageNumber ? 0 : Model.TitleList.PageNumber ) of @Model.TitleList.PageCount*@
+            @Html.PagedListPager(Model.TitleList, pageNumber => Url.Action("SearchTitle", new
+       {
+           ContentProvider = Model.TitleSearch.ContentProvider,
+           ContentDistributor = Model.TitleSearch.ContentDistributor,
+           SelectedTitle = Model.TitleSearch.SelectedTitle,
+           EditType = Model.TitleSearch.EditType,
+           //Region = Model.TitleSearch.Region,
+           //Territory = Model.TitleSearch.Territory,
+           TerritoryConcat = string.Join("|", Model.TitleSearch == null ? new string[] { } : (Model.TitleSearch.Territory == null ? new string[] { } : Model.TitleSearch.Territory)),
+           //Language = Model.TitleSearch.Language,
+           LanguageConcate= string.Join("|", Model.TitleSearch == null ? new string[] { } : (Model.TitleSearch.Language == null ? new string[] { } : Model.TitleSearch.Language)),
+           RegionConcat = string.Join("|", Model.TitleSearch == null ? new string[] { } : (Model.TitleSearch.Region == null ? new string[] { } : Model.TitleSearch.Region)),
+           VideoVersion = Model.TitleSearch.VideoVersion,
+           MPM = Model.TitleSearch.MPM,
+           StartDate = Model.TitleSearch.StartDate,
+           EndDate = Model.TitleSearch.EndDate,
+           VendorId = Model.TitleSearch.VendorId,
+           ChannelDateRange = Model.TitleSearch.ChannelDateRange,
+           ComponentType = Model.TitleSearch.ComponentType,
+           SortBy = Model.TitleSearch.SortBy,
+           SortOrder = Model.TitleSearch.SortOrder,
+           pageNumber = pageNumber,
+
+       }))
+        }
+    </div>
+
+
+
+
+
+
+
+
+</div>

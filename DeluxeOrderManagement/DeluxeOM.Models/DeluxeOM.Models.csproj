@@ -11,7 +11,7 @@
     <AssemblyName>DeluxeOM.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>%24/WB-Apple-Grid/DeluxeOrderManagement-0305/DeluxeOM.Models</SccProjectName>
+    <SccProjectName>%24/WB-Apple-Grid/DeluxeOrderManagement/DeluxeOM.Models</SccProjectName>
     <SccLocalPath>.</SccLocalPath>
     <SccAuxPath>http://tfs:8080/tfs/deluxemedia</SccAuxPath>
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>

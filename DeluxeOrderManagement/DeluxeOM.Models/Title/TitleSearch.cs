@@ -43,10 +43,12 @@ namespace DeluxeOM.Models
 
         //[RequiredIfNotEmpty("EndDate",ErrorMessage ="Start Date is mandatory as End date selected")]
         //[RequiredIfAny("SelectedTitle", "Territory", "Language", "EndDate", ErrorMessage = "Required")]
+        [RequiredIfNotEmpty("EndDate", ErrorMessage ="Please select From Date")]
         [LessThanOrEqualTo("EndDate", ErrorMessage = "From date should be less to To date")]
         public string StartDate { get; set; }
         //[RequiredIfNotEmpty("StartDate", ErrorMessage = "End Date is mandatory as Start date selected")]
         //[RequiredIfAny("SelectedTitle", "Territory", "Language", "StartDate", ErrorMessage = "Required")]
+        [RequiredIfNotEmpty("StartDate", ErrorMessage = "Please select To Date")]
         public string EndDate { get; set; }
         public string VendorId { get; set; }
         public string ComponentType { get; set; }

@@ -135,6 +135,12 @@ namespace DeluxeOM.Services
             client.Send(message);
         }
 
+
+        /// <summary>
+        /// Identify new title in system after successful process of announcemnet
+        /// </summary>
+        /// <param name="jobId">Annpuncement Job Id</param>
+        /// <returns>New Titles</returns>
         private string getNewTitlesHTML(int jobId)
         {
             List<string> newtitles = _repository.GetNewTitles(jobId);
@@ -159,11 +165,21 @@ namespace DeluxeOM.Services
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Fetch all notification
+        /// </summary>
+        /// <returns>List of notification</returns>
         public List<Notification> GetAllNotification()
         {
             return _repository.GetAllNotification();
         }
 
+        /// <summary>
+        /// Update notificaion in bulk
+        /// </summary>
+        /// <param name="notification">List of notification to be updated</param>
+        /// <returns>true</returns>
         public bool UpdateNotification(List<Notification> notification)
         {
             return _repository.UpdateNotification(notification);

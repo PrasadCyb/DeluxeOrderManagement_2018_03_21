@@ -163,10 +163,12 @@
                     <div class="col-xs-2 control_padd">
                         <p class="dropdown_txt">Start Date</p>
                         @Html.TextBoxFor(m => m.OrderSearch.StartDate, new { @class = "form-input datepicker" })
+                        @Html.ValidationMessageFor(m => m.OrderSearch.StartDate, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-xs-2 control_padd">
                         <p class="dropdown_txt">End Date</p>
                         @Html.TextBoxFor(m => m.OrderSearch.EndDate, new { @class = "form-input datepicker" })
+                        @Html.ValidationMessageFor(m => m.OrderSearch.EndDate, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-xs-2 control_padd">
                         <p class="dropdown_txt">Sort By</p>
@@ -185,7 +187,10 @@
                         <input type="button" class="btn btn-default left_btn btn_custom" value="clear all" id="reset_order_form">
                         <input type="submit" name="Search" value="apply" formaction="SearchOrder" formmethod="get" class="btn btn-default btn_custom left_btn" />
                         <input type="submit" name="Export" value="export excel" formaction="ExportOrder" formmethod="get" class="btn btn-default export_order btn_custom" />
-                        <button type="button" class="btn btn-default btn_custom" id="btnShowImportOrderPopup">Import</button>
+                        @if (HttpContext.Current.User.IsInRole("ManagerAdmin"))
+                        {
+                            <button type="button" class="btn btn-default btn_custom" id="btnShowImportOrderPopup">Import</button>
+                        }
                     </div>
                     <div class="col-xs-9 padd_zero"></div>
                 </div>
@@ -333,10 +338,24 @@
                             Bulk Edit Order
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="modal-body">
-                            <p class="dropdown_txt">Select File</p>
-                            <input class="browse_file" type="file" id="fileUploadOrder" />
-                            <textarea id="validationResultTxt" readonly accept=".xls,.xlsx" style="font-size: 10px; color:#ff0000; width:400px" cols="40" rows="10"></textarea>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="modal-body">
+                                    <p class="dropdown_txt">Select File</p>
+                                    <input class="browse_file" type="file" style="width:250px" id="fileUploadOrder" />
+                                    <textarea id="validationResultTxt" readonly accept=".xls,.xlsx" style="font-size: 10px; color:#ff0000; width:250px; resize: vertical " cols="40" rows="10" ></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-6" style="border:1px solid #cccccc; font-size:10px">
+                                <b>Notes for new order creation via bulk import: </b><br><br>
+                                1. We cannot add new Video version or title via bulk import.<br>
+                                2. Video Version, Territory, Language, Asset Required are mandatory in case of new record creation <br>
+                                3. Order ID, Order Status are system generated, hence should not be updated by the user<br>
+                                4. Title name & Region are optional field, they would be populated automatically<br>
+                                5. Order details can be inserted as normal<br>
+                                6. First Start Date & First Announced Date would be updated after processing actual announcement file as and when it arrives<br>
+                                7. Local Edit is considered as 'No' in case of blank<br>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

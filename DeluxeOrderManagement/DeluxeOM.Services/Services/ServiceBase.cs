@@ -10,6 +10,9 @@ namespace DeluxeOM.Services
     public abstract class ServiceBase
     {
         AccountAdapter _mapper = null;
+        /// <summary>
+        /// Return object of AccountAdapter
+        /// </summary>
         protected AccountAdapter Mapper
         {
             get

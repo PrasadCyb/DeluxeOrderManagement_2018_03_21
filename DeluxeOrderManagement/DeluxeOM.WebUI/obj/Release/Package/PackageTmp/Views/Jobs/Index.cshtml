@@ -1,0 +1,115 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<DeluxeOM.Models.BulkUploader.Job>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-1 padd_zero"><h6 class="filter_heading">Jobs</h6></div>
+            <div class="col-xs-10 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+
+            @using (Html.BeginForm("Run", "Jobs", FormMethod.Post,new { enctype = "multipart/form-data" }))
+            {
+                <div class="row row_bottom_padd">
+                    <div class="col-xs-2 control_padd">
+                        <p class="dropdown_txt">Job List</p>
+                        @Html.DropDownList("jobType", (IEnumerable<SelectListItem>)ViewBag.SelectedItem,  new { @class = "dropdown_control job_type_dropdown" })
+                        </div>
+                    
+                    <div class="col-xs-2 control_padd announce_date">
+                        <p class="dropdown_txt">Date</p>
+                        @Html.TextBox("announcementDate", null, new { @class = "datepicker " })
+                        </div>
+                    <div class="col-xs-5 upload_file">
+                        <p class="dropdown_txt">Select File</p>
+                        <input class="browse_file" type="file" name="file"/>
+                        
+                        <p>Note : If file is not selected then file present on FTP will be processed</p>
+                    </div>
+                    <div class="col-xs-8 control_padd"></div>
+                    </div>
+            <div class="row row_bottom_padd">
+                <div class="col-xs-12 control_padd">
+                    <input type="submit" class="btn btn-default btn_custom" value="Run" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 control_padd">
+                        <p>In order to make sure we are running the weekly announcement against latest apple data.<br/> Kindly make sure to run the jobs in following order :</p>
+                        <ol>
+                            <li>Pipeline</li>
+                            <li>Price Report</li>
+                            <li>AppleQC</li>
+                            <li>Announcement</li>
+                        </ol>
+                    </div>
+                </div>
+            }
+
+            </div>
+        </div>
+    <div class="order_grid_wrapper">
+        <div class="row right_btn_group">
+            <button type="button" class="btn btn-default btn_custom jobs_page_refresh">refresh</button>
+        </div>
+        <table class="table userList">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Job Type
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Triggered By
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusDisplay)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TriggeredBy)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", "Jobs", new { id = item.Id } )">View</a>
+                        </td>
+                    </tr>
+                }
+
+</table>
+        @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new
+       {
+           pageNumber = pageNumber,
+       }))
+        </div>
+    </div>

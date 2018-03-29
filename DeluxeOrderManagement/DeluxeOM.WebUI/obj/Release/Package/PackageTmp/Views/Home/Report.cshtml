@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="order_page_wrapper">
+    <div class="control_wrapper">
+        <div class="row">
+            <div class="col-xs-1 padd_zero"><h6 class="filter_heading">filters</h6></div>
+            <div class="col-xs-10 padd_zero"></div>
+            <div class="col-xs-1 padd_zero"><span class="toggle_arrow f_right"><i class="fa fa-chevron-up" aria-hidden="true"></i></span></div>
+        </div>
+        <hr />
+        <div id="toggle_wrapper">
+            <div class="row row_one">
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Content Provider</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Content Distributor</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Apple i-Tune</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Report Title</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Ocean's Eleven (2001)</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt v_hdn">Edit Type</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Director's Cut</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+            <div class="row row_two">
+                <div class="col-xs-2 control_padd">
+                    <p class="checkbox_txt">Local Edit</p>
+                    <input type="checkbox" name="local_edit" value="Yes"><label for="checkbox" class="checkbox_label">Yes</label>
+                    <input type="checkbox" name="local_edit" value="No"><label for="checkbox" class="checkbox_label">No</label>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt">Record Created Date Range</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd">
+                    <p class="dropdown_txt v_hdn">Record Created Date Range</p>
+                    <select class="dropdown_control">
+                        <option value="volvo">Warner Brother</option>
+                        <option value="saab">Saab</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+                <div class="col-xs-2 control_padd"></div>
+            </div>
+            <div class="row row_four">
+                <div class="col-xs-3 padd_zero">
+                    <button type="button" class="btn btn-default left_btn btn_custom">clear all</button>
+                    <button type="button" class="btn btn-default btn_custom"><i class="fa fa-file-excel-o" aria-hidden="true"></i>export excel</button>
+                </div>
+                <div class="col-xs-9 padd_zero"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

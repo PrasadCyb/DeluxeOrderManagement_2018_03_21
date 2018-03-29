@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foolproof;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,11 @@ namespace DeluxeOM.Models
         public DateTime ESTStartDate { get; set; } 
         public DateTime ESTEndDate { get; set; }
 
+        [RequiredIfNotEmpty("EndDate", ErrorMessage ="Please Select Start Date")]
+        [LessThanOrEqualTo("EndDate", ErrorMessage = "Start date should be less than End date")]
         public string StartDate { get; set; }
+
+        [RequiredIfNotEmpty("StartDate", ErrorMessage = "Please Select End Date")]
         public string EndDate { get; set; }
         public string SortBy { get; set; }
         public string SortOrder { get; set; }
